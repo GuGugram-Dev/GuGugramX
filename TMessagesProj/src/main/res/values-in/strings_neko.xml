@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="NekoSettings">Pengaturan Neko</string>
+    <string name="NekoSettings">Pengaturan GuGu</string>
     <string name="IPv6">Menghubungkan melalui IPv6</string>
     <string name="MessageMenu">Menu Pesan</string>
     <string name="HidePhone">Sembunyikan nomor telepon saya</string>
