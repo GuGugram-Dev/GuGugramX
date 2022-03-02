@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="NekoX" translatable="false">Nekogram X</string>
+    <string name="NekoX" translatable="false">GuGugram X</string>
     <string name="Locked">Locked</string>
     <string name="AccDescrChatAttachEnterMenu">Chat input menu</string>
     <string name="ChatAttachEnterMenuRecordVideo">Record Video</string>
@@ -46,7 +46,7 @@
     <string name="TransToLang">Translation target language</string>
     <string name="TransInputToLang">Translation input target language</string>
     <string name="More">More</string>
-    <string name="NekoXUpdatesChannel">NekoX Updates Channel</string>
+    <string name="NekoXUpdatesChannel">GuGugramX Updates Channel</string>
     <string name="ShowIdAndDc">Show ID / DC in profile</string>
     <string name="UseDefaultTheme">Use default theme *</string>
     <string name="NightMode">Night Mode</string>
@@ -264,7 +264,7 @@
     <string name="rememberAllBackMessages">Remember all clicked replies</string>
     <string name="DisableInstantCamera">Disable instant camera</string>
     <string name="showSeconds">Show timestamp in seconds</string>
-    <string name="AppUpdateNekoX">Update Nekogram X</string>
+    <string name="AppUpdateNekoX">Update GuGugramX X</string>
     <string name="NekoXUpdateTranslationHint">Press to translate the change log</string>
     <string name="Name">Name</string>
     <string name="channelAlias">Channel Alias</string>

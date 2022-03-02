@@ -102,5 +102,5 @@
     <string name="ProxyTypeVmess">VMess-mellomtjener</string>
     <string name="BlockedListEmpty">Du har ikke blokkert noen :)</string>
     <string name="FilterNameUnmutedDescription">Kun meldinger fra uforstummede sludringer</string>
-    <string name="NekoXUpdatesChannel">NekoX-oppdateringskanal</string>
+    <string name="NekoXUpdatesChannel">GuGugramX-oppdateringskanal</string>
 </resources>
