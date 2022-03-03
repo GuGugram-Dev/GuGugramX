@@ -328,25 +328,25 @@ jobs:
         if: github.event.inputs.artifacts == 'y'
         name: Upload apk (arm64-v8a)
         with:
-          name: NekoX-${{ matrix.flavor }}-arm64-v8a
+          name: GuGugramX-${{ matrix.flavor }}-arm64-v8a
           path: ${{ env.APK_FILE }}
       - uses: actions/upload-artifact@v2
         if: github.event.inputs.artifacts == 'y'
         name: Upload apk (armeabi-v7a)
         with:
-          name: NekoX-${{ matrix.flavor }}-armeabi-v7a
+          name: GuGugramX-${{ matrix.flavor }}-armeabi-v7a
           path: ${{ env.APK_FILE_ARMV7 }}
       - uses: actions/upload-artifact@v2
         if: github.event.inputs.artifacts == 'y'
         name: Upload apk (x86_64)
         with:
-          name: NekoX-${{ matrix.flavor }}-x86_64
+          name: GuGugramX-${{ matrix.flavor }}-x86_64
           path: ${{ env.APK_FILE_X64 }}
       - uses: actions/upload-artifact@v2
         if: github.event.inputs.artifacts == 'y'
         name: Upload apk (x86)
         with:
-          name: NekoX-${{ matrix.flavor }}-x86
+          name: GuGugramX-${{ matrix.flavor }}-x86
           path: ${{ env.APK_FILE_X86 }}
 
   build-dev:
@@ -401,6 +401,7 @@ jobs:
           export DEBUG_BUILD=true
           export NATIVE_TARGET=arm64-v8a
           ./gradlew TMessagesProj:assembleMiniRelease
+          ./gradlew TMessagesProj:assembleFullRelease
       - name: Send Build
         run: |
           chmod +x telegram-bot-api-binary
