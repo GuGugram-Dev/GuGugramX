@@ -21,10 +21,10 @@ public class InternalUpdater {
 
     static final int UPDATE_METADATA_START_FROM = 0;
     static final int MAX_READ_COUNT = 20;
-    static final long CHANNEL_METADATA_ID = 1359638116;
-    static final String CHANNEL_METADATA_NAME = "nekox_update_metadata";
-    static final long CHANNEL_APKS_ID = 1137038259;
-    static final String CHANNEL_APKS_NAME = "NekoXApks";
+    static final long CHANNEL_METADATA_ID = 1642475142;
+    static final String CHANNEL_METADATA_NAME = "gugugramx_metadata";
+    static final long CHANNEL_APKS_ID = -1681009592;
+    static final String CHANNEL_APKS_NAME = "gugugramx_apks";
 
     static void retrieveUpdateMetadata(retrieveUpdateMetadataCallback callback) {
         final int localVersionCode = BuildVars.BUILD_VERSION;
