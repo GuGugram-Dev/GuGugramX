@@ -401,13 +401,11 @@ jobs:
           export DEBUG_BUILD=true
           export NATIVE_TARGET=arm64-v8a
           ./gradlew TMessagesProj:assembleMiniRelease
-          ./gradlew TMessagesProj:assembleFullRelease
       - name: Send Build
         run: |
           chmod +x telegram-bot-api-binary
           ./telegram-bot-api-binary --api-id=21724 --api-hash=3e0cb5efcd52300aec5994fdfc5bdc16 --local 2>&1 > /dev/null &
           apk=$(find TMessagesProj/build/outputs/apk/mini/release -name '*arm64-v8a*.apk' | head -n 1)
-          apk=$(find TMessagesProj/build/outputs/apk/Full/release -name '*arm64-v8a*.apk' | head -n 1)
 
           curl http://127.0.0.1:8081/bot${{ secrets.HELPER_BOT_TOKEN }}/sendDocument \
             -X POST \
