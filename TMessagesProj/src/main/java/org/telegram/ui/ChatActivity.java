@@ -13748,9 +13748,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     } else {
                         canForwardMessagesCount--;
                     }
-                    if (messageObject.isMusic() && !noforwards || GuGuConfig.ForeAllowCopy) {
+                    if (messageObject.isMusic() && !noforwards ) {
                         canSaveMusicCount--;
-                    } else if (messageObject.isDocument() && !noforwards || GuGuConfig.ForeAllowCopy) {
+                    } else if (messageObject.isDocument() && !noforwards ) {
                         canSaveDocumentsCount--;
                     } else {
                         cantSaveMessagesCount--;
@@ -13785,9 +13785,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     } else {
                         canForwardMessagesCount++;
                     }
-                    if (messageObject.isMusic() && !noforwards || GuGuConfig.ForeAllowCopy) {
+                    if (messageObject.isMusic() && !noforwards ) {
                         canSaveMusicCount++;
-                    } else if (messageObject.isDocument() && !noforwards || GuGuConfig.ForeAllowCopy) {
+                    } else if (messageObject.isDocument() && !noforwards) {
                         canSaveDocumentsCount++;
                     } else {
                         cantSaveMessagesCount++;
@@ -21654,11 +21654,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                         options.add(26);
                                         icons.add(R.drawable.msg_pollstop);
                                     }
-                                } else if (selectedObject.isMusic() && !noforwardsOverride || GuGuConfig.ForeAllowCopy) {
+                                } else if (selectedObject.isMusic() && !noforwardsOverride ) {
                                     items.add(LocaleController.getString("SaveToMusic", R.string.SaveToMusic));
                                     options.add(OPTION_SAVE_TO_DOWNLOADS_OR_MUSIC);
                                     icons.add(R.drawable.msg_download);
-                                } else if (selectedObject.isDocument() && !noforwardsOverride || GuGuConfig.ForeAllowCopy) {
+                                } else if (selectedObject.isDocument() && !noforwardsOverride ) {
                                     items.add(LocaleController.getString("SaveToDownloads", R.string.SaveToDownloads));
                                     options.add(OPTION_SAVE_TO_DOWNLOADS_OR_MUSIC);
                                     icons.add(R.drawable.msg_download);
@@ -21829,6 +21829,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                         boolean noforward = getMessagesController().isChatNoForwards(currentChat);
                         boolean noforwardOverride = noforward && !NekoXConfig.disableFlagSecure;
+
                         if (!selectedObject.isSponsored() && chatMode != MODE_SCHEDULED && !selectedObject.needDrawBluredPreview() && !selectedObject.isLiveLocation() && selectedObject.type != 16 && !noforwards) {
                             items.add(LocaleController.getString("Forward", R.string.Forward));
                             options.add(2);
