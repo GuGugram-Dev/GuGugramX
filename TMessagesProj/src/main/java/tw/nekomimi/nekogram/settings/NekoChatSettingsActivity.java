@@ -342,37 +342,42 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
                     break;
                 }
                 case 3: {
-                    textCell.setTextAndCheck(LocaleController.getString("ViewHistory", R.string.ViewHistory), NekoConfig.showViewHistory.Bool(), false);
+                    textCell.setTextAndCheck(LocaleController.getString("RepeatasCopy", R.string.RepeatasCopy), NekoConfig.showRepeatasCopy.Bool(), false);
                     break;
                 }
                 case 4: {
-                    textCell.setTextAndCheck(LocaleController.getString("Translate", R.string.Translate), NekoConfig.showTranslate.Bool(), false);
+                    textCell.setTextAndCheck(LocaleController.getString("ViewHistory", R.string.ViewHistory), NekoConfig.showViewHistory.Bool(), false);
                     break;
                 }
                 case 5: {
-                    textCell.setTextAndCheck(LocaleController.getString("ReportChat", R.string.ReportChat), NekoConfig.showReport.Bool(), false);
+                    textCell.setTextAndCheck(LocaleController.getString("Translate", R.string.Translate), NekoConfig.showTranslate.Bool(), false);
                     break;
                 }
                 case 6: {
-                    textCell.setTextAndCheck(LocaleController.getString("EditAdminRights", R.string.EditAdminRights), NekoConfig.showAdminActions.Bool(), false);
+                    textCell.setTextAndCheck(LocaleController.getString("ReportChat", R.string.ReportChat), NekoConfig.showReport.Bool(), false);
                     break;
                 }
                 case 7: {
-                    textCell.setTextAndCheck(LocaleController.getString("ChangePermissions", R.string.ChangePermissions), NekoConfig.showChangePermissions.Bool(), false);
+                    textCell.setTextAndCheck(LocaleController.getString("EditAdminRights", R.string.EditAdminRights), NekoConfig.showAdminActions.Bool(), false);
                     break;
                 }
                 case 8: {
-                    textCell.setTextAndCheck(LocaleController.getString("Hide", R.string.Hide), NekoConfig.showMessageHide.Bool(), false);
+                    textCell.setTextAndCheck(LocaleController.getString("ChangePermissions", R.string.ChangePermissions), NekoConfig.showChangePermissions.Bool(), false);
                     break;
                 }
                 case 9: {
-                    textCell.setTextAndCheck(LocaleController.getString("ShareMessages", R.string.ShareMessages), NekoConfig.showShareMessages.Bool(), false);
+                    textCell.setTextAndCheck(LocaleController.getString("Hide", R.string.Hide), NekoConfig.showMessageHide.Bool(), false);
                     break;
                 }
                 case 10: {
+                    textCell.setTextAndCheck(LocaleController.getString("ShareMessages", R.string.ShareMessages), NekoConfig.showShareMessages.Bool(), false);
+                    break;
+                }
+                case 11: {
                     textCell.setTextAndCheck(LocaleController.getString("MessageDetails", R.string.MessageDetails), NekoConfig.showMessageDetails.Bool(), false);
                     break;
                 }
+
             }
             textCell.setTag(a);
             textCell.setBackground(Theme.getSelectorDrawable(false));
@@ -393,34 +398,38 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
                         break;
                     }
                     case 3: {
-                        textCell.setChecked(NekoConfig.showViewHistory.toggleConfigBool());
+                        textCell.setChecked(NekoConfig.showRepeatasCopy.toggleConfigBool());
                         break;
                     }
                     case 4: {
-                        textCell.setChecked(NekoConfig.showTranslate.toggleConfigBool());
+                        textCell.setChecked(NekoConfig.showViewHistory.toggleConfigBool());
                         break;
                     }
                     case 5: {
-                        textCell.setChecked(NekoConfig.showReport.toggleConfigBool());
+                        textCell.setChecked(NekoConfig.showTranslate.toggleConfigBool());
                         break;
                     }
                     case 6: {
-                        textCell.setChecked(NekoConfig.showAdminActions.toggleConfigBool());
+                        textCell.setChecked(NekoConfig.showReport.toggleConfigBool());
                         break;
                     }
                     case 7: {
-                        textCell.setChecked(NekoConfig.showChangePermissions.toggleConfigBool());
+                        textCell.setChecked(NekoConfig.showAdminActions.toggleConfigBool());
                         break;
                     }
                     case 8: {
-                        textCell.setChecked(NekoConfig.showMessageHide.toggleConfigBool());
+                        textCell.setChecked(NekoConfig.showChangePermissions.toggleConfigBool());
                         break;
                     }
                     case 9: {
-                        textCell.setChecked(NekoConfig.showShareMessages.toggleConfigBool());
+                        textCell.setChecked(NekoConfig.showMessageHide.toggleConfigBool());
                         break;
                     }
                     case 10: {
+                        textCell.setChecked(NekoConfig.showShareMessages.toggleConfigBool());
+                        break;
+                    }
+                    case 11: {
                         textCell.setChecked(NekoConfig.showMessageDetails.toggleConfigBool());
                         break;
                     }

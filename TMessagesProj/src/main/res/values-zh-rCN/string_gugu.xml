@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ForeAllowCopy">强制复制</string>
+    <string name="RepeatasCopy">无引用复读</string>
 </resources>
