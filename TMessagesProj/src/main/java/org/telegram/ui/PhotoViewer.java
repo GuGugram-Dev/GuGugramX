@@ -122,6 +122,7 @@ import android.widget.Scroller;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blxueya.GuGugramX.GuGuConfig;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.analytics.AnalyticsListener;
@@ -12356,8 +12357,8 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 windowLayoutParams.flags = WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
             }
             if (chatActivity != null && chatActivity.getCurrentEncryptedChat() != null ||
-                    avatarsDialogId != 0 && MessagesController.getInstance(currentAccount).isChatNoForwards(-avatarsDialogId) ||
-                    messageObject != null && (MessagesController.getInstance(currentAccount).isChatNoForwards(messageObject.getChatId()) || (messageObject.messageOwner != null && messageObject.messageOwner.noforwards))) {
+                    avatarsDialogId != 0 && !GuGuConfig.ForeAllowCopy && MessagesController.getInstance(currentAccount).isChatNoForwards(-avatarsDialogId) ||
+                    messageObject != null && (!GuGuConfig.ForeAllowCopy && MessagesController.getInstance(currentAccount).isChatNoForwards(messageObject.getChatId()) || (messageObject.messageOwner != null && messageObject.messageOwner.noforwards))) {
                 if (!NekoXConfig.disableFlagSecure)
                     windowLayoutParams.flags |= WindowManager.LayoutParams.FLAG_SECURE;
             } else {
