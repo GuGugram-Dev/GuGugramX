@@ -80,8 +80,6 @@ public class NekoSettingsActivity extends BaseFragment {
 
     private int aboutRow;
     private int channelRow;
-    private int fdroidRow;
-    private int googlePlayRow;
     private int sourceCodeRow;
     private int translationRow;
     private int about2Row;
@@ -376,11 +374,9 @@ public class NekoSettingsActivity extends BaseFragment {
 
         aboutRow = rowCount++;
         channelRow = rowCount++;
-        fdroidRow = rowCount++;
         /*if (ExternalGcm.checkPlayServices()) {
             googlePlayRow = rowCount++;
         } else {*/
-        googlePlayRow = -1;
 //        }
         sourceCodeRow = rowCount++;
         translationRow = rowCount++;
