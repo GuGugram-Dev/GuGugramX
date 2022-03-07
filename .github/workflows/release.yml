@@ -259,9 +259,7 @@ jobs:
       matrix:
         flavor:
           - FullRelease
-          - FullReleaseNoGcm
           - MiniRelease
-          - MiniReleaseNoGcm
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -409,10 +407,8 @@ jobs:
               sleep 1
             done
           }
-          upload apks/NekoX-*-mini-*-release.apk
-          upload apks/NekoX-*-mini-*-releaseNoGcm.apk
-          upload apks/NekoX-*-full-*-release.apk
-          upload apks/NekoX-*-full-*-releaseNoGcm.apk
+          upload apks/GuGugramX-*-mini-*-release.apk
+          upload apks/GuGugramX-*-full-*-release.apk
           pkill telegram-bot
 
   telegram-bot-api:
