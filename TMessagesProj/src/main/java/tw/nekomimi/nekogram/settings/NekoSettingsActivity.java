@@ -172,15 +172,11 @@ public class NekoSettingsActivity extends BaseFragment {
             } else if (position == experimentRow) {
                 presentFragment(new NekoExperimentalSettingsActivity());
             } else if (position == channelRow) {
-                MessagesController.getInstance(currentAccount).openByUserName("NekogramX", this, 1);
+                MessagesController.getInstance(currentAccount).openByUserName("GuGugramX", this, 1);
             } else if (position == translationRow) {
                 Browser.openUrl(getParentActivity(), "https://hosted.weblate.org/engage/nekox/");
-            } else if (position == fdroidRow) {
-                Browser.openUrl(getParentActivity(), "https://f-droid.org/packages/nekox.messenger");
-            } else if (position == googlePlayRow) {
-                Browser.openUrl(getParentActivity(), "https://play.google.com/store/apps/details?id=nekox.messenger");
             } else if (position == sourceCodeRow) {
-                Browser.openUrl(getParentActivity(), "https://github.com/NekoX-Dev/NekoX");
+                Browser.openUrl(getParentActivity(), "https://github.com/blxueya/GuGugramX");
             }
         });
 
@@ -476,11 +472,7 @@ public class NekoSettingsActivity extends BaseFragment {
                 case 3: {
                     TextSettingsCell textCell = (TextSettingsCell) holder.itemView;
                     if (position == channelRow) {
-                        textCell.setTextAndValue(LocaleController.getString("OfficialChannel", R.string.OfficialChannel), "@NekogramX", true);
-                    } else if (position == fdroidRow) {
-                        textCell.setText(LocaleController.getString("AppLinkFDroid", R.string.AppLinkFDroid), true);
-                    } else if (position == googlePlayRow) {
-                        textCell.setText(LocaleController.getString("GooglePlay", R.string.GooglePlay), true);
+                        textCell.setTextAndValue(LocaleController.getString("OfficialChannel", R.string.OfficialChannel), "@GuGugramX", true);
                     } else if (position == sourceCodeRow) {
                         textCell.setText(LocaleController.getString("SourceCode", R.string.SourceCode), true);
                     } else if (position == translationRow) {
