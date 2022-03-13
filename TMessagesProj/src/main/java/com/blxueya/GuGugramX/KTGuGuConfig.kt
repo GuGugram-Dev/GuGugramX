@@ -25,12 +25,9 @@ object KTGuGuConfig {
         ArrayList<ConfigItem>()
 
     // Configs
-    var ForceCopy =
-        addConfig(
-            "ForeAllowCopy",
-            ConfigItem.configTypeBool,
-            false
-        )
+    var ForceCopy = addConfig("ForeAllowCopy", ConfigItem.configTypeBool, false)
+
+    var AlwaysSaveChatOffset = addConfig("AlwaysSaveChatOffset", ConfigItem.configTypeBool,false)
 
     fun addConfig(
         k: String,
