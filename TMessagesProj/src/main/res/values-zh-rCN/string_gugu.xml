@@ -2,4 +2,5 @@
 <resources>
     <string name="ForeAllowCopy">强制复制</string>
     <string name="RepeatasCopy">无引用复读</string>
+    <string name="AlwaysSaveChatOffset">总是保存聊天记录的偏移量</string>
 </resources>
