@@ -216,7 +216,7 @@ public class NekoXConfig {
                 color = Theme.getColor(Theme.key_windowBackgroundWhiteBlueHeader) | 0xff000000;
             }
         }
-        return color;
+        return Color.parseColor("#E4C1DB");
     }
 
     
