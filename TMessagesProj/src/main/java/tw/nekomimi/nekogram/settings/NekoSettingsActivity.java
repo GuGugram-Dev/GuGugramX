@@ -306,7 +306,7 @@ public class NekoSettingsActivity extends BaseFragment {
             importSettings(configJson);
 
             AlertDialog restart = new AlertDialog(context, 0);
-            restart.setTitle(LocaleController.getString("NekoX", R.string.NekoX));
+            restart.setTitle(LocaleController.getString("GuGuX", R.string.NekoX));
             restart.setMessage(LocaleController.getString("RestartAppToTakeEffect", R.string.RestartAppToTakeEffect));
             restart.setPositiveButton(LocaleController.getString("OK", R.string.OK), (__, ___) -> {
                 ProcessPhoenix.triggerRebirth(context, new Intent(context, LaunchActivity.class));

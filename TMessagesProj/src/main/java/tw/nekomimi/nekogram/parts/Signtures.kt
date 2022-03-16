@@ -37,7 +37,7 @@ fun Context.getSha256Signature(): String {
 
 fun Context.isVerified(): Boolean {
     val packageName = packageName
-    if (!packageName.contains("nekox")) {
+    if (!packageName.contains("GuGugramX")) {
         FileLog.w("packageName changed, don't check signature")
         return true
     }

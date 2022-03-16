@@ -59,7 +59,7 @@
     <string name="ApplySuggestion">אוקיי, החל אותו</string>
     <string name="DoNotRemindAgain">אל תזכיר שוב</string>
     <string name="RemoveTitleEmoji">הסר אמוג\'י בכותרת</string>
-    <string name="NekoXProxy">פרוקסי ציבור NekoX</string>
+    <string name="NekoXProxy">פרוקסי ציבור GuGuX</string>
     <string name="PublicPrefix">ציבורי</string>
     <string name="DisableChatAction">אל תשלח את סטטוס הקלט שלי</string>
     <string name="FakeScreenshot">העמד פנים כמו צילום מסך</string>
@@ -87,9 +87,9 @@
     <string name="SortByUnmuted">מיין לפי Unmute</string>
     <string name="SortByUser">מיין לפי משתמש</string>
     <string name="SortByContacts">מיין לפי אנשי קשר</string>
-    <string name="NekoXPushService">שירות דחיפה של NekoX</string>
-    <string name="EnablePushAlert">אנא אפשר את \"שירות הדחיפה של NekoX\"</string>
-    <string name="DisablePushAlert">אנא השבת את \"שירות הדחיפה של NekoX\"</string>
+    <string name="NekoXPushService">שירות דחיפה של GuGuX</string>
+    <string name="EnablePushAlert">אנא אפשר את \"שירות הדחיפה של GuGuX\"</string>
+    <string name="DisablePushAlert">אנא השבת את \"שירות הדחיפה של GuGuX\"</string>
     <string name="DisableUndo">השבת בטל</string>
     <string name="DisableSystemAccount">השבת חשבון מערכת</string>
     <string name="FilterMenu">תפריט מסנן דיאלוגים</string>
