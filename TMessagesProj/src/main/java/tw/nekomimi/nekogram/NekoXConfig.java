@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.graphics.Color;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
@@ -216,7 +217,7 @@ public class NekoXConfig {
                 color = Theme.getColor(Theme.key_windowBackgroundWhiteBlueHeader) | 0xff000000;
             }
         }
-        return color;
+        return Color.parseColor("#E4C1DB");
     }
 
     
