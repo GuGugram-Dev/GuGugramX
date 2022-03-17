@@ -59,7 +59,7 @@
     <string name="ApplySuggestion">应用</string>
     <string name="DoNotRemindAgain">不再提醒</string>
     <string name="RemoveTitleEmoji">移除标题中的表情</string>
-    <string name="NekoXProxy">NekoX 公共代理</string>
+    <string name="NekoXProxy">GuGuX 公共代理</string>
     <string name="PublicPrefix">公共</string>
     <string name="DisableChatAction">不要发送我的输入状态</string>
     <string name="FakeScreenshot">假装截屏</string>
@@ -87,7 +87,7 @@
     <string name="SortByUnmuted">可通知优先排序</string>
     <string name="SortByUser">用户优先排序</string>
     <string name="SortByContacts">联系人优先排序</string>
-    <string name="NekoXPushService">NekoX 通知服务</string>
+    <string name="NekoXPushService">GuGuX 通知服务</string>
     <string name="EnablePushAlert">请启用 \"NekoX 通知服务\"</string>
     <string name="DisablePushAlert">请禁用 \"NekoX 通知服务\"</string>
     <string name="DisableUndo">禁用五秒内后悔</string>
@@ -271,7 +271,7 @@
     <string name="rememberAllBackMessages">记住所有点击的回复</string>
     <string name="ShareMessages">分享</string>
     <string name="AutoCheckUpdatePreview">预览版(不稳定)</string>
-    <string name="AppUpdateNekoX">更新 Nekogram X</string>
+    <string name="AppUpdateNekoX">更新GuGugram X</string>
     <string name="NekoXUpdateTranslationHint">长按以翻译更新日志</string>
     <string name="channelAlias">频道别名</string>
     <string name="labelChannelUser">标记频道匿名身份别名</string>

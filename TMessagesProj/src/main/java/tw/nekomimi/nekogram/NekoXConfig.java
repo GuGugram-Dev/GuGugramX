@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.graphics.Color;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
@@ -35,12 +36,12 @@ import tw.nekomimi.nekogram.database.NitritesKt;
 public class NekoXConfig {
 
     //  public static String FAQ_URL = "https://telegra.ph/NekoX-FAQ-03-31";
-    public static String FAQ_URL = "https://github.com/NekoX-Dev/NekoX#faq";
+    public static String FAQ_URL = "https://github.com/blxueya/GuGugramX/#faq";
     public static long[] officialChats = {
-            1305127566, // NekoX Updates
-            1151172683, // NekoX Chat
+            1650559785, // GuGuX Updates
+            1639467884, // GuGuX Chat
             1299578049, // NekoX Chat Channel
-            1137038259, // NekoX APKs
+            1681009592, // GuGuX APKs
     };
 
     public static long[] developers = {
@@ -216,7 +217,7 @@ public class NekoXConfig {
                 color = Theme.getColor(Theme.key_windowBackgroundWhiteBlueHeader) | 0xff000000;
             }
         }
-        return color;
+        return Color.parseColor("#E4C1DB");
     }
 
     

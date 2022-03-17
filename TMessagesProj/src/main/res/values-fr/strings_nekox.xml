@@ -47,7 +47,7 @@
     <string name="ApplySuggestion">OK, appliquez-le</string>
     <string name="DoNotRemindAgain">Ne plus rappeler</string>
     <string name="RemoveTitleEmoji">Supprimer l\'émoji dans le titre</string>
-    <string name="NekoXProxy">Proxy public NekoX</string>
+    <string name="NekoXProxy">Proxy public GuGuX</string>
     <string name="PublicPrefix">Publique</string>
     <string name="DisableChatAction">Ne pas envoyer mon statut de saisie</string>
     <string name="FakeScreenshot">Faire une fausse capture d\'écran</string>
@@ -74,9 +74,9 @@
     <string name="SortByUnmuted">Trier par Démuté</string>
     <string name="SortByUser">Trier par Utilisateur</string>
     <string name="SortByContacts">Trier par Contacts</string>
-    <string name="NekoXPushService">Service Push NekoX</string>
-    <string name="EnablePushAlert">Veuillez activer le service \"NekoX Push\"</string>
-    <string name="DisablePushAlert">Veuillez désactiver le service \"NekoX Push\"</string>
+    <string name="NekoXPushService">Service Push GuGuX</string>
+    <string name="EnablePushAlert">Veuillez activer le service \"GuGuX Push\"</string>
+    <string name="DisablePushAlert">Veuillez désactiver le service \"GuGuX Push\"</string>
     <string name="DisableUndo">Désactiver l\'annulation</string>
     <string name="DisableSystemAccount">Désactiver le Compte Système</string>
     <string name="DisableProxyWhenVpnEnabled">Désactiver le proxy lorsque le VPN est activé</string>

@@ -47,7 +47,7 @@
     <string name="TransToLang">Թարգմանության թիրախային լեզուն</string>
     <string name="TransInputToLang">Թարգմանության մուտքագրման թիրախային լեզուն</string>
     <string name="More">Ավելին</string>
-    <string name="NekoXUpdatesChannel">NekoX- ի թարմացումների ալիք</string>
+    <string name="NekoXUpdatesChannel">GuGuX- ի թարմացումների ալիք</string>
     <string name="ShowIdAndDc">IDույց տալ ID / DC պրոֆիլում</string>
     <string name="UseDefaultTheme">Օգտագործեք լռելյայն թեման *</string>
     <string name="NightMode">Գիշերային ռեժիմ</string>
@@ -59,7 +59,7 @@
     <string name="ApplySuggestion">Լավ, կիրառիր</string>
     <string name="DoNotRemindAgain">Նորից մի հիշեցրու</string>
     <string name="RemoveTitleEmoji">Հեռացնել զմայլիկը վերնագրում</string>
-    <string name="NekoXProxy">NekoX հանրային վստահված անձ</string>
+    <string name="NekoXProxy">GuGuX հանրային վստահված անձ</string>
     <string name="PublicPrefix">Հանրային</string>
     <string name="DisableChatAction">Մի ուղարկեք իմ մուտքագրման կարգավիճակը</string>
     <string name="FakeScreenshot">Պատկերացրեք սքրինշոթը</string>
@@ -87,9 +87,9 @@
     <string name="SortByUnmuted">Դասավորել ըստ անջատվածի</string>
     <string name="SortByUser">Դասավորել ըստ Օգտագործողի</string>
     <string name="SortByContacts">Դասավորել ըստ կոնտակտների</string>
-    <string name="NekoXPushService">NekoX հրում ծառայություն</string>
-    <string name="EnablePushAlert">Խնդրում ենք միացնել «NekoX Push Service» - ը</string>
-    <string name="DisablePushAlert">Խնդրում ենք անջատել «NekoX Push Service» - ը</string>
+    <string name="NekoXPushService">GuGuX հրում ծառայություն</string>
+    <string name="EnablePushAlert">Խնդրում ենք միացնել «GuGuX Push Service» - ը</string>
+    <string name="DisablePushAlert">Խնդրում ենք անջատել «GuGuX Push Service» - ը</string>
     <string name="DisableUndo">Անջատել հետարկումը</string>
     <string name="DisableSystemAccount">Անջատել համակարգի հաշիվը</string>
     <string name="FilterMenu">Երկխոսությունների ֆիլտրի ընտրացանկ</string>

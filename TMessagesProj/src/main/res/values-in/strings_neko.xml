@@ -118,7 +118,7 @@
     <string name="UseMediaStreamInVoip">Menggunakan Media Stream pada VoIP</string>
     <string name="TakeGIFasVideo">Ubah GIF Menjadi Video</string>
     <string name="DontSendGreetingSticker">Jangan kirim stiker sapaan</string>
-    <string name="enablePublicProxy">Publik Proxy NekoX</string>
+    <string name="enablePublicProxy">Publik Proxy GuGuX</string>
     <string name="autoUpdateSubInfo">Perbarui proxy otomatis</string>
     <string name="NekoGeneralNotification">Pemberitahuan</string>
     <string name="disableNotificationBubbles">Matikan gelembung di notifikasi</string>
