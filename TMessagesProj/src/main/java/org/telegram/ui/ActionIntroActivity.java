@@ -856,7 +856,7 @@ public class ActionIntroActivity extends BaseFragment implements LocationControl
                 processOpenQrReader();
             } else {
                 new AlertDialog.Builder(getParentActivity())
-                        .setTitle(LocaleController.getString("NekoX", R.string.NekoX))
+                        .setTitle(LocaleController.getString("GuGuX", R.string.NekoX))
                         .setMessage(AndroidUtilities.replaceTags(LocaleController.getString("QRCodePermissionNoCameraWithHint", R.string.QRCodePermissionNoCameraWithHint)))
                         .setPositiveButton(LocaleController.getString("PermissionOpenSettings", R.string.PermissionOpenSettings), (dialogInterface, i) -> {
                             try {

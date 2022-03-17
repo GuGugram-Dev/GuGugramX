@@ -59,7 +59,7 @@
     <string name="ApplySuggestion">حسنًا، قم بتطبيقه</string>
     <string name="DoNotRemindAgain">لا تذكرني مرة أخرى</string>
     <string name="RemoveTitleEmoji">إزالة الرموز التعبيرية من العناوين</string>
-    <string name="NekoXProxy">خادم NekoX العام</string>
+    <string name="NekoXProxy">خادم GuGuX العام</string>
     <string name="PublicPrefix">عامة</string>
     <string name="DisableChatAction">لا تقم بإرسال حالة الإدخال</string>
     <string name="FakeScreenshot">لقطة شاشة مخرجة</string>
@@ -87,9 +87,9 @@
     <string name="SortByUnmuted">فرز حسب الغير مكتوم</string>
     <string name="SortByUser">فرز حسب المستخدم</string>
     <string name="SortByContacts">فرز حسب جهات الاتصال</string>
-    <string name="NekoXPushService">خدمة دفع NekoX</string>
-    <string name="EnablePushAlert">الرجاء تمكين \"خدمة دفع NekoX\"</string>
-    <string name="DisablePushAlert">الرجاء تعطيل \"خدمة دفع Nekox\"</string>
+    <string name="NekoXPushService">خدمة دفع GuGuX</string>
+    <string name="EnablePushAlert">الرجاء تمكين \"خدمة دفع GuGuX\"</string>
+    <string name="DisablePushAlert">الرجاء تعطيل \"خدمة دفع GuGuX\"</string>
     <string name="DisableUndo">تعطيل التراجع</string>
     <string name="DisableSystemAccount">تعطيل الحساب الخاص بالنظام</string>
     <string name="FilterMenu">قائمة عوامل تصفية الحوار</string>
@@ -270,7 +270,7 @@
     <string name="DisableInstantCamera">تعطيل الكاميرا الفورية</string>
     <string name="showSeconds">إظهار الطابع الزمني بالثواني</string>
     <string name="ShareMessages">مشاركة</string>
-    <string name="AppUpdateNekoX">تحديث Nekogram X</string>
+    <string name="AppUpdateNekoX">تحديث GuGugram X</string>
     <string name="AutoCheckUpdatePreview">معاينة (غير مستقر)</string>
     <string name="NekoXUpdateTranslationHint">اضغط لترجمة سجل التغييرات</string>
     <string name="Name">الاسم</string>

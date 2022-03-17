@@ -149,7 +149,7 @@
     <string name="CCTarget">Cíl</string>
     <string name="FilterNameBotsDescription">Pouze zprávy od robotů</string>
     <string name="SortByContacts">Seřadit Podle Kontaktů</string>
-    <string name="NekoXProxy">NekoX Veřejná Proxy</string>
+    <string name="NekoXProxy">GuGuX Veřejná Proxy</string>
     <string name="SSPluginConflictingName">Několik pluginů používá tuto ID: %s.</string>
     <string name="TransSite">Překládací Platforma</string>
     <string name="UnblockAllWarn">Jste si jisti že chcete odblokovat **všechny uživatele a roboty**\?</string>

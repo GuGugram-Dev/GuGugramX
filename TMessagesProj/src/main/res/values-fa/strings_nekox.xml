@@ -59,7 +59,7 @@
     <string name="ApplySuggestion">باشه، اعمال کن</string>
     <string name="DoNotRemindAgain">دیگر یادآوری نشود</string>
     <string name="RemoveTitleEmoji">حذف ایموجی در عنوان</string>
-    <string name="NekoXProxy">پروکسی عمومی NekoX</string>
+    <string name="NekoXProxy">پروکسی عمومی GuGuX</string>
     <string name="PublicPrefix">عمومی</string>
     <string name="DisableChatAction">عدم ارسال وضعیت ورودی</string>
     <string name="FakeScreenshot">تظاهر کردن اسکرین‌شات</string>
@@ -87,9 +87,9 @@
     <string name="SortByUnmuted">ترتیب بر اساس صدا دار</string>
     <string name="SortByUser">ترتیب بر اساس کاربر</string>
     <string name="SortByContacts">ترتیب بر اساس مخاطبین</string>
-    <string name="NekoXPushService">خدمات ارسال اعلان NekoX</string>
-    <string name="EnablePushAlert">لطفا خدمات ارسال اعلان NekoX را فعال کنید</string>
-    <string name="DisablePushAlert">لطفا خدمات ارسال اعلان NekoX را غیرفعال کنید</string>
+    <string name="NekoXPushService">خدمات ارسال اعلان GuGuX</string>
+    <string name="EnablePushAlert">لطفا خدمات ارسال اعلان GuGuX را فعال کنید</string>
+    <string name="DisablePushAlert">لطفا خدمات ارسال اعلان GuGuX را غیرفعال کنید</string>
     <string name="DisableUndo">غیرفعال کردن واگرد</string>
     <string name="DisableSystemAccount">غیرفعال کردن حساب سیستم</string>
     <string name="FilterMenu">منوی فیلتر گفتگوها</string>

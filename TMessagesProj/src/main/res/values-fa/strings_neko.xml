@@ -118,7 +118,7 @@
     <string name="UseMediaStreamInVoip">بکارگیری از رسانه‌شناور در VoIP</string>
     <string name="TakeGIFasVideo">نمایش گیف به شکل دیدآوا</string>
     <string name="DontSendGreetingSticker">نفرستادن چسبانک خوش‌آمد گویی</string>
-    <string name="enablePublicProxy">پروکسی همگانی NekoX</string>
+    <string name="enablePublicProxy">پروکسی همگانی GuGuX</string>
     <string name="autoUpdateSubInfo">بروزرسانی خودکار پروکسی‌های همگانی</string>
     <string name="hideSendAsChannel">پنهان کردن «فرستادن به نام درگاه»</string>
     <string name="disableSwipeToNextChannel">از کار انداختن نمایش درگاه بعدی با کشیدن انگشت</string>

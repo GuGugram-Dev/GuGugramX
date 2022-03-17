@@ -110,7 +110,7 @@
     <string name="ProviderMicrosoftTranslator">Microsoft Translator</string>
     <string name="ProviderYouDao">YouDao Translate</string>
     <string name="pressTitleToOpenAllChats">Натисніть на заголовок, щоб відкрити теку \"Всі чати\"</string>
-    <string name="enablePublicProxy">Загальнодоступний проксі NekoX</string>
+    <string name="enablePublicProxy">Загальнодоступний проксі GuGuX</string>
     <string name="autoUpdateSubInfo">Оновлювати проксі автоматично</string>
     <string name="hideSendAsChannel">Сховати надсилання як канал</string>
     <string name="DontSendGreetingSticker">Не слати вітальної наліпки</string>
