@@ -39,7 +39,7 @@ public class NekoXConfig {
     public static String FAQ_URL = "https://github.com/blxueya/GuGugramX/#faq";
     public static long[] officialChats = {
             1650559785, // GuGuX Updates
-            1151172683, // NekoX Chat
+            1639467884, // GuGuX Chat
             1299578049, // NekoX Chat Channel
             1681009592, // GuGuX APKs
     };
