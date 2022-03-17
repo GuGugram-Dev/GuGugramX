@@ -118,7 +118,7 @@
     <string name="UseMediaStreamInVoip">استفاده از رسانه‌شناور در تماس صوتی</string>
     <string name="TakeGIFasVideo">نمایش گیف بصورت ویدئو</string>
     <string name="DontSendGreetingSticker">عدم ارسال استیکر خوش‌آمد گویی</string>
-    <string name="enablePublicProxy">پروکسی عمومی NekoX</string>
+    <string name="enablePublicProxy">پروکسی عمومی GuGuX</string>
     <string name="autoUpdateSubInfo">بروزرسانی خودکار پروکسی‌های عمومی</string>
     <string name="hideSendAsChannel">مخفی کردن «ارسال به عنوان کانال»</string>
     <string name="disableSwipeToNextChannel">غیرفعال کردن نمایش کانال بعدی با کشیدن انگشت</string>

@@ -109,7 +109,7 @@
     <string name="ProviderMicrosoftTranslator">Microsoft Übersetzer</string>
     <string name="ProviderYouDao">YouDao Übersetzer</string>
     <string name="AutoPauseVideoAbout">Beim Sperren des Bildschirms / Umschalten auf Hintergrund.</string>
-    <string name="enablePublicProxy">öffentliches Proxy von NekoX</string>
+    <string name="enablePublicProxy">öffentliches Proxy von GuGuX</string>
     <string name="autoUpdateSubInfo">Proxies automatisch aktualisieren</string>
     <string name="pressTitleToOpenAllChats">Tippe auf den Titel, um den „Alle Chats“-Tab zu öffnen</string>
     <string name="hideGroupSticker">Gruppensticker verstecken</string>
