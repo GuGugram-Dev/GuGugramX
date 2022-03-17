@@ -21941,7 +21941,7 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
                                 } else if (selectedObject.isDocument() && (GuGuConfig.INSTANCE.getForceAllowCopy().Bool() || !noforwardsOverride)) {
                                     items.add(LocaleController.getString("SaveToDownloads", R.string.SaveToDownloads));
                                     options.add(OPTION_SAVE_TO_DOWNLOADS_OR_MUSIC);
-                                    icons.add(R.drawable.baseline_file_download_24);
+                                    icons.add(R.drawable.msg_download);
                                 }
                             }
                         } else if (type == 3 && !noforwardsOverride) {
