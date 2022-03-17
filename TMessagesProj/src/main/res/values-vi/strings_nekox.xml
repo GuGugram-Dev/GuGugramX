@@ -59,7 +59,7 @@
     <string name="ApplySuggestion">OK, Áp dụng nó</string>
     <string name="DoNotRemindAgain">Không nhắc lại</string>
     <string name="RemoveTitleEmoji">Xóa biểu tượng cảm xúc trong tiêu đề</string>
-    <string name="NekoXProxy">NekoX Proxy Mở</string>
+    <string name="NekoXProxy">GuGuX Proxy Mở</string>
     <string name="PublicPrefix">Mở</string>
     <string name="DisableChatAction">Không gửi trạng thái đầu vào của tôi</string>
     <string name="FakeScreenshot">Ảnh chụp màn hình giả vờ</string>
@@ -87,9 +87,9 @@
     <string name="SortByUnmuted">Sắp xếp theo Không tắt tiếng</string>
     <string name="SortByUser">Sắp xếp theo người dùng</string>
     <string name="SortByContacts">Sắp xếp theo Danh bạ</string>
-    <string name="NekoXPushService">Dịch vụ đẩy NekoX</string>
-    <string name="EnablePushAlert">Vui lòng kích hoạt \"Dịch vụ đẩy NekoX\"</string>
-    <string name="DisablePushAlert">Vui lòng tắt \"Dịch vụ đẩy NekoX\"</string>
+    <string name="NekoXPushService">Dịch vụ đẩy GuGuX</string>
+    <string name="EnablePushAlert">Vui lòng kích hoạt \"Dịch vụ đẩy GuGuX\"</string>
+    <string name="DisablePushAlert">Vui lòng tắt \"Dịch vụ đẩy GuGuX\"</string>
     <string name="DisableUndo">Tắt hoàn tác</string>
     <string name="DisableSystemAccount">Tắt tài khoản hệ thống</string>
     <string name="FilterMenu">Menu Bộ lọc Hộp thoại</string>

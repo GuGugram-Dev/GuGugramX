@@ -46,7 +46,7 @@
     <string name="ApplySuggestion">OK, aplică</string>
     <string name="DoNotRemindAgain">Nu mai amintiți</string>
     <string name="RemoveTitleEmoji">Eliminați emoji din titlu</string>
-    <string name="NekoXProxy">Public Proxy al NekoX</string>
+    <string name="NekoXProxy">Public Proxy al GuGuX</string>
     <string name="PublicPrefix">Public</string>
     <string name="DisableChatAction">Nu trimiteți starea de intrare</string>
     <string name="ImportPxy">Import</string>
@@ -72,9 +72,9 @@
     <string name="SortByUnmuted">Sortare după mutare</string>
     <string name="SortByUser">Sortare după utilizator</string>
     <string name="SortByContacts">Sortare după contacte</string>
-    <string name="NekoXPushService">Serviciu de push NekoX</string>
-    <string name="EnablePushAlert">Vă rugăm să activați „NekoX Push Service”</string>
-    <string name="DisablePushAlert">Vă rugăm să dezactivați „NekoX Push Service”</string>
+    <string name="NekoXPushService">Serviciu de push GuGuX</string>
+    <string name="EnablePushAlert">Vă rugăm să activați „GuGuX Push Service”</string>
+    <string name="DisablePushAlert">Vă rugăm să dezactivați „GuGuX Push Service”</string>
     <string name="DisableUndo">Dezactiveați anulare</string>
     <string name="DisableSystemAccount">Dezactivați contul de sistem</string>
     <string name="FilterMenu">Meniu filtre dialoguri</string>

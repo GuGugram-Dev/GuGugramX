@@ -119,7 +119,7 @@
     <string name="hideGroupSticker">Ocultar paquete de sticker de cada grupo</string>
     <string name="customGroupVoipAudioBitrate">Tasa de bits de audio VoIP del grupo</string>
     <string name="disableRemoteEmojiInteractions">Deshabilitar interacciones remotas de emoticonos</string>
-    <string name="enablePublicProxy">Proxy público de NekoX</string>
+    <string name="enablePublicProxy">Proxy público de GuGuX</string>
     <string name="useSystemDNS">Usar DNS del sistema</string>
     <string name="customDoH">DoH personalizado</string>
     <string name="disableChoosingSticker">Mostrar escribiendo en lugar de eligiendo sticker</string>

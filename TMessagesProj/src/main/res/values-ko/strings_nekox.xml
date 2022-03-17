@@ -59,7 +59,7 @@
     <string name="ApplySuggestion">예. 등록합니다.</string>
     <string name="DoNotRemindAgain">다시 표시하지 않기</string>
     <string name="RemoveTitleEmoji">제목에서 이모티콘 제거</string>
-    <string name="NekoXProxy">NekoX 공개 프록시</string>
+    <string name="NekoXProxy">GuGuX 공개 프록시</string>
     <string name="PublicPrefix">공개</string>
     <string name="DisableChatAction">내 입력 상태 보여주지 않기</string>
     <string name="FakeScreenshot">스크린샷 요청</string>
