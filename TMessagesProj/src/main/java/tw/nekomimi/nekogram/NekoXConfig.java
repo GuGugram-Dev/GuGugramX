@@ -71,11 +71,11 @@ public class NekoXConfig {
 
     public static int autoUpdateReleaseChannel = preferences.getInt("autoUpdateReleaseChannel", 2);
     public static String ignoredUpdateTag = preferences.getString("ignoredUpdateTag", "");
-//    public static long nextUpdateCheck = preferences.getLong("nextUpdateCheckTimestamp", 0);
+    public static long nextUpdateCheck = preferences.getLong("nextUpdateCheckTimestamp", 0);
 
-//    public static int customApi = preferences.getInt("custom_api", 0);
-//    public static int customAppId = preferences.getInt("custom_app_id", 0);
-//    public static String customAppHash = preferences.getString("custom_app_hash", "");
+    public static int customApi = preferences.getInt("custom_api", 0);
+    public static int customAppId = preferences.getInt("custom_app_id", 0);
+    public static String customAppHash = preferences.getString("custom_app_hash", "");
 
     public static void toggleDeveloperMode() {
         preferences.edit().putBoolean("developer_mode", developerMode = !developerMode).apply();
