@@ -122,7 +122,7 @@
     <string name="disableRemoteEmojiInteractions">تعطيل تفاعلات الرموز التعبيرية من جهاز الطرف الاخر</string>
     <string name="disableChoosingSticker">أرسل الكتابة بدلاً من اختيار الملصق</string>
     <string name="hideGroupSticker">إخفاء ملصق المجموعة</string>
-    <string name="enablePublicProxy">وكيل NekoX العام</string>
+    <string name="enablePublicProxy">وكيل GuGuX العام</string>
     <string name="autoUpdateSubInfo">تحديث الوكلاء تلقائيًا</string>
     <string name="hideSendAsChannel">إخفاء الإرسال كقناة</string>
     <string name="disableDoubleTabReactions">تعطيل تفاعلات النقر المزدوج</string>
