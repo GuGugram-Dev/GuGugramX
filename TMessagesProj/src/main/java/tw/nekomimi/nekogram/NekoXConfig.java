@@ -121,7 +121,24 @@ public class NekoXConfig {
     }
 
     public static String currentAppHash() {
-        return BuildConfig.APP_HASH;
+        switch (customApi) {
+            case 0:
+                return BuildConfig.APP_HASH;
+            case 1:
+                return BuildVars.OFFICAL_APP_HASH;
+            case 2:
+                return BuildVars.TGX_APP_HASH;
+            default:
+                return customAppHash;
+        }
+    }
+    
+    public static void saveCustomApi() {
+        preferences.edit()
+                .putInt("custom_api", customApi)
+                .putInt("custom_app_id", customAppId)
+                .putString("custom_app_hash", customAppHash)
+                .apply();
     }
 
 //    public static void setNextUpdateCheck(long timestamp) {
