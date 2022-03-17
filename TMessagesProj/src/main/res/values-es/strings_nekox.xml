@@ -59,7 +59,7 @@
     <string name="ApplySuggestion">OK, aplícalo</string>
     <string name="DoNotRemindAgain">No volver a recordar</string>
     <string name="RemoveTitleEmoji">Eliminar emoji en el título</string>
-    <string name="NekoXProxy">Proxy público de NekoX</string>
+    <string name="NekoXProxy">Proxy público de GuGuX</string>
     <string name="PublicPrefix">Público</string>
     <string name="DisableChatAction">No enviar el estado de mi entrada</string>
     <string name="FakeScreenshot">Pretender captura de pantalla</string>
@@ -87,9 +87,9 @@
     <string name="SortByUnmuted">Ordenar por no silenciado</string>
     <string name="SortByUser">Ordenar por usuario</string>
     <string name="SortByContacts">Ordenar por contactos</string>
-    <string name="NekoXPushService">Servicio NekoX Push</string>
-    <string name="EnablePushAlert">Por favor, activa \"NekoX Push Service\"</string>
-    <string name="DisablePushAlert">Por favor deshabilite \"NekoX Push Service\"</string>
+    <string name="NekoXPushService">Servicio GuGuX Push</string>
+    <string name="EnablePushAlert">Por favor, activa \"GuGuX Push Service\"</string>
+    <string name="DisablePushAlert">Por favor deshabilite \"GuGuX Push Service\"</string>
     <string name="DisableUndo">Desactivar Deshacer</string>
     <string name="DisableSystemAccount">Desactivar cuenta del sistema</string>
     <string name="FilterMenu">Menú de filtros de diálogos</string>
