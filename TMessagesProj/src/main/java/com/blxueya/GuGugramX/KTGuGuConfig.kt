@@ -29,6 +29,8 @@ object KTGuGuConfig {
 
     var AlwaysSaveChatOffset = addConfig("AlwaysSaveChatOffset", ConfigItem.configTypeBool,false)
 
+    var DoubleTapAction = addConfig("DoubleTapAction",ConfigItem.configTypeInt,0)
+
     fun addConfig(
         k: String,
         t: Int,

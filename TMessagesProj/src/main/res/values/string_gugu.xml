@@ -2,5 +2,6 @@
 <resources>
     <string name="ForeAllowCopy">ForeAllowCopy</string>
     <string name="RepeatasCopy">Repeat as Copy</string>
-    <string name="AlwaysSaveChatOffset">AlwaysSaveChatOffset</string>
+    <string name="AlwaysSaveChatOffset">Always Save Chat Offset</string>
+    <string name="DoubleTapAction">Double Tap Action</string>
 </resources>

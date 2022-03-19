@@ -14,6 +14,9 @@ import android.widget.LinearLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blxueya.GuGugramX.GuGuConfig;
+import com.blxueya.GuGugramX.KTGuGuConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MediaController;
@@ -63,6 +66,8 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
 
     private final CellGroup cellGroup = new CellGroup(this);
 
+    private CharSequence currentIndex;
+
     private final AbstractConfigCell header0 = cellGroup.appendCell(new ConfigCellHeader(LocaleController.getString("StickerSize")));
     private final AbstractConfigCell stickerSizeRow = cellGroup.appendCell(new ConfigCellCustom(ConfigCellCustom.CUSTOM_ITEM_StickerSize, true));
     private final AbstractConfigCell divider0 = cellGroup.appendCell(new ConfigCellDivider());
@@ -95,15 +100,18 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
                     LocaleController.getString("MapPreviewProviderYandex", R.string.MapPreviewProviderYandex),
                     LocaleController.getString("MapPreviewProviderNobody", R.string.MapPreviewProviderNobody)
             }, null));
+    private final AbstractConfigCell DoubleTapActionRow = cellGroup.appendCell(new ConfigCellCustom(CellGroup.ITEM_TYPE_TEXT_SETTINGS_CELL,true));
     private final AbstractConfigCell messageMenuRow = cellGroup.appendCell(new ConfigCellSelectBox(LocaleController.getString("MessageMenu"), null, null, () -> {
         showMessageMenuAlert();
     }));
-    private final AbstractConfigCell reactionsRow = cellGroup.appendCell(new ConfigCellSelectBox(null, NekoConfig.reactions,
+    /*private final AbstractConfigCell reactionsRow = cellGroup.appendCell(new ConfigCellSelectBox(null, NekoConfig.reactions,
             new String[]{
                     LocaleController.getString("doubleTapSendReactions", R.string.doubleTapSendReactions),
-                    LocaleController.getString("doubleTapShowReactions", R.string.doubleTapShowReactions),
+                    LocaleController.getString("DoubleTapShowReactions",R.string.doubleTapShowReactions),
                     LocaleController.getString("ReactionsDisabled", R.string.ReactionsDisabled),
             }, null));
+
+     */
     private final AbstractConfigCell repeatConfirmRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.repeatConfirm));
     private final AbstractConfigCell rememberAllBackMessagesRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.rememberAllBackMessages));
     private final AbstractConfigCell hideSendAsChannelRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.hideSendAsChannel));
@@ -212,6 +220,33 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
                     PopupBuilder builder = new PopupBuilder(view);
                     builder.setItems(types, (i, str) -> {
                         NekoConfig.maxRecentStickerCount.setConfigInt(Integer.parseInt(str.toString()));
+                        listAdapter.notifyItemChanged(position);
+                        return Unit.INSTANCE;
+                    });
+                    builder.show();
+                }else if (position == cellGroup.rows.indexOf(DoubleTapActionRow)) {
+                    ArrayList<String> arrayList = new ArrayList<>();
+                    ArrayList<Integer> types = new ArrayList<>();
+                    arrayList.add(LocaleController.getString("Disable", R.string.Disable));
+                    types.add(GuGuConfig.DOUBLE_TAP_ACTION_NONE);
+                    arrayList.add(LocaleController.getString("Reactions", R.string.Reactions));
+                    types.add(GuGuConfig.DOUBLE_TAP_ACTION_REACTION);
+                    //arrayList.add(LocaleController.getString("TranslateMessage", R.string.TranslateMessage));
+                    //types.add(GuGuConfig.DOUBLE_TAP_ACTION_TRANSLATE);
+                    arrayList.add(LocaleController.getString("Reply", R.string.Reply));
+                    types.add(GuGuConfig.DOUBLE_TAP_ACTION_REPLY);
+                    arrayList.add(LocaleController.getString("AddToSavedMessages", R.string.AddToSavedMessages));
+                    types.add(GuGuConfig.DOUBLE_TAP_ACTION_SAVE);
+                    arrayList.add(LocaleController.getString("Repeat", R.string.Repeat));
+                    types.add(GuGuConfig.DOUBLE_TAP_ACTION_REPEAT);
+                    arrayList.add(LocaleController.getString("RepeatasCopy", R.string.RepeatasCopy));
+                    types.add(GuGuConfig.DOUBLE_TAP_ACTION_REPEATASCOPY);
+                    arrayList.add(LocaleController.getString("Edit", R.string.Edit));
+                    types.add(GuGuConfig.DOUBLE_TAP_ACTION_EDIT);
+                    PopupBuilder builder = new PopupBuilder(view);
+                    builder.setItems(arrayList, (i,str) -> {
+                        KTGuGuConfig.INSTANCE.getDoubleTapAction().setConfigInt(types.get(i));
+                        currentIndex = arrayList.get(i);
                         listAdapter.notifyItemChanged(position);
                         return Unit.INSTANCE;
                     });
@@ -546,6 +581,10 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
                         TextSettingsCell textCell = (TextSettingsCell) holder.itemView;
                         if (position == cellGroup.rows.indexOf(maxRecentStickerCountRow)) {
                             textCell.setTextAndValue(LocaleController.getString("maxRecentStickerCount", R.string.maxRecentStickerCount), String.valueOf(NekoConfig.maxRecentStickerCount.Int()), true);
+                        }else if ( position == cellGroup.rows.indexOf(DoubleTapActionRow)) {
+                            CharSequence currentIndex = LocaleController.getString("Disable",R.string.Disable);
+                            textCell.setTextAndValue(LocaleController.getString("DoubleTapAction",R.string.DoubleTapAction),currentIndex,true);
+                            GuGuConfig.doubleTapAction = KTGuGuConfig.INSTANCE.getDoubleTapAction().Int();
                         }
                     }
                 } else {
