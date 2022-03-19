@@ -107,6 +107,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.blxueya.GuGugramX.GuGuConfig;
+import com.blxueya.GuGugramX.KTGuGuConfig;
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 
 import org.openintents.openpgp.OpenPgpError;
@@ -1498,10 +1499,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         @Override
         public boolean hasDoubleTap(View view, int position) {
             boolean allowRepeat;
-            if (GuGuConfig.doubleTapAction == GuGuConfig.DOUBLE_TAP_ACTION_NONE || !(view instanceof ChatMessageCell)) {
+            if (KTGuGuConfig.INSTANCE.getDoubleTapAction().Int() == GuGuConfig.DOUBLE_TAP_ACTION_NONE || !(view instanceof ChatMessageCell)) {
                 return false;
             }
-            if (GuGuConfig.doubleTapAction == GuGuConfig.DOUBLE_TAP_ACTION_REACTION) {
+            if (KTGuGuConfig.INSTANCE.getDoubleTapAction().Int() == GuGuConfig.DOUBLE_TAP_ACTION_REACTION) {
                 TLRPC.TL_availableReaction reaction = getMediaDataController().getReactionsMap().get(getMediaDataController().getDoubleTapReaction());
                 if (reaction == null) {
                     return false;
@@ -1545,7 +1546,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                     allowEdit = captionsCount < 2;
                 }
-                switch (GuGuConfig.doubleTapAction) {
+                switch (KTGuGuConfig.INSTANCE.getDoubleTapAction().Int()) {
                     /*case NekoConfig.DOUBLE_TAP_ACTION_TRANSLATE:
                         if (NekoConfig.transType != NekoConfig.TRANS_TYPE_EXTERNAL || !noforwards) {
                             MessageObject messageObject = getMessageHelper().getMessageForTranslate(message, messageGroup);
@@ -1579,10 +1580,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         @Override
         public void onDoubleTap(View view, int position, float x, float y) {
-            if (GuGuConfig.doubleTapAction == GuGuConfig.DOUBLE_TAP_ACTION_NONE || !(view instanceof ChatMessageCell) || getParentActivity() == null) {
+            if (KTGuGuConfig.INSTANCE.getDoubleTapAction().Int() == GuGuConfig.DOUBLE_TAP_ACTION_NONE || !(view instanceof ChatMessageCell) || getParentActivity() == null) {
                 return;
             }
-            if (GuGuConfig.doubleTapAction == GuGuConfig.DOUBLE_TAP_ACTION_REACTION) {
+            if (KTGuGuConfig.INSTANCE.getDoubleTapAction().Int() == GuGuConfig.DOUBLE_TAP_ACTION_REACTION) {
                 if (isSecretChat() || isInScheduleMode()) {
                     return;
                 }
@@ -1611,7 +1612,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 var message = cell.getMessageObject();
                 selectedObject = message;
                 selectedObjectGroup = getValidGroupedMessage(message);
-                switch (GuGuConfig.doubleTapAction) {
+                switch (KTGuGuConfig.INSTANCE.getDoubleTapAction().Int()) {
                     /*case GuGuConfig.DOUBLE_TAP_ACTION_TRANSLATE:
 
                         var messageObject = getMessageHelper().getMessageForTranslate(selectedObject, selectedObjectGroup);

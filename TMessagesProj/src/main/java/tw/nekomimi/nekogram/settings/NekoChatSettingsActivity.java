@@ -48,10 +48,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import kotlin.Unit;
-import tw.nekomimi.nekogram.NekoXConfig;
-import tw.nekomimi.nekogram.ui.PopupBuilder;
-import tw.nekomimi.nekogram.config.CellGroup;
 import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.config.CellGroup;
 import tw.nekomimi.nekogram.config.cell.AbstractConfigCell;
 import tw.nekomimi.nekogram.config.cell.ConfigCellCustom;
 import tw.nekomimi.nekogram.config.cell.ConfigCellDivider;
@@ -60,6 +58,7 @@ import tw.nekomimi.nekogram.config.cell.ConfigCellSelectBox;
 import tw.nekomimi.nekogram.config.cell.ConfigCellTextCheck;
 import tw.nekomimi.nekogram.config.cell.ConfigCellTextDetail;
 import tw.nekomimi.nekogram.config.cell.ConfigCellTextInput;
+import tw.nekomimi.nekogram.ui.PopupBuilder;
 
 @SuppressLint("RtlHardcoded")
 public class NekoChatSettingsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
@@ -582,9 +581,7 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
                         if (position == cellGroup.rows.indexOf(maxRecentStickerCountRow)) {
                             textCell.setTextAndValue(LocaleController.getString("maxRecentStickerCount", R.string.maxRecentStickerCount), String.valueOf(NekoConfig.maxRecentStickerCount.Int()), true);
                         }else if ( position == cellGroup.rows.indexOf(DoubleTapActionRow)) {
-                            CharSequence currentIndex = LocaleController.getString("Disable",R.string.Disable);
-                            textCell.setTextAndValue(LocaleController.getString("DoubleTapAction",R.string.DoubleTapAction),currentIndex,true);
-                            GuGuConfig.doubleTapAction = KTGuGuConfig.INSTANCE.getDoubleTapAction().Int();
+                            textCell.setTextAndValue(LocaleController.getString("DoubleTapAction", R.string.DoubleTapAction), new GuGuConfig().doubleTapActionMap.get(KTGuGuConfig.INSTANCE.getDoubleTapAction().Int()), true);
                         }
                     }
                 } else {
