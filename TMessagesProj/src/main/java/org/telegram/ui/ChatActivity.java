@@ -1524,6 +1524,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             } else {
                 var cell = (ChatMessageCell) view;
                 var message = cell.getMessageObject();
+                selectedObject = message;
                 var messageGroup = getValidGroupedMessage(message);
                 var noforwards = getMessagesController().isChatNoForwards(currentChat) || message.messageOwner.noforwards;
                 boolean allowChatActions = chatMode != MODE_SCHEDULED && (threadMessageObjects == null || !threadMessageObjects.contains(message)) &&
@@ -1547,16 +1548,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     allowEdit = captionsCount < 2;
                 }
                 switch (KTGuGuConfig.INSTANCE.getDoubleTapAction().Int()) {
-                    /*case NekoConfig.DOUBLE_TAP_ACTION_TRANSLATE:
-                        if (NekoConfig.transType != NekoConfig.TRANS_TYPE_EXTERNAL || !noforwards) {
+                    case NekoConfig.DOUBLE_TAP_ACTION_TRANSLATE:
+                        if (!noforwards) {
                             MessageObject messageObject = getMessageHelper().getMessageForTranslate(message, messageGroup);
                             if (messageObject != null) {
                                 return true;
                             }
                         }
                         break;
-
-                     */
                     case GuGuConfig.DOUBLE_TAP_ACTION_REPLY:
                         return message.getId() > 0 && allowChatActions;
                     case GuGuConfig.DOUBLE_TAP_ACTION_SAVE:
@@ -1613,13 +1612,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 selectedObject = message;
                 selectedObjectGroup = getValidGroupedMessage(message);
                 switch (KTGuGuConfig.INSTANCE.getDoubleTapAction().Int()) {
-                    /*case GuGuConfig.DOUBLE_TAP_ACTION_TRANSLATE:
-
-                        var messageObject = getMessageHelper().getMessageForTranslate(selectedObject, selectedObjectGroup);
-                        translateOrResetMessage(messageObject, null);
+                    case GuGuConfig.DOUBLE_TAP_ACTION_TRANSLATE:
+                        MessageTransKt.translateMessages(ChatActivity.this);
                         break;
-
-                     */
                     case GuGuConfig.DOUBLE_TAP_ACTION_REPLY:
                         processSelectedOption(OPTION_REPLY);
                         break;

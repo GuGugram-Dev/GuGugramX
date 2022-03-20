@@ -13,19 +13,19 @@ public class GuGuConfig {
 
     public static final int DOUBLE_TAP_ACTION_NONE = 0;
     public static final int DOUBLE_TAP_ACTION_REACTION = 1;
-    //public static final int DOUBLE_TAP_ACTION_TRANSLATE = 2;
-    public static final int DOUBLE_TAP_ACTION_REPLY = 2;
-    public static final int DOUBLE_TAP_ACTION_SAVE = 3;
-    public static final int DOUBLE_TAP_ACTION_REPEAT = 4;
-    public static final int DOUBLE_TAP_ACTION_REPEATASCOPY = 5;
-    public static final int DOUBLE_TAP_ACTION_EDIT = 6;
+    public static final int DOUBLE_TAP_ACTION_TRANSLATE = 2;
+    public static final int DOUBLE_TAP_ACTION_REPLY = 3;
+    public static final int DOUBLE_TAP_ACTION_SAVE = 4;
+    public static final int DOUBLE_TAP_ACTION_REPEAT = 5;
+    public static final int DOUBLE_TAP_ACTION_REPEATASCOPY = 6;
+    public static final int DOUBLE_TAP_ACTION_EDIT = 7;
 
     public Map<Integer, String> doubleTapActionMap = new HashMap<>();
 
     public GuGuConfig() {
         doubleTapActionMap.put(DOUBLE_TAP_ACTION_NONE, LocaleController.getString("Disable", R.string.Disable));
         doubleTapActionMap.put(DOUBLE_TAP_ACTION_REACTION, LocaleController.getString("Reactions", R.string.Reactions));
-        //doubleTapActionMap.put(DOUBLE_TAP_ACTION_TRANSLATE, LocaleController.getString("Translate", R.string.Translate));
+        doubleTapActionMap.put(DOUBLE_TAP_ACTION_TRANSLATE, LocaleController.getString("Translate", R.string.Translate));
         doubleTapActionMap.put(DOUBLE_TAP_ACTION_REPLY, LocaleController.getString("Reply", R.string.Reply));
         doubleTapActionMap.put(DOUBLE_TAP_ACTION_SAVE, LocaleController.getString("Save", R.string.Save));
         doubleTapActionMap.put(DOUBLE_TAP_ACTION_REPEAT, LocaleController.getString("Repeat", R.string.Repeat));

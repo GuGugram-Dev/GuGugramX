@@ -228,8 +228,8 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
                     types.add(GuGuConfig.DOUBLE_TAP_ACTION_NONE);
                     arrayList.add(LocaleController.getString("Reactions", R.string.Reactions));
                     types.add(GuGuConfig.DOUBLE_TAP_ACTION_REACTION);
-                    //arrayList.add(LocaleController.getString("TranslateMessage", R.string.TranslateMessage));
-                    //types.add(GuGuConfig.DOUBLE_TAP_ACTION_TRANSLATE);
+                    arrayList.add(LocaleController.getString("TranslateMessage", R.string.TranslateMessage));
+                    types.add(GuGuConfig.DOUBLE_TAP_ACTION_TRANSLATE);
                     arrayList.add(LocaleController.getString("Reply", R.string.Reply));
                     types.add(GuGuConfig.DOUBLE_TAP_ACTION_REPLY);
                     arrayList.add(LocaleController.getString("AddToSavedMessages", R.string.AddToSavedMessages));
