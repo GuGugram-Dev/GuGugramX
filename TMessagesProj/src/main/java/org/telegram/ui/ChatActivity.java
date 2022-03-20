@@ -3148,7 +3148,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             actionModeOtherItem.addSubItem(nkbtn_savemessage, R.drawable.baseline_bookmark_24, LocaleController.getString("AddToSavedMessages", R.string.AddToSavedMessages));
         if (NekoConfig.showRepeat.Bool() && !noforward) {
             actionModeOtherItem.addSubItem(nkbtn_repeat, R.drawable.msg_repeat, LocaleController.getString("Repeat", R.string.Repeat));
-            actionModeOtherItem.addSubItem(nkbtn_repeatascopy, R.drawable.msg_repeat, LocaleController.getString("RepeatasCopy", R.string.RepeatasCopy));
+            if (NekoConfig.showRepeatasCopy.Bool() && !noforward) {
+                actionModeOtherItem.addSubItem(nkbtn_repeatascopy, R.drawable.msg_repeat, LocaleController.getString("RepeatasCopy", R.string.RepeatasCopy));
+            }
         }
         if (NekoConfig.showMessageHide.Bool()) {
             actionModeOtherItem.addSubItem(nkbtn_hide, R.drawable.baseline_remove_circle_24, LocaleController.getString("Hide", R.string.Hide));

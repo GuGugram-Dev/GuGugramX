@@ -65,8 +65,6 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
 
     private final CellGroup cellGroup = new CellGroup(this);
 
-    private CharSequence currentIndex;
-
     private final AbstractConfigCell header0 = cellGroup.appendCell(new ConfigCellHeader(LocaleController.getString("StickerSize")));
     private final AbstractConfigCell stickerSizeRow = cellGroup.appendCell(new ConfigCellCustom(ConfigCellCustom.CUSTOM_ITEM_StickerSize, true));
     private final AbstractConfigCell divider0 = cellGroup.appendCell(new ConfigCellDivider());
@@ -245,7 +243,6 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
                     PopupBuilder builder = new PopupBuilder(view);
                     builder.setItems(arrayList, (i,str) -> {
                         KTGuGuConfig.INSTANCE.getDoubleTapAction().setConfigInt(types.get(i));
-                        currentIndex = arrayList.get(i);
                         listAdapter.notifyItemChanged(position);
                         return Unit.INSTANCE;
                     });
