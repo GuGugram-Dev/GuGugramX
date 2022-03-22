@@ -1548,12 +1548,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     allowEdit = captionsCount < 2;
                 }
                 switch (KTGuGuConfig.INSTANCE.getDoubleTapAction().Int()) {
-                    case NekoConfig.DOUBLE_TAP_ACTION_TRANSLATE:
-                        if (!noforwards) {
-                            MessageObject messageObject = getMessageHelper().getMessageForTranslate(message, messageGroup);
-                            if (messageObject != null) {
-                                return true;
-                            }
+                    case GuGuConfig.DOUBLE_TAP_ACTION_TRANSLATE:
+                        MessageObject messageObject = getMessageForTranslate();
+                        if (messageObject != null) {
+                            return true;
                         }
                         break;
                     case GuGuConfig.DOUBLE_TAP_ACTION_REPLY:
