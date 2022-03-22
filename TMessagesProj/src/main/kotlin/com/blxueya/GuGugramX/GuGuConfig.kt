@@ -32,10 +32,12 @@ object GuGuConfig {
     var showRepeatAsCopy = addConfig("RepeatAsCopy",ConfigItem.configTypeBool,false)
 
     var doubleTapAction = addConfig("DoubleTapAction",ConfigItem.configTypeInt,0)
-    
+
     var showForwarderName = addConfig("ShowForwarderName",ConfigItem.configTypeBool,false);
 
     var noiseSuppressAndVoiceEnhance = addConfig("NoiseSuppressAndVoiceEnhance",ConfigItem.configTypeBool,false)
+
+    val scrollableChatPreview = addConfig("ScrollableChatPreview", ConfigItem.configTypeBool, false)
 
     fun addConfig(
         k: String,
