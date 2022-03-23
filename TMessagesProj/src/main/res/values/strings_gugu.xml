@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ForeAllowCopy">ForeAllowCopy</string>
-    <string name="RepeatasCopy">Repeat as Copy</string>
+    <string name="RepeatAsCopy">Repeat as Copy</string>
     <string name="AlwaysSaveChatOffset">AlwaysSaveChatOffset</string>
 </resources>
