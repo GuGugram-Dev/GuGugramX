@@ -25,12 +25,9 @@ object GuGuConfig {
         ArrayList<ConfigItem>()
 
     // Configs
-    var ForceAllowCopy =
-        addConfig(
-            "ForceAllowCopy",
-            ConfigItem.configTypeBool,
-            false
-        )
+    var ForceAllowCopy = addConfig("ForceAllowCopy", ConfigItem.configTypeBool, false)
+
+    var AlwaySaveChatOffset = addConfig("AlwaySaveChatOffset",ConfigItem.configTypeBool,false)
 
     fun addConfig(
         k: String,
