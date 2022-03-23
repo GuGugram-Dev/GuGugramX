@@ -18,6 +18,8 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blxueya.GuGugramX.GuGuConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLog;
@@ -85,6 +87,10 @@ public class NekoExperimentalSettingsActivity extends BaseFragment {
     private final AbstractConfigCell useMediaStreamInVoipRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.useMediaStreamInVoip));
     private final AbstractConfigCell customAudioBitrateRow = cellGroup.appendCell(new ConfigCellCustom(CellGroup.ITEM_TYPE_TEXT_SETTINGS_CELL, true));
     private final AbstractConfigCell divider0 = cellGroup.appendCell(new ConfigCellDivider());
+
+    private final AbstractConfigCell header2 = cellGroup.appendCell(new ConfigCellHeader(LocaleController.getString("NekoSettings")));
+    private final AbstractConfigCell forceCopyRow = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getForceAllowCopy()));
+    private final AbstractConfigCell divider1 = cellGroup.appendCell(new ConfigCellDivider());
 
     private UndoView tooltip;
 

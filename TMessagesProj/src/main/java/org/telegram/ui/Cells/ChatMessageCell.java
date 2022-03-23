@@ -73,6 +73,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 
+import com.blxueya.GuGugramX.GuGuConfig;
+
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.AccountInstance;
 import org.telegram.messenger.AndroidUtilities;
@@ -2844,7 +2846,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     private boolean checkTextSelection(MotionEvent event) {
         TextSelectionHelper.ChatListTextSelectionHelper textSelectionHelper = delegate.getTextSelectionHelper();
-        if (textSelectionHelper == null || MessagesController.getInstance(currentAccount).isChatNoForwardsWithOverride(currentMessageObject.getChatId()) || (currentMessageObject.messageOwner != null && currentMessageObject.messageOwner.noforwards && !NekoXConfig.disableFlagSecure)) {
+        if (textSelectionHelper == null || GuGuConfig.INSTANCE.getForceAllowCopy().Bool() && MessagesController.getInstance(currentAccount).isChatNoForwardsWithOverride(currentMessageObject.getChatId()) || (currentMessageObject.messageOwner != null && currentMessageObject.messageOwner.noforwards && !NekoXConfig.disableFlagSecure)) {
             return false;
         }
         boolean hasTextBlocks = currentMessageObject.textLayoutBlocks != null && !currentMessageObject.textLayoutBlocks.isEmpty();
