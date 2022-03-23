@@ -340,6 +340,7 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
     private final static int nkbtn_deldlcache = 2013;
     private final static int nkbtn_view_history = 2014;
     private final static int nkbtn_repeat = 2015;
+    private final static int nkbtn_repeatascopy = 2025;
     private final static int nkbtn_stickerdl = 2016;
     private final static int nkbtn_unpin = 2017;
     private final static int nkbtn_view_in_chat = 2018;
@@ -3196,6 +3197,9 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
             actionModeOtherItem.addSubItem(nkbtn_savemessage, R.drawable.baseline_bookmark_24, LocaleController.getString("AddToSavedMessages", R.string.AddToSavedMessages));
         if (NekoConfig.showRepeat.Bool() && !noforward)
             actionModeOtherItem.addSubItem(nkbtn_repeat, R.drawable.msg_repeat, LocaleController.getString("Repeat", R.string.Repeat));
+            actionModeOtherItem.addSubItem(nkbtn_repeatascopy, R.drawable.msg_repeat, LocaleController.getString("RepeatAsCopy", R.string.Repeat));
+        if (GuGuConfig.INSTANCE.getShowRepeatAsCopy().Bool() )
+            actionModeOtherItem.addSubItem(nkbtn_repeatascopy, R.drawable.msg_repeat, LocaleController.getString("RepeatAsCopy", R.string.Repeat));
 
         if (NekoConfig.showMessageHide.Bool()) {
             actionModeOtherItem.addSubItem(nkbtn_hide, R.drawable.baseline_remove_circle_24, LocaleController.getString("Hide", R.string.Hide));
@@ -22130,10 +22134,19 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
                             }
                             boolean allowRepeat = currentUser != null
                                     || (currentChat != null && ChatObject.canSendMessages(currentChat));
-                            if (allowRepeat && NekoConfig.showRepeat.Bool() && !noforward) {
-                                items.add(LocaleController.getString("Repeat", R.string.Repeat));
-                                options.add(nkbtn_repeat);
-                                icons.add(R.drawable.msg_repeat);
+                            if (allowRepeat && NekoConfig.showRepeat.Bool() ) {
+                                if (!noforward){
+                                    items.add(LocaleController.getString("Repeat", R.string.Repeat));
+                                    options.add(nkbtn_repeat);
+                                    icons.add(R.drawable.msg_repeat);
+                                    items.add(LocaleController.getString("RepeatAsCopy", R.string.RepeatAsCopy));
+                                    options.add(nkbtn_repeatascopy);
+                                    icons.add(R.drawable.msg_repeat);
+                                }else{
+                                    items.add(LocaleController.getString("RepeatAsCopy", R.string.RepeatAsCopy));
+                                    options.add(nkbtn_repeatascopy);
+                                    icons.add(R.drawable.msg_repeat);
+                                }
                             }
                         }
                         if (chatMode != MODE_SCHEDULED) {
@@ -24323,7 +24336,11 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
 
             }
             case nkbtn_repeat: {
-                repeatMessage(true);
+                repeatMessage(true,false);
+                return 2;
+            }
+            case nkbtn_repeatascopy: {
+                repeatMessage(true,true);
                 return 2;
             }
         }
@@ -29677,7 +29694,10 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
                 return;
             presentFragment(new ChatActivity(args), true);
         } else if (id == nkbtn_repeat) {
-            repeatMessage(false);
+            repeatMessage(false,false);
+            clearSelectionMode();
+        }else if (id == nkbtn_repeatascopy){
+            repeatMessage(false,true);
             clearSelectionMode();
         }
     }
@@ -29686,7 +29706,11 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
         // from "items"
         switch (id) {
             case nkbtn_repeat: {
-                repeatMessage(false);
+                repeatMessage(false,false);
+                break;
+            }
+            case nkbtn_repeatascopy:{
+                repeatMessage(false,true);
                 break;
             }
             case nkbtn_forward_noquote: {
@@ -29961,7 +29985,7 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
         }
     }
 
-    private void repeatMessage(boolean isLongClick) {
+    private void repeatMessage(boolean isLongClick,boolean isRepeatAsCopy) {
         if (checkSlowMode(chatActivityEnterView.getSendButton())) {
             return;
         }
@@ -29974,22 +29998,31 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
                     messages.add(selectedMessagesIds[0].get(selectedMessagesIds[0].keyAt(k)));
         }
         if (!NekoConfig.repeatConfirm.Bool()) {
-            doRepeatMessage(isLongClick, messages);
-            return;
+            if (isRepeatAsCopy){
+                doRepeatMessage(isLongClick, messages,true);
+                return;
+            }else{
+                doRepeatMessage(isLongClick, messages,false);
+                return;
+            }
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
         builder.setTitle(LocaleController.getString("Repeat", R.string.Repeat));
         builder.setMessage(LocaleController.getString("repeatConfirmText", R.string.repeatConfirmText));
         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialogInterface, i) -> {
-            doRepeatMessage(isLongClick, messages);
+            if (isRepeatAsCopy){
+                doRepeatMessage(isLongClick, messages,true);
+            }else{
+                doRepeatMessage(isLongClick, messages,false);
+            }
         });
         builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
         showDialog(builder.create());
     }
 
-    private void doRepeatMessage(boolean isLongClick, ArrayList<MessageObject> messages) {
-        if (selectedObject != null && selectedObject.messageOwner != null && (isLongClick || isThreadChat())) {
+    private void doRepeatMessage(boolean isLongClick, ArrayList<MessageObject> messages,boolean isRepeatAsCopy) {
+        if (selectedObject != null && selectedObject.messageOwner != null && (isLongClick || isThreadChat() || getMessagesController().isChatNoForwards(currentChat) )) {
             // If selected message contains `replyTo`:
             // When longClick it will reply to the `replyMessage` of selectedMessage
             // When not LongClick but in a threadchat: reply to the Thread
@@ -30012,7 +30045,10 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
             }
             return;
         }
-
-        forwardMessages(messages, false, false, true, 0);
+        if (isRepeatAsCopy){
+            forwardMessages(messages, true, false, true, 0);
+        }else {
+            forwardMessages(messages, false, false, true, 0);
+        }
     }
 }
