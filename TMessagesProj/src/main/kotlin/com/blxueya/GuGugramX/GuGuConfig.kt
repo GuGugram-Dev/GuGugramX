@@ -29,6 +29,8 @@ object GuGuConfig {
 
     var AlwaySaveChatOffset = addConfig("AlwaySaveChatOffset",ConfigItem.configTypeBool,false)
 
+    var showRepeatAsCopy = addConfig("RepeatAsCopy",ConfigItem.configTypeBool,false)
+
     fun addConfig(
         k: String,
         t: Int,
