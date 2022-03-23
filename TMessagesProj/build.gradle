@@ -181,7 +181,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile project.file("release.keystore")
+            storeFile project.file("release.keystore.jks")
             storePassword keystorePwd
             keyAlias alias
             keyPassword pwd
