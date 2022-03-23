@@ -20950,7 +20950,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                             boolean ignore = false;
                             int count = 0;
-                            if (!GuGuConfig.INSTANCE.getAlwaySaveChatOffset().Bool()){
+                            if (!GuGuConfig.INSTANCE.getAlwaysSaveChatOffset().Bool()){
                                 for (int a = position - 1; a >= chatAdapter.messagesStartRow; a--) {
                                     int num = a - chatAdapter.messagesStartRow;
                                     if (num < 0 || num >= messages.size()) {

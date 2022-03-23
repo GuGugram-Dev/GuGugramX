@@ -27,7 +27,7 @@ object GuGuConfig {
     // Configs
     var ForceAllowCopy = addConfig("ForceAllowCopy", ConfigItem.configTypeBool, false)
 
-    var AlwaySaveChatOffset = addConfig("AlwaySaveChatOffset",ConfigItem.configTypeBool,false)
+    var AlwaysSaveChatOffset = addConfig("AlwaySaveChatOffset",ConfigItem.configTypeBool,false)
 
     var showRepeatAsCopy = addConfig("RepeatAsCopy",ConfigItem.configTypeBool,false)
 
