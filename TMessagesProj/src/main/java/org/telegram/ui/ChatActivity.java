@@ -107,6 +107,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.blxueya.GuGugramX.GuGuConfig;
+import com.blxueya.GuGugramX.helper.DoubleTap;
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 
 import org.openintents.openpgp.OpenPgpError;
@@ -1499,61 +1500,144 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         @Override
         public boolean hasDoubleTap(View view, int position) {
-            if (view instanceof ChatMessageCell && NekoConfig.reactions.Int() == 1){
-                ChatMessageCell cell = (ChatMessageCell) view;
-                return !cell.getMessageObject().isSending() && !cell.getMessageObject().isEditing() && cell.getMessageObject().type != 16 && !actionBar.isActionModeShowed() && !isSecretChat() && !isInScheduleMode();
-            }
-            TLRPC.TL_availableReaction reaction = getMediaDataController().getReactionsMap().get(getMediaDataController().getDoubleTapReaction());
-            if (reaction == null) {
+            boolean allowRepeat;
+            if (GuGuConfig.INSTANCE.getDoubleTapAction().Int() == DoubleTap.DOUBLE_TAP_ACTION_NONE || !(view instanceof ChatMessageCell)) {
                 return false;
             }
-            if (NekoConfig.reactions.Int() == 2) return false;
-            boolean available = dialog_id >= 0;
-            if (!available && chatInfo != null) {
-                for (String s : chatInfo.available_reactions) {
-                    if (s.equals(reaction.reaction)) {
-                        available = true;
-                        break;
+            if (GuGuConfig.INSTANCE.getDoubleTapAction().Int() == DoubleTap.DOUBLE_TAP_ACTION_SEND_REACTIONS || GuGuConfig.INSTANCE.getDoubleTapAction().Int() == DoubleTap.DOUBLE_TAP_ACTION_SHOW_REACTIONS) {
+                TLRPC.TL_availableReaction reaction = getMediaDataController().getReactionsMap().get(getMediaDataController().getDoubleTapReaction());
+                if (reaction == null) {
+                    return false;
+                }
+                boolean available = dialog_id >= 0;
+                if (!available && chatInfo != null) {
+                    for (String s : chatInfo.available_reactions) {
+                        if (s.equals(reaction.reaction)) {
+                            available = true;
+                            break;
+                        }
                     }
                 }
+                if (!available || !(view instanceof ChatMessageCell)) {
+                    return false;
+                }
+                ChatMessageCell cell = (ChatMessageCell) view;
+                return !cell.getMessageObject().isSending() && !cell.getMessageObject().isEditing() && cell.getMessageObject().type != 16 && !actionBar.isActionModeShowed() && !isSecretChat() && !isInScheduleMode() && !cell.getMessageObject().isSponsored();
+            } else {
+                var cell = (ChatMessageCell) view;
+                var message = cell.getMessageObject();
+                selectedObject = message;
+                selectedObjectGroup = getValidGroupedMessage(message);
+                var noforwards = getMessagesController().isChatNoForwardsWithOverride(currentChat) || message.messageOwner.noforwards;
+                boolean allowChatActions = chatMode != MODE_SCHEDULED && (threadMessageObjects == null || !threadMessageObjects.contains(message)) &&
+                        !message.isSponsored() && (getMessageType(message) != 1 || message.getDialogId() != mergeDialogId) &&
+                        !(message.messageOwner.action instanceof TLRPC.TL_messageActionSecureValuesSent) &&
+                        (currentEncryptedChat != null || message.getId() >= 0) &&
+                        (bottomOverlayChat == null || bottomOverlayChat.getVisibility() != View.VISIBLE) &&
+                        (currentChat == null || ((!ChatObject.isNotInChat(currentChat) || isThreadChat()) && (!ChatObject.isChannel(currentChat) || ChatObject.canPost(currentChat) || currentChat.megagroup) && ChatObject.canSendMessages(currentChat)));
+                boolean allowEdit = message.canEditMessage(currentChat) && !chatActivityEnterView.hasAudioToSend() && message.getDialogId() != mergeDialogId;
+                if (allowEdit && selectedObjectGroup != null) {
+                    int captionsCount = 0;
+                    for (int a = 0, N = selectedObjectGroup.messages.size(); a < N; a++) {
+                        MessageObject messageObject = selectedObjectGroup.messages.get(a);
+                        if (a == 0 || !TextUtils.isEmpty(messageObject.caption)) {
+                            selectedObjectToEditCaption = messageObject;
+                            if (!TextUtils.isEmpty(messageObject.caption)) {
+                                captionsCount++;
+                            }
+                        }
+                    }
+                    allowEdit = captionsCount < 2;
+                }
+                switch (GuGuConfig.INSTANCE.getDoubleTapAction().Int()) {
+                    case DoubleTap.DOUBLE_TAP_ACTION_TRANSLATE:
+                        MessageObject messageObject = getMessageForTranslate();
+                        if (messageObject != null) {
+                            return true;
+                        }
+                        break;
+                    case DoubleTap.DOUBLE_TAP_ACTION_REPLY:
+                        return message.getId() > 0 && allowChatActions;
+                    case DoubleTap.DOUBLE_TAP_ACTION_SAVE:
+                        return !message.isSponsored() && chatMode != MODE_SCHEDULED && !message.needDrawBluredPreview() && !message.isLiveLocation() && message.type != 16 && !getMessagesController().isChatNoForwardsWithOverride(currentChat) && !UserObject.isUserSelf(currentUser);
+                    case DoubleTap.DOUBLE_TAP_ACTION_REPEAT:
+                        allowRepeat = allowChatActions &&
+                                (!isThreadChat() && !noforwards ||
+                                        getMessageHelper().getMessageForRepeat(message, selectedObjectGroup) != null);
+                        return allowRepeat && !message.isSponsored() && chatMode != MODE_SCHEDULED && !message.needDrawBluredPreview() && !message.isLiveLocation() && message.type != 16;
+                    case DoubleTap.DOUBLE_TAP_ACTION_REPEAT_AS_COPY:
+                        allowRepeat = allowChatActions &&
+                                (!isThreadChat() && !noforwards ||
+                                        getMessageHelper().getMessageForRepeat(message, selectedObjectGroup) != null);
+                        return allowRepeat && !message.isSponsored() && chatMode != MODE_SCHEDULED && !message.needDrawBluredPreview() && !message.isLiveLocation() && message.type != 16;
+                    case DoubleTap.DOUBLE_TAP_ACTION_EDIT:
+                        return allowEdit;
+                }
             }
-            if (!available || !(view instanceof ChatMessageCell)) {
-                return false;
-            }
-            ChatMessageCell cell = (ChatMessageCell) view;
-            return !cell.getMessageObject().isSending() && !cell.getMessageObject().isEditing() && cell.getMessageObject().type != 16 && !actionBar.isActionModeShowed() && !isSecretChat() && !isInScheduleMode() && !cell.getMessageObject().isSponsored();
+            return false;
         }
 
         @Override
         public void onDoubleTap(View view, int position, float x, float y) {
-            if (!(view instanceof ChatMessageCell) || getParentActivity() == null || isSecretChat() || isInScheduleMode()) {
+            if (GuGuConfig.INSTANCE.getDoubleTapAction().Int() == DoubleTap.DOUBLE_TAP_ACTION_NONE || !(view instanceof ChatMessageCell) || getParentActivity() == null) {
                 return;
             }
-            if (NekoConfig.reactions.Int() == 2) return;
-            if (NekoConfig.reactions.Int() == 1) {
+            if (GuGuConfig.INSTANCE.getDoubleTapAction().Int() == DoubleTap.DOUBLE_TAP_ACTION_SHOW_REACTIONS) {
+                if (isSecretChat() || isInScheduleMode()) {
+                    return;
+                }
                 createMenu(view, true, false, x, y, true, true);
                 return;
-            }
-            ChatMessageCell cell = (ChatMessageCell) view;
-            MessageObject primaryMessage = cell.getPrimaryMessageObject();
-            ReactionsEffectOverlay.removeCurrent(false);
-            TLRPC.TL_availableReaction reaction = getMediaDataController().getReactionsMap().get(getMediaDataController().getDoubleTapReaction());
-            if (reaction == null || cell.getMessageObject().isSponsored()) {
-                return;
-            }
-            boolean available = dialog_id >= 0;
-            if (!available && chatInfo != null) {
-                for (String s : chatInfo.available_reactions) {
-                    if (s.equals(reaction.reaction)) {
-                        available = true;
-                        break;
+            } else if (GuGuConfig.INSTANCE.getDoubleTapAction().Int() == DoubleTap.DOUBLE_TAP_ACTION_SEND_REACTIONS) {
+                if (isSecretChat() || isInScheduleMode()) {
+                    return;
+                }
+                ChatMessageCell cell = (ChatMessageCell) view;
+                MessageObject primaryMessage = cell.getPrimaryMessageObject();
+                ReactionsEffectOverlay.removeCurrent(false);
+                TLRPC.TL_availableReaction reaction = getMediaDataController().getReactionsMap().get(getMediaDataController().getDoubleTapReaction());
+                if (reaction == null || cell.getMessageObject().isSponsored()) {
+                    return;
+                }
+                boolean available = dialog_id >= 0;
+                if (!available && chatInfo != null) {
+                    for (String s : chatInfo.available_reactions) {
+                        if (s.equals(reaction.reaction)) {
+                            available = true;
+                            break;
+                        }
                     }
                 }
+                if (!available) {
+                    return;
+                }
+                selectReaction(primaryMessage, null, x, y, reaction, true, false);
+            } else {
+                var cell = (ChatMessageCell) view;
+                var message = cell.getMessageObject();
+                selectedObject = message;
+                selectedObjectGroup = getValidGroupedMessage(message);
+                switch (GuGuConfig.INSTANCE.getDoubleTapAction().Int()) {
+                    case DoubleTap.DOUBLE_TAP_ACTION_TRANSLATE:
+                        MessageTransKt.translateMessages(ChatActivity.this);
+                        break;
+                    case DoubleTap.DOUBLE_TAP_ACTION_REPLY:
+                        processSelectedOption(OPTION_REPLY);
+                        break;
+                    case DoubleTap.DOUBLE_TAP_ACTION_SAVE:
+                        processSelectedOption(nkbtn_savemessage);
+                        break;
+                    case DoubleTap.DOUBLE_TAP_ACTION_REPEAT:
+                        processSelectedOption(nkbtn_repeat);
+                        break;
+                    case DoubleTap.DOUBLE_TAP_ACTION_REPEAT_AS_COPY:
+                        processSelectedOption(nkbtn_repeatascopy);
+                        break;
+                    case DoubleTap.DOUBLE_TAP_ACTION_EDIT:
+                        processSelectedOption(OPTION_EDIT);
+                        break;
+                }
             }
-            if (!available) {
-                return;
-            }
-            selectReaction(primaryMessage, null, x, y, reaction, true, false);
         }
     };
 
