@@ -31,6 +31,8 @@ object GuGuConfig {
 
     var showRepeatAsCopy = addConfig("RepeatAsCopy",ConfigItem.configTypeBool,false)
 
+    var doubleTapAction = addConfig("DoubleTapAction",ConfigItem.configTypeInt,0)
+
     fun addConfig(
         k: String,
         t: Int,
