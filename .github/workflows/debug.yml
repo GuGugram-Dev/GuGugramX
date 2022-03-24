@@ -3,14 +3,14 @@ name: Debug build
 on:
   push:
     branches:
-      - remake
+      - dev
     paths-ignore:
       - '**.md'
       - '.github/**'
       - '!.github/workflows/debug.yml'
   pull_request:
     branches:
-      - remake
+      - dev
   workflow_dispatch:
     inputs:
       artifacts:
