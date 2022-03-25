@@ -6,4 +6,6 @@
     <string name="DoubleTapAction">Double Tap Action</string>
     <string name="SendReactions">Send Reactions</string>
     <string name="ShowReactions">Show Reactions</string>
+    <string name="TextUndo">Undo</string>
+    <string name="TextRedo">Redo</string>
 </resources>
