@@ -93,6 +93,7 @@ public class NekoExperimentalSettingsActivity extends BaseFragment {
     private final AbstractConfigCell disableChatActionRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.disableChatAction));
     private final AbstractConfigCell disableChoosingStickerRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.disableChoosingSticker));
     private final AbstractConfigCell ignoreBlockedRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.ignoreBlocked));
+    private final AbstractConfigCell ShowForwarderName = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getShowForwarderName()));
     private final AbstractConfigCell AlwaysSaveChatOffset = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getAlwaysSaveChatOffset()));
     private final AbstractConfigCell forceCopyRow = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getForceAllowCopy()));
     private final AbstractConfigCell hideSponsoredMessageRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.hideSponsoredMessage));
