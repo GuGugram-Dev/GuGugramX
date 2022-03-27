@@ -8,4 +8,5 @@
     <string name="ShowReactions">Show Reactions</string>
     <string name="TextUndo">Undo</string>
     <string name="TextRedo">Redo</string>
+    <string name="ShowForwarderName">Show forwarder name</string>
 </resources>
