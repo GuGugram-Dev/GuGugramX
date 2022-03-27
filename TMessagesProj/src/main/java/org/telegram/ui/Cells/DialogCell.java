@@ -38,6 +38,8 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.animation.Interpolator;
 import android.view.animation.OvershootInterpolator;
 
+import com.blxueya.GuGugramX.GuGuConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.ContactsController;
@@ -1030,8 +1032,8 @@ public class DialogCell extends BaseCell {
                                 if (message.isOutOwner()) {
                                     messageNameString = LocaleController.getString("FromYou", R.string.FromYou);
                                 // NekoX: fix show forwarded name as sender
-                                /*} else if (message != null && message.messageOwner.fwd_from != null && message.messageOwner.fwd_from.from_name != null) {
-                                    messageNameString = message.messageOwner.fwd_from.from_name;*/
+                                } else if (message != null && message.messageOwner.fwd_from != null && message.messageOwner.fwd_from.from_name != null && !GuGuConfig.INSTANCE.getShowForwarderName().Bool()) {
+                                    messageNameString = message.messageOwner.fwd_from.from_name;
                                 } else if (fromUser != null) {
                                     if (useForceThreeLines || SharedConfig.useThreeLinesLayout) {
                                         if (UserObject.isDeleted(fromUser)) {
