@@ -9,4 +9,5 @@
     <string name="TextUndo">Undo</string>
     <string name="TextRedo">Redo</string>
     <string name="ShowForwarderName">Show forwarder name</string>
+    <string name="NoiseSuppressAndVoiceEnhance">Noise Suppress And Voice Enhance</string>
 </resources>
