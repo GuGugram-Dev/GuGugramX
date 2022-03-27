@@ -35,6 +35,8 @@ object GuGuConfig {
     
     var showForwarderName = addConfig("ShowForwarderName",ConfigItem.configTypeBool,false);
 
+    var noiseSuppressAndVoiceEnhance = addConfig("NoiseSuppressAndVoiceEnhance",ConfigItem.configTypeBool,false)
+
     fun addConfig(
         k: String,
         t: Int,
