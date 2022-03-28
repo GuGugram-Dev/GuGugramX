@@ -10,4 +10,5 @@
     <string name="TextRedo">重做</string>
     <string name="ShowForwarderName">显示转发者姓名</string>
     <string name="NoiseSuppressAndVoiceEnhance">噪音抑制和语音增强</string>
+    <string name="ScrollableChatPreview">可滑动聊天预览</string>
 </resources>

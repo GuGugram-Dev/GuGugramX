@@ -44,6 +44,8 @@ import androidx.annotation.Keep;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.math.MathUtils;
 
+import com.blxueya.GuGugramX.GuGuConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.ImageLoader;
@@ -61,7 +63,6 @@ import java.util.HashMap;
 
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.utils.VibrateUtil;
-import xyz.nextalone.nagram.NaConfig;
 
 public class ActionBarLayout extends FrameLayout {
 
@@ -205,12 +206,12 @@ public class ActionBarLayout extends FrameLayout {
         @Override
         public boolean dispatchTouchEvent(MotionEvent ev) {
             processMenuButtonsTouch(ev);
-            boolean previewModeStatus = !NaConfig.INSTANCE.getScrollableChatPreview().Bool() && inPreviewMode;
+            boolean previewModeStatus = !GuGuConfig.INSTANCE.getScrollableChatPreview().Bool() && inPreviewMode;
             boolean passivePreview = previewModeStatus && previewMenu == null;
             if ((passivePreview || transitionAnimationPreviewMode) && (ev.getActionMasked() == MotionEvent.ACTION_DOWN || ev.getActionMasked() == MotionEvent.ACTION_POINTER_DOWN)) {
                 return false;
             }
-            if (NaConfig.INSTANCE.getScrollableChatPreview().Bool() && inPreviewMode && previewMenu == null) {
+            if (GuGuConfig.INSTANCE.getScrollableChatPreview().Bool() && inPreviewMode && previewMenu == null) {
                 View view = containerView.getChildAt(0);
                 if (view != null) {
                     int y = (int) (view.getTop() + containerView.getTranslationY() - AndroidUtilities.dp(Build.VERSION.SDK_INT < 21 ? 20 : 0));
