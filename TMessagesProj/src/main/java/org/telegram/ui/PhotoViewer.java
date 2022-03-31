@@ -105,7 +105,7 @@ import android.widget.Scroller;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.blxueya.GuGugramX.GuGuConfig;
+import com.blxueya.gugugramx.GuGuConfig;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

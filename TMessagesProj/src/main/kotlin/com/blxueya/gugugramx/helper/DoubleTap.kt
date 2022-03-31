@@ -1,4 +1,4 @@
-package com.blxueya.GuGugramX.helper
+package com.blxueya.gugugramx.helper
 
 import org.telegram.messenger.LocaleController
 import org.telegram.messenger.R

@@ -44,7 +44,7 @@ import androidx.annotation.Keep;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.math.MathUtils;
 
-import com.blxueya.GuGugramX.GuGuConfig;
+import com.blxueya.gugugramx.GuGuConfig;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.FileLog;
