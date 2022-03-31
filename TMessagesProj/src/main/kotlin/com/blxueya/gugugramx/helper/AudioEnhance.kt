@@ -1,10 +1,10 @@
-package com.blxueya.GuGugramX.helper
+package com.blxueya.gugugramx.helper
 
 import android.media.AudioRecord
 import android.media.audiofx.AcousticEchoCanceler
 import android.media.audiofx.AutomaticGainControl
 import android.media.audiofx.NoiseSuppressor
-import com.blxueya.GuGugramX.GuGuConfig
+import com.blxueya.gugugramx.GuGuConfig
 
 object AudioEnhance {
     var automaticGainControl: AutomaticGainControl? =
