@@ -73,7 +73,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 
-import com.blxueya.GuGugramX.GuGuConfig;
+import com.blxueya.gugugramx.GuGuConfig;
 
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.AccountInstance;
