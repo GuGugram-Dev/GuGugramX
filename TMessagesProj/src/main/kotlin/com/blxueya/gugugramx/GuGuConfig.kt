@@ -1,4 +1,4 @@
-package com.blxueya.GuGugramX
+package com.blxueya.gugugramx
 
 import android.content.Context
 import android.content.SharedPreferences

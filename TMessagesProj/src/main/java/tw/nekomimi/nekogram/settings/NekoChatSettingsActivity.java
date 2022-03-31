@@ -14,8 +14,8 @@ import android.widget.LinearLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.blxueya.GuGugramX.GuGuConfig;
-import com.blxueya.GuGugramX.helper.DoubleTap;
+import com.blxueya.gugugramx.GuGuConfig;
+import com.blxueya.gugugramx.helper.DoubleTap;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
@@ -48,7 +48,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import kotlin.Unit;
-import tw.nekomimi.nekogram.NekoXConfig;
 import tw.nekomimi.nekogram.ui.PopupBuilder;
 import tw.nekomimi.nekogram.config.CellGroup;
 import tw.nekomimi.nekogram.NekoConfig;
