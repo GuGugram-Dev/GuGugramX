@@ -3280,9 +3280,8 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
             actionModeOtherItem.addSubItem(nkbtn_savemessage, R.drawable.baseline_bookmark_24, LocaleController.getString("AddToSavedMessages", R.string.AddToSavedMessages));
         if (NekoConfig.showRepeat.Bool() && !noforward)
             actionModeOtherItem.addSubItem(nkbtn_repeat, R.drawable.msg_repeat, LocaleController.getString("Repeat", R.string.Repeat));
-            actionModeOtherItem.addSubItem(nkbtn_repeatascopy, R.drawable.msg_repeat, LocaleController.getString("RepeatAsCopy", R.string.Repeat));
         if (GuGuConfig.INSTANCE.getShowRepeatAsCopy().Bool() )
-            actionModeOtherItem.addSubItem(nkbtn_repeatascopy, R.drawable.msg_repeat, LocaleController.getString("RepeatAsCopy", R.string.Repeat));
+            actionModeOtherItem.addSubItem(nkbtn_repeatascopy, R.drawable.msg_repeat, LocaleController.getString("RepeatAsCopy", R.string.RepeatAsCopy));
 
         if (NekoConfig.showMessageHide.Bool()) {
             actionModeOtherItem.addSubItem(nkbtn_hide, R.drawable.baseline_remove_circle_24, LocaleController.getString("Hide", R.string.Hide));
@@ -22222,14 +22221,12 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
                                     items.add(LocaleController.getString("Repeat", R.string.Repeat));
                                     options.add(nkbtn_repeat);
                                     icons.add(R.drawable.msg_repeat);
-                                    items.add(LocaleController.getString("RepeatAsCopy", R.string.RepeatAsCopy));
-                                    options.add(nkbtn_repeatascopy);
-                                    icons.add(R.drawable.msg_repeat);
-                                }else{
-                                    items.add(LocaleController.getString("RepeatAsCopy", R.string.RepeatAsCopy));
-                                    options.add(nkbtn_repeatascopy);
-                                    icons.add(R.drawable.msg_repeat);
                                 }
+                            }
+                            if (allowRepeat && GuGuConfig.INSTANCE.getShowRepeatAsCopy().Bool()){
+                                items.add(LocaleController.getString("RepeatAsCopy", R.string.RepeatAsCopy));
+                                options.add(nkbtn_repeatascopy);
+                                icons.add(R.drawable.msg_repeat);
                             }
                         }
                         if (chatMode != MODE_SCHEDULED) {
@@ -24417,14 +24414,6 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
 
                 return 1;
 
-            }
-            case nkbtn_repeat: {
-                repeatMessage(true,false);
-                return 2;
-            }
-            case nkbtn_repeatascopy: {
-                repeatMessage(true,true);
-                return 2;
             }
         }
         return 0;
