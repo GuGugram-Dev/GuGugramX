@@ -29,7 +29,6 @@ import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
@@ -51,8 +50,6 @@ import org.telegram.messenger.R;
 import org.telegram.messenger.SRPHelper;
 import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.Utilities;
-import org.telegram.messenger.Utilities;
-import org.telegram.messenger.browser.Browser;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.RequestDelegate;
 import org.telegram.tgnet.TLRPC;
@@ -128,7 +125,7 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
     private int rowCount;
 
     private boolean postedErrorColorTimeout;
-    private Runnable errorColorTimeout = () -> {
+    private final Runnable errorColorTimeout = () -> {
         postedErrorColorTimeout = false;
         passwordOutlineView.animateError(0f);
     };
@@ -469,7 +466,7 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
         lockImageView.setVisibility(AndroidUtilities.isSmallScreen() || AndroidUtilities.displaySize.x > AndroidUtilities.displaySize.y ? View.GONE : View.VISIBLE);
     }
 
-    private Runnable updateTimeRunnable = this::updateBottomButton;
+    private final Runnable updateTimeRunnable = this::updateBottomButton;
 
     private void cancelPasswordReset() {
         if (getParentActivity() == null) {
@@ -680,17 +677,12 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
 
     public static boolean canHandleCurrentPassword(TLRPC.TL_account_password password, boolean login) {
         if (login) {
-            if (password.current_algo instanceof TLRPC.TL_passwordKdfAlgoUnknown) {
-                return false;
-            }
+            return !(password.current_algo instanceof TLRPC.TL_passwordKdfAlgoUnknown);
         } else {
-            if (password.new_algo instanceof TLRPC.TL_passwordKdfAlgoUnknown ||
-                    password.current_algo instanceof TLRPC.TL_passwordKdfAlgoUnknown ||
-                    password.new_secure_algo instanceof TLRPC.TL_securePasswordKdfAlgoUnknown) {
-                return false;
-            }
+            return !(password.new_algo instanceof TLRPC.TL_passwordKdfAlgoUnknown) &&
+                    !(password.current_algo instanceof TLRPC.TL_passwordKdfAlgoUnknown) &&
+                    !(password.new_secure_algo instanceof TLRPC.TL_securePasswordKdfAlgoUnknown);
         }
-        return true;
     }
 
     public static void initPasswordNewAlgo(TLRPC.TL_account_password password) {
@@ -973,9 +965,9 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
                         } else {
                             timeString = LocaleController.formatPluralString("Minutes", time / 60);
                         }
-                        showAlertWithText(LocaleController.getString("NekoX", R.string.NekoX), LocaleController.formatString("FloodWaitTime", R.string.FloodWaitTime, timeString));
+                        showAlertWithText(LocaleController.getString("GuGuX", R.string.NekoX), LocaleController.formatString("FloodWaitTime", R.string.FloodWaitTime, timeString));
                     } else {
-                        showAlertWithText(LocaleController.getString("NekoX", R.string.NekoX), error.text);
+                        showAlertWithText(LocaleController.getString("GuGuX", R.string.NekoX), error.text);
                     }
                 }
             });
@@ -1112,9 +1104,9 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
                                 } else {
                                     timeString = LocaleController.formatPluralString("Minutes", time / 60);
                                 }
-                                showAlertWithText(LocaleController.getString("NekoX", R.string.NekoX), LocaleController.formatString("FloodWaitTime", R.string.FloodWaitTime, timeString));
+                                showAlertWithText(LocaleController.getString("GuGuX", R.string.NekoX), LocaleController.formatString("FloodWaitTime", R.string.FloodWaitTime, timeString));
                             } else {
-                                showAlertWithText(LocaleController.getString("NekoX", R.string.NekoX), error.text);
+                                showAlertWithText(LocaleController.getString("GuGuX", R.string.NekoX), error.text);
                             }
                         });
                     }
@@ -1157,7 +1149,7 @@ public class TwoStepVerificationActivity extends BaseFragment implements Notific
 
     private class ListAdapter extends RecyclerListView.SelectionAdapter {
 
-        private Context mContext;
+        private final Context mContext;
 
         public ListAdapter(Context context) {
             mContext = context;
