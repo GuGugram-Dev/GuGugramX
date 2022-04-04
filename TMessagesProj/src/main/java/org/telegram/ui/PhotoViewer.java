@@ -105,6 +105,24 @@ import android.widget.Scroller;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.collection.ArrayMap;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+import androidx.core.graphics.ColorUtils;
+import androidx.core.view.ViewCompat;
+import androidx.core.widget.NestedScrollView;
+import androidx.dynamicanimation.animation.DynamicAnimation;
+import androidx.dynamicanimation.animation.SpringAnimation;
+import androidx.dynamicanimation.animation.SpringForce;
+import androidx.exifinterface.media.ExifInterface;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSmoothScrollerEnd;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.blxueya.gugugramx.GuGuConfig;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
@@ -280,7 +298,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     private int dateOverride;
 
     private AnimatorSet miniProgressAnimator;
-    private Runnable miniProgressShowRunnable = () -> toggleMiniProgressInternal(true);
+    private final Runnable miniProgressShowRunnable = () -> toggleMiniProgressInternal(true);
 
     private Activity parentActivity;
     private Context activityContext;
@@ -335,15 +353,15 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     private LinearLayout bottomButtonsLayout;
     private ImageView shareButton;
     private ImageView paintButton;
-    private BackgroundDrawable backgroundDrawable = new BackgroundDrawable(0xff000000);
-    private Paint blackPaint = new Paint();
+    private final BackgroundDrawable backgroundDrawable = new BackgroundDrawable(0xff000000);
+    private final Paint blackPaint = new Paint();
     private CheckBox checkImageView;
     private CounterView photosCounterView;
     private FrameLayout pickerView;
     private ImageView pickerViewSendButton;
     private PickerBottomLayoutViewer editorDoneLayout;
     private TextView resetButton;
-    private PhotoProgressView[] photoProgressViews = new PhotoProgressView[3];
+    private final PhotoProgressView[] photoProgressViews = new PhotoProgressView[3];
     private RadialProgressView miniProgressView;
     private ImageView paintItem;
     private ImageView cropItem;
@@ -369,9 +387,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
     private long lastPhotoSetTime;
 
-    private GradientDrawable[] pressedDrawable = new GradientDrawable[2];
-    private boolean[] drawPressedDrawable = new boolean[2];
-    private float[] pressedDrawableAlpha = new float[2];
+    private final GradientDrawable[] pressedDrawable = new GradientDrawable[2];
+    private final boolean[] drawPressedDrawable = new boolean[2];
+    private final float[] pressedDrawableAlpha = new float[2];
     private int touchSlop;
 
     private boolean useSmoothKeyboard;
@@ -403,7 +421,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     private boolean dontChangeCaptionPosition;
     private boolean captionHwLayerEnabled;
 
-    private Paint bitmapPaint = new Paint(Paint.FILTER_BITMAP_FLAG);
+    private final Paint bitmapPaint = new Paint(Paint.FILTER_BITMAP_FLAG);
 
     private boolean pipAvailable;
 
@@ -416,7 +434,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
     private boolean pausedOnPause = false;
 
-    private Runnable setLoadingRunnable = new Runnable() {
+    private final Runnable setLoadingRunnable = new Runnable() {
         @Override
         public void run() {
             if (currentMessageObject == null) {
@@ -426,7 +444,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         }
     };
 
-    private Runnable hideActionBarRunnable = new Runnable() {
+    private final Runnable hideActionBarRunnable = new Runnable() {
         @Override
         public void run() {
             if (videoPlayerControlVisible && isPlaying && !ApplicationLoader.mainInterfacePaused) {
@@ -475,7 +493,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     private float seekToProgressPending;
     private String shouldSavePositionForCurrentVideo;
     private String shouldSavePositionForCurrentVideoShortTerm;
-    private ArrayMap<String, SavedVideoPosition> savedVideoPositions = new ArrayMap<>();
+    private final ArrayMap<String, SavedVideoPosition> savedVideoPositions = new ArrayMap<>();
     private long lastSaveTime;
     private float seekToProgressPending2;
     private boolean streamingAlertShown;
@@ -484,8 +502,8 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     private VideoPlayerControlFrameLayout videoPlayerControlFrameLayout;
     private Animator videoPlayerControlAnimator;
     private boolean videoPlayerControlVisible = true;
-    private int[] videoPlayerCurrentTime = new int[2];
-    private int[] videoPlayerTotalTime = new int[2];
+    private final int[] videoPlayerCurrentTime = new int[2];
+    private final int[] videoPlayerTotalTime = new int[2];
     private SimpleTextView videoPlayerTime;
     private ImageView exitFullscreenButton;
     private VideoPlayerSeekBar videoPlayerSeekbar;
@@ -496,9 +514,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     private int waitingForDraw;
     private TextureView changedTextureView;
     private ImageView textureImageView;
-    private ImageView[] fullscreenButton = new ImageView[3];
+    private final ImageView[] fullscreenButton = new ImageView[3];
     private boolean allowShowFullscreenButton;
-    private int[] pipPosition = new int[2];
+    private final int[] pipPosition = new int[2];
     private boolean pipAnimationInProgress;
     private Bitmap currentBitmap;
     private boolean changingTextureView;
@@ -766,7 +784,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         }
     }
 
-    private Runnable updateProgressRunnable = new Runnable() {
+    private final Runnable updateProgressRunnable = new Runnable() {
         @Override
         public void run() {
             if (videoPlayer != null) {
@@ -878,7 +896,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         }
     };
 
-    private Runnable switchToInlineRunnable = new Runnable() {
+    private final Runnable switchToInlineRunnable = new Runnable() {
         @Override
         public void run() {
             if (PipVideoOverlay.isVisible()) {
@@ -927,7 +945,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         }
     };
 
-    private TextureView.SurfaceTextureListener surfaceTextureListener = new TextureView.SurfaceTextureListener() {
+    private final TextureView.SurfaceTextureListener surfaceTextureListener = new TextureView.SurfaceTextureListener() {
         @Override
         public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
 
@@ -996,7 +1014,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         }
     };
 
-    private float[][] animationValues = new float[2][13];
+    private final float[][] animationValues = new float[2][13];
 
     private ChatActivity parentChatActivity;
     private MentionsAdapter mentionsAdapter;
@@ -1050,9 +1068,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
     private class SavedState {
 
-        private int index;
-        private ArrayList<MessageObject> messages;
-        private PhotoViewerProvider provider;
+        private final int index;
+        private final ArrayList<MessageObject> messages;
+        private final PhotoViewerProvider provider;
 
         public SavedState(int index, ArrayList<MessageObject> messages, PhotoViewerProvider provider) {
             this.messages = messages;
@@ -1099,12 +1117,12 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     private int switchingToIndex;
     private MessageObject currentMessageObject;
     private Uri currentPlayingVideoFile;
-    private EditState editState = new EditState();
+    private final EditState editState = new EditState();
     private TLRPC.BotInlineResult currentBotInlineResult;
     private ImageLocation currentFileLocation;
     private ImageLocation currentFileLocationVideo;
     private SecureDocument currentSecureDocument;
-    private String[] currentFileNames = new String[3];
+    private final String[] currentFileNames = new String[3];
     private PlaceProviderObject currentPlaceObject;
     private String currentPathObject;
     private String currentImagePath;
@@ -1127,8 +1145,8 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     private boolean isFirstLoading;
     private boolean needSearchImageInArr;
     private boolean loadingMoreImages;
-    private boolean[] endReached = new boolean[]{false, true};
-    private boolean startReached = false;
+    private final boolean[] endReached = new boolean[]{false, true};
+    private final boolean startReached = false;
     private boolean opennedFromMedia;
 
     private boolean attachedToWindow;
@@ -1156,7 +1174,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     private AnimatorSet changeModeAnimation;
     private GestureDetector2 gestureDetector;
     private boolean doubleTapEnabled;
-    private DecelerateInterpolator interpolator = new DecelerateInterpolator(1.5f);
+    private final DecelerateInterpolator interpolator = new DecelerateInterpolator(1.5f);
     private float pinchStartDistance;
     private float pinchStartScale = 1;
     private float pinchCenterX;
@@ -1334,9 +1352,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
     private static class SelectedPhotosListView extends RecyclerListView {
 
-        private Drawable arrowDrawable;
-        private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private RectF rect = new RectF();
+        private final Drawable arrowDrawable;
+        private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final RectF rect = new RectF();
 
         public SelectedPhotosListView(Context context) {
             super(context);
@@ -1387,11 +1405,11 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     private static class CounterView extends View {
 
         private StaticLayout staticLayout;
-        private TextPaint textPaint;
-        private Paint paint;
+        private final TextPaint textPaint;
+        private final Paint paint;
         private int width;
         private int height;
-        private RectF rect;
+        private final RectF rect;
         private int currentCount = 0;
         private float rotation;
 
@@ -1504,14 +1522,14 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         private float animationProgressStart = 0;
         private long currentProgressTime = 0;
         private float animatedProgressValue = 0;
-        private RectF progressRect = new RectF();
+        private final RectF progressRect = new RectF();
         private int backgroundState = -1;
-        private View parent;
-        private int size = AndroidUtilities.dp(64);
+        private final View parent;
+        private final int size = AndroidUtilities.dp(64);
         private int previousBackgroundState = -2;
         private float animatedAlphaValue = 1.0f;
-        private float[] animAlphas = new float[3];
-        private float[] alphas = new float[3];
+        private final float[] animAlphas = new float[3];
+        private final float[] alphas = new float[3];
         private float scale = 1.0f;
         private boolean visible;
 
@@ -2032,7 +2050,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
     private class FrameLayoutDrawer extends SizeNotifierFrameLayoutPhoto {
 
-        private Paint paint = new Paint();
+        private final Paint paint = new Paint();
         private boolean ignoreLayout;
         private boolean captionAbove;
 
@@ -3537,7 +3555,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
     private void showDownloadAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity, resourcesProvider);
-        builder.setTitle(LocaleController.getString("NekoX", R.string.NekoX));
+        builder.setTitle(LocaleController.getString("GuGuX", R.string.NekoX));
         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
         boolean alreadyDownloading = currentMessageObject != null && currentMessageObject.isVideo() && FileLoader.getInstance(currentMessageObject.currentAccount).isLoadingFile(currentFileNames[0]);
         if (alreadyDownloading) {
@@ -4587,10 +4605,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 } else if (currentFileLocationVideo != null) {
                     File f = FileLoader.getInstance(currentAccount).getPathToAttach(getFileLocation(currentFileLocationVideo), getFileLocationExt(currentFileLocationVideo), avatarsDialogId != 0 || isEvent);
                     return f.exists();
-                } else if (pageBlocksAdapter != null) {
-                    return true;
-                }
-                return false;
+                } else return pageBlocksAdapter != null;
             }
         });
 
@@ -6266,7 +6281,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             int len = mentionsAdapter.getResultLength();
             if (object instanceof String) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity, resourcesProvider);
-                builder.setTitle(LocaleController.getString("NekoX", R.string.NekoX));
+                builder.setTitle(LocaleController.getString("GuGuX", R.string.NekoX));
                 builder.setMessage(LocaleController.getString("ClearSearch", R.string.ClearSearch));
                 builder.setPositiveButton(LocaleController.getString("ClearButton", R.string.ClearButton).toUpperCase(), (dialogInterface, i) -> mentionsAdapter.clearRecentHashtags());
                 builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
@@ -9457,7 +9472,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         }
                         AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity, resourcesProvider);
                         builder.setMessage(LocaleController.getString("DiscardChanges", R.string.DiscardChanges));
-                        builder.setTitle(LocaleController.getString("NekoX", R.string.NekoX));
+                        builder.setTitle(LocaleController.getString("GuGuX", R.string.NekoX));
                         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialogInterface, i) -> switchToEditMode(0));
                         builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                         showAlertDialog(builder);
@@ -10364,9 +10379,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                     return true;
                 }
             }
-        } else if (currentLocation.location.local_id == currentAvatarLocation.location.local_id && currentLocation.location.volume_id == currentAvatarLocation.location.volume_id) {
-            return true;
-        }
+        } else return currentLocation.location.local_id == currentAvatarLocation.location.local_id && currentLocation.location.volume_id == currentAvatarLocation.location.volume_id;
         return false;
     }
 
@@ -12896,11 +12909,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                                 editingMessageObject.editingMessageEntities = photoEntry.entities;
                             }
                             if (photoEntry.isVideo) {
-                                if (videoEditedInfo != null) {
-                                    SendMessagesHelper.prepareSendingVideo(parentChatActivity.getAccountInstance(), photoEntry.path, videoEditedInfo, parentChatActivity.getDialogId(), parentChatActivity.getReplyMessage(), parentChatActivity.getThreadMessage(), photoEntry.caption, photoEntry.entities, photoEntry.ttl, editingMessageObject, notify, scheduleDate, forceDocument);
-                                } else {
-                                    SendMessagesHelper.prepareSendingVideo(parentChatActivity.getAccountInstance(), photoEntry.path, null, parentChatActivity.getDialogId(), parentChatActivity.getReplyMessage(), parentChatActivity.getThreadMessage(), photoEntry.caption, photoEntry.entities, photoEntry.ttl, editingMessageObject, notify, scheduleDate, forceDocument);
-                                }
+                                SendMessagesHelper.prepareSendingVideo(parentChatActivity.getAccountInstance(), photoEntry.path, videoEditedInfo, parentChatActivity.getDialogId(), parentChatActivity.getReplyMessage(), parentChatActivity.getThreadMessage(), photoEntry.caption, photoEntry.entities, photoEntry.ttl, editingMessageObject, notify, scheduleDate, forceDocument);
                             } else {
                                 if (photoEntry.imagePath != null) {
                                     SendMessagesHelper.prepareSendingPhoto(parentChatActivity.getAccountInstance(), photoEntry.imagePath, photoEntry.thumbPath, null, parentChatActivity.getDialogId(), parentChatActivity.getReplyMessage(), parentChatActivity.getThreadMessage(), photoEntry.caption, photoEntry.entities, photoEntry.stickers, null, photoEntry.ttl, editingMessageObject, videoEditedInfo, notify, scheduleDate, forceDocument);
@@ -13472,7 +13481,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         }
         photoViewerWebView = new PhotoViewerWebView(parentActivity, pipItem) {
 
-            Rect rect = new Rect();
+            final Rect rect = new Rect();
 
             @Override
             protected void drawBlackBackground(Canvas canvas, int w, int h) {
@@ -14652,9 +14661,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         if (pageBlocksAdapter != null) {
             if (pageBlocksAdapter.isVideo(index) && SharedConfig.autoplayVideo) {
                 final File mediaFile = pageBlocksAdapter.getFile(index);
-                if (mediaFile != null && mediaFile.exists()) {
-                    return true;
-                }
+                return mediaFile != null && mediaFile.exists();
             }
         }
         return false;
@@ -15925,16 +15932,16 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
     private class QualityChooseView extends View {
 
-        private Paint paint;
-        private TextPaint textPaint;
+        private final Paint paint;
+        private final TextPaint textPaint;
 
         private int circleSize;
         private int gapSize;
         private int sideSide;
         private int lineSize;
 
-        private String lowQualityDescription;
-        private String hightQualityDescription;
+        private final String lowQualityDescription;
+        private final String hightQualityDescription;
 
         private int startMovingQuality;
 
@@ -16538,7 +16545,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
     private class ListAdapter extends RecyclerListView.SelectionAdapter {
 
-        private Context mContext;
+        private final Context mContext;
 
         public ListAdapter(Context context) {
             mContext = context;
