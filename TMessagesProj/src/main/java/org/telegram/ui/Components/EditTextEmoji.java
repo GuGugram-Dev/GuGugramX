@@ -34,13 +34,13 @@ import org.telegram.ui.ActionBar.Theme;
 
 public class EditTextEmoji extends FrameLayout implements NotificationCenter.NotificationCenterDelegate, SizeNotifierFrameLayout.SizeNotifierFrameLayoutDelegate {
 
-    private EditTextCaption editText;
-    private ImageView emojiButton;
-    private ReplaceableIconDrawable emojiIconDrawable;
+    private final EditTextCaption editText;
+    private final ImageView emojiButton;
+    private final ReplaceableIconDrawable emojiIconDrawable;
     private EmojiView emojiView;
     private boolean emojiViewVisible;
     private SizeNotifierFrameLayout sizeNotifierLayout;
-    private BaseFragment parentFragment;
+    private final BaseFragment parentFragment;
 
     private int keyboardHeight;
     private int keyboardHeightLand;
@@ -56,7 +56,7 @@ public class EditTextEmoji extends FrameLayout implements NotificationCenter.Not
 
     private EditTextEmojiDelegate delegate;
 
-    private int currentStyle;
+    private final int currentStyle;
     private final Theme.ResourcesProvider resourcesProvider;
 
     public static final int STYLE_FRAGMENT = 0;
@@ -64,7 +64,7 @@ public class EditTextEmoji extends FrameLayout implements NotificationCenter.Not
 
     private boolean waitingForKeyboardOpen;
     private boolean isAnimatePopupClosing;
-    private Runnable openKeyboardRunnable = new Runnable() {
+    private final Runnable openKeyboardRunnable = new Runnable() {
         @Override
         public void run() {
             if (!destroyed && editText != null && waitingForKeyboardOpen && !keyboardVisible && !AndroidUtilities.usingHardwareInput && !AndroidUtilities.isInMultiwindow && AndroidUtilities.isTablet()) {
@@ -514,7 +514,7 @@ public class EditTextEmoji extends FrameLayout implements NotificationCenter.Not
             @Override
             public void onClearEmojiRecent() {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), resourcesProvider);
-                builder.setTitle(LocaleController.getString("NekoX", R.string.NekoX));
+                builder.setTitle(LocaleController.getString("GuGuX", R.string.NekoX));
                 builder.setMessage(LocaleController.getString("ClearRecentEmoji", R.string.ClearRecentEmoji));
                 builder.setPositiveButton(LocaleController.getString("ClearButton", R.string.ClearButton).toUpperCase(), (dialogInterface, i) -> emojiView.clearRecentEmoji());
                 builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);

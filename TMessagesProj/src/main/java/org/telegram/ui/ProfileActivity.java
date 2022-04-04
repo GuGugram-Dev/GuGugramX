@@ -86,7 +86,6 @@ import com.blxueya.gugugramx.GuGuConfig;
 import com.jakewharton.processphoenix.ProcessPhoenix;
 
 import org.apache.commons.lang3.StringUtils;
-
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.AccountInstance;
 import org.telegram.messenger.AndroidUtilities;
@@ -189,12 +188,12 @@ import cn.hutool.core.util.RuntimeUtil;
 import cn.hutool.core.util.StrUtil;
 import kotlin.Unit;
 import libv2ray.Libv2ray;
-import tw.nekomimi.nekogram.ui.BottomBuilder;
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.NekoXConfig;
-import tw.nekomimi.nekogram.settings.NekoXSettingActivity;
 import tw.nekomimi.nekogram.parts.DialogTransKt;
 import tw.nekomimi.nekogram.settings.NekoSettingsActivity;
+import tw.nekomimi.nekogram.settings.NekoXSettingActivity;
+import tw.nekomimi.nekogram.ui.BottomBuilder;
 import tw.nekomimi.nekogram.utils.AlertUtil;
 import tw.nekomimi.nekogram.utils.EnvUtil;
 import tw.nekomimi.nekogram.utils.FileUtil;
@@ -210,8 +209,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private LinearLayoutManager layoutManager;
     private ListAdapter listAdapter;
     private SearchAdapter searchAdapter;
-    private SimpleTextView[] nameTextView = new SimpleTextView[2];
-    private SimpleTextView[] onlineTextView = new SimpleTextView[2];
+    private final SimpleTextView[] nameTextView = new SimpleTextView[2];
+    private final SimpleTextView[] onlineTextView = new SimpleTextView[2];
     private AudioPlayerAlert.ClippingTextViewSwitcher mediaCounterTextView;
     private SimpleTextView idTextView;
     private RLottieImageView writeButton;
@@ -248,14 +247,14 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int avatarColor;
 
     private View scrimView = null;
-    private Paint scrimPaint = new Paint(Paint.ANTI_ALIAS_FLAG) {
+    private final Paint scrimPaint = new Paint(Paint.ANTI_ALIAS_FLAG) {
         @Override
         public void setAlpha(int a) {
             super.setAlpha(a);
             fragmentView.invalidate();
         }
     };
-    private Paint actionBarBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint actionBarBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private ActionBarPopupWindow scrimPopupWindow;
 
     private int overlayCountVisible;
@@ -269,7 +268,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     private boolean doNotSetForeground;
 
-    private boolean[] isOnline = new boolean[1];
+    private final boolean[] isOnline = new boolean[1];
 
     private boolean callItemVisible;
     private boolean videoCallItemVisible;
@@ -318,7 +317,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private Animator searchViewTransition;
     private boolean searchMode;
 
-    private HashMap<Integer, Integer> positionToOffset = new HashMap<>();
+    private final HashMap<Integer, Integer> positionToOffset = new HashMap<>();
 
     private float avatarX;
     private float avatarY;
@@ -333,12 +332,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private float listViewVelocityY;
     private ValueAnimator expandAnimator;
     private float currentExpanAnimatorFracture;
-    private float[] expandAnimatorValues = new float[]{0f, 1f};
+    private final float[] expandAnimatorValues = new float[]{0f, 1f};
     private boolean isInLandscapeMode;
     private boolean allowPullingDown;
     private boolean isPulledDown;
 
-    private Paint whitePaint = new Paint();
+    private final Paint whitePaint = new Paint();
 
     private boolean isBot;
 
@@ -390,7 +389,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private final static int add_photo = 36;
     private final static int qr_button = 37;
 
-    private Rect rect = new Rect();
+    private final Rect rect = new Rect();
 
     private TextCell setAvatarCell;
 
@@ -557,7 +556,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         private final RectF rect = new RectF();
         private final Paint placeholderPaint;
 
-        private ImageReceiver foregroundImageReceiver;
+        private final ImageReceiver foregroundImageReceiver;
         private float foregroundAlpha;
         private ImageReceiver.BitmapHolder drawableHolder;
 
@@ -669,7 +668,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private class TopView extends View {
 
         private int currentColor;
-        private Paint paint = new Paint();
+        private final Paint paint = new Paint();
 
         public TopView(Context context) {
             super(context);
@@ -1037,7 +1036,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     private class NestedFrameLayout extends SizeNotifierFrameLayout implements NestedScrollingParent3 {
 
-        private NestedScrollingParentHelper nestedScrollingParentHelper;
+        private final NestedScrollingParentHelper nestedScrollingParentHelper;
 
         public NestedFrameLayout(Context context) {
             super(context);
@@ -2022,7 +2021,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             }
 
             private boolean ignoreLayout;
-            private Paint grayPaint = new Paint();
+            private final Paint grayPaint = new Paint();
 
             @Override
             public boolean hasOverlappingRendering() {
@@ -3493,7 +3492,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         });
 
         avatarProgressView = new RadialProgressView(context) {
-            private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
             {
                 paint.setColor(0x55000000);
@@ -4120,7 +4119,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     int action = actions.get(i);
                     if (action == 1 && (channelParticipant instanceof TLRPC.TL_channelParticipantAdmin || participant instanceof TLRPC.TL_chatParticipantAdmin)) {
                         AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
-                        builder2.setTitle(LocaleController.getString("NekoX", R.string.NekoX));
+                        builder2.setTitle(LocaleController.getString("GuGuX", R.string.NekoX));
                         builder2.setMessage(LocaleController.formatString("AdminWillBeRemoved", R.string.AdminWillBeRemoved, ContactsController.formatName(user.first_name, user.last_name)));
                         builder2.setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialog, which) -> {
                             if (channelParticipant != null) {
@@ -4504,7 +4503,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private AnimatorSet headerShadowAnimatorSet;
     private float mediaHeaderAnimationProgress;
     private boolean mediaHeaderVisible;
-    private Property<ActionBar, Float> ACTIONBAR_HEADER_PROGRESS = new AnimationProperties.FloatProperty<ActionBar>("animationProgress") {
+    private final Property<ActionBar, Float> ACTIONBAR_HEADER_PROGRESS = new AnimationProperties.FloatProperty<ActionBar>("animationProgress") {
         @Override
         public void setValue(ActionBar object, float value) {
             mediaHeaderAnimationProgress = value;
@@ -5519,10 +5518,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     @Override
     public boolean needDelayOpenAnimation() {
-        if (playProfileAnimation == 0) {
-            return true;
-        }
-        return false;
+        return playProfileAnimation == 0;
     }
 
     @Override
@@ -7411,7 +7407,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 VIEW_TYPE_VERSION = 14,
                 VIEW_TYPE_SUGGESTION = 15;
 
-        private Context mContext;
+        private final Context mContext;
 
         public ListAdapter(Context context) {
             mContext = context;
@@ -8006,12 +8002,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         private class SearchResult {
 
-            private String searchTitle;
-            private Runnable openRunnable;
-            private String rowName;
+            private final String searchTitle;
+            private final Runnable openRunnable;
+            private final String rowName;
             private String[] path;
-            private int iconResId;
-            private int guid;
+            private final int iconResId;
+            private final int guid;
             private int num;
 
             public SearchResult(int g, String search, int icon, Runnable open) {
@@ -8063,7 +8059,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             }
         }
 
-        private SearchResult[] searchArray = new SearchResult[]{
+        private final SearchResult[] searchArray = new SearchResult[]{
                 new SearchResult(500, LocaleController.getString("EditName", R.string.EditName), 0, () -> presentFragment(new ChangeNameActivity())),
                 new SearchResult(501, LocaleController.getString("ChangePhoneNumber", R.string.ChangePhoneNumber), 0, () -> presentFragment(new ActionIntroActivity(ActionIntroActivity.ACTION_TYPE_CHANGE_PHONE_NUMBER))),
                 new SearchResult(502, LocaleController.getString("AddAnotherAccount", R.string.AddAnotherAccount), 0, () -> {
@@ -8169,13 +8165,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 new SearchResult(403, LocaleController.getString("TelegramFAQ", R.string.TelegramFAQ), LocaleController.getString("SettingsHelp", R.string.SettingsHelp), R.drawable.menu_help, () -> Browser.openUrl(getParentActivity(), LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl))),
                 new SearchResult(404, LocaleController.getString("PrivacyPolicy", R.string.PrivacyPolicy), LocaleController.getString("SettingsHelp", R.string.SettingsHelp), R.drawable.menu_help, () -> Browser.openUrl(getParentActivity(), LocaleController.getString("PrivacyPolicyUrl", R.string.PrivacyPolicyUrl))),
         };
-        private ArrayList<MessagesController.FaqSearchResult> faqSearchArray = new ArrayList<>();
+        private final ArrayList<MessagesController.FaqSearchResult> faqSearchArray = new ArrayList<>();
 
-        private Context mContext;
+        private final Context mContext;
         private ArrayList<CharSequence> resultNames = new ArrayList<>();
         private ArrayList<SearchResult> searchResults = new ArrayList<>();
         private ArrayList<MessagesController.FaqSearchResult> faqSearchResults = new ArrayList<>();
-        private ArrayList<Object> recentSearches = new ArrayList<>();
+        private final ArrayList<Object> recentSearches = new ArrayList<>();
         private boolean searchWas;
         private Runnable searchRunnable;
         private String lastSearchString;

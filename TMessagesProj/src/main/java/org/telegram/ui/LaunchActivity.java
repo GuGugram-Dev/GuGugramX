@@ -168,14 +168,14 @@ import java.util.regex.Pattern;
 import cn.hutool.core.util.StrUtil;
 import kotlin.Unit;
 import kotlin.text.StringsKt;
-import tw.nekomimi.nekogram.InternalUpdater;
-import tw.nekomimi.nekogram.ui.BottomBuilder;
 import tw.nekomimi.nekogram.ExternalGcm;
+import tw.nekomimi.nekogram.InternalUpdater;
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.NekoXConfig;
-import tw.nekomimi.nekogram.settings.NekoSettingsActivity;
 import tw.nekomimi.nekogram.proxy.SubInfo;
 import tw.nekomimi.nekogram.proxy.SubManager;
+import tw.nekomimi.nekogram.settings.NekoSettingsActivity;
+import tw.nekomimi.nekogram.ui.BottomBuilder;
 import tw.nekomimi.nekogram.utils.AlertUtil;
 import tw.nekomimi.nekogram.utils.UIUtil;
 
@@ -197,9 +197,9 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
     private ArrayList<TLRPC.User> contactsToSend;
     private Uri contactsToSendUri;
     private int currentConnectionState;
-    private static ArrayList<BaseFragment> mainFragmentsStack = new ArrayList<>();
-    private static ArrayList<BaseFragment> layerFragmentsStack = new ArrayList<>();
-    private static ArrayList<BaseFragment> rightFragmentsStack = new ArrayList<>();
+    private static final ArrayList<BaseFragment> mainFragmentsStack = new ArrayList<>();
+    private static final ArrayList<BaseFragment> layerFragmentsStack = new ArrayList<>();
+    private static final ArrayList<BaseFragment> rightFragmentsStack = new ArrayList<>();
     private ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener;
     private ArrayList<Parcelable> importingStickers;
     private ArrayList<String> importingStickersEmoji;
@@ -2701,9 +2701,7 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
                         if (dids.size() <= 1) {
                             if (videoPath != null) {
                                 return true;
-                            } else if (photoPathsArray != null && photoPathsArray.size() > 0) {
-                                return true;
-                            }
+                            } else return photoPathsArray != null && photoPathsArray.size() > 0;
                         }
                     }
                 }
@@ -2960,7 +2958,7 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
                 NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.didReceiveSmsCode, code);
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
-                builder.setTitle(LocaleController.getString("NekoX", R.string.NekoX));
+                builder.setTitle(LocaleController.getString("GuGuX", R.string.NekoX));
                 builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("OtherLoginCode", R.string.OtherLoginCode, code)));
                 builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
                 showAlertDialog(builder);
@@ -3282,7 +3280,7 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
                             }
                         } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
-                            builder.setTitle(LocaleController.getString("NekoX", R.string.NekoX));
+                            builder.setTitle(LocaleController.getString("GuGuX", R.string.NekoX));
                             if (error.text.startsWith("FLOOD_WAIT")) {
                                 builder.setMessage(LocaleController.getString("FloodWait", R.string.FloodWait));
                             } else if (error.text.startsWith("INVITE_HASH_EXPIRED")) {
@@ -3339,7 +3337,7 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
                                 }
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
-                                builder.setTitle(LocaleController.getString("NekoX", R.string.NekoX));
+                                builder.setTitle(LocaleController.getString("GuGuX", R.string.NekoX));
                                 if (error.text.startsWith("FLOOD_WAIT")) {
                                     builder.setMessage(LocaleController.getString("FloodWait", R.string.FloodWait));
                                 } else if (error.text.equals("USERS_TOO_MUCH")) {
@@ -3783,8 +3781,8 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
         }
         updateLayout = new FrameLayout(this) {
 
-            private Paint paint = new Paint();
-            private Matrix matrix = new Matrix();
+            private final Paint paint = new Paint();
+            private final Matrix matrix = new Matrix();
             private LinearGradient updateGradient;
             private int lastGradientWidth;
 
@@ -4624,7 +4622,7 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
                 return;
             }
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(LocaleController.getString("NekoX", R.string.NekoX));
+            builder.setTitle(LocaleController.getString("GuGuX", R.string.NekoX));
             if (reason != 2 && reason != 3) {
                 builder.setNegativeButton(LocaleController.getString("MoreInfo", R.string.MoreInfo), (dialogInterface, i) -> {
                     if (!mainFragmentsStack.isEmpty()) {
@@ -4667,7 +4665,7 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
         } else if (id == NotificationCenter.wasUnableToFindCurrentLocation) {
             final HashMap<String, MessageObject> waitingForLocation = (HashMap<String, MessageObject>) args[0];
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(LocaleController.getString("NekoX", R.string.NekoX));
+            builder.setTitle(LocaleController.getString("GuGuX", R.string.NekoX));
             builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
             builder.setNegativeButton(LocaleController.getString("ShareYouLocationUnableManually", R.string.ShareYouLocationUnableManually), (dialogInterface, i) -> {
                 if (mainFragmentsStack.isEmpty()) {
