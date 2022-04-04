@@ -2,6 +2,7 @@
 <resources>
     <string name="ForceAllowCopy">强制复制</string>
     <string name="RepeatAsCopy">无引用复读</string>
+    <string name="InvertReply">反转</string>
     <string name="AlwaysSaveChatOffset">总是保存聊天记录的偏移量</string>
     <string name="DoubleTapAction">双击操作</string>
     <string name="SendReactions">表情回应</string>
