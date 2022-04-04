@@ -31,9 +31,11 @@ object GuGuConfig {
 
     var showRepeatAsCopy = addConfig("RepeatAsCopy",ConfigItem.configTypeBool,false)
 
+    var showInvertReply = addConfig("InvertReply",ConfigItem.configTypeBool,false)
+
     var doubleTapAction = addConfig("DoubleTapAction",ConfigItem.configTypeInt,0)
 
-    var showForwarderName = addConfig("ShowForwarderName",ConfigItem.configTypeBool,false);
+    var showForwarderName = addConfig("ShowForwarderName",ConfigItem.configTypeBool,false)
 
     var noiseSuppressAndVoiceEnhance = addConfig("NoiseSuppressAndVoiceEnhance",ConfigItem.configTypeBool,false)
 

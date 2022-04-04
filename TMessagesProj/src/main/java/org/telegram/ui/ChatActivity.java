@@ -330,7 +330,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int nkbtn_deldlcache = 2013;
     private final static int nkbtn_view_history = 2014;
     private final static int nkbtn_repeat = 2015;
-    private final static int nkbtn_repeatascopy = 2025;
     private final static int nkbtn_stickerdl = 2016;
     private final static int nkbtn_unpin = 2017;
     private final static int nkbtn_view_in_chat = 2018;
@@ -340,7 +339,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int nkbtn_PGPDecrypt = 2022;
     private final static int nkbtn_PGPImportPrivate = 2023;
     private final static int nkbtn_PGPImport = 2024;
-    private final static int nkbtn_copy_link_in_pm = 2025;
+    private final static int nkbtn_repeatascopy = 2025;
+    private final static int nkbtm_invertReply = 2026;
+    private final static int nkbtn_copy_link_in_pm = 2027;
 
     protected TLRPC.Chat currentChat;
     protected TLRPC.User currentUser;
@@ -21976,6 +21977,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 options.add(nkbtn_repeatascopy);
                                 icons.add(R.drawable.msg_repeat);
                             }
+                            if (GuGuConfig.INSTANCE.getShowInvertReply().Bool()) {
+                                items.add(LocaleController.getString("InvertReply", R.string.InvertReply));
+                                options.add(nkbtm_invertReply);
+                                icons.add(R.drawable.msg_reset);
+                            }
                         }
                         if (chatMode != MODE_SCHEDULED) {
                             boolean allowViewHistory = currentUser == null
@@ -24006,6 +24012,17 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                 return 1;
 
+            }
+            case nkbtn_repeat: {
+                repeatMessage(true,false);
+                return 2;
+            }
+            case nkbtn_repeatascopy:
+                repeatMessage(true,true);
+                return 2;
+            case nkbtm_invertReply: {
+                invertReplyMessage(true);
+                return 2;
             }
         }
         return 0;
@@ -29239,6 +29256,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }else if (id == nkbtn_repeatascopy){
             repeatMessage(false,true);
             clearSelectionMode();
+        } else if (id == nkbtm_invertReply) {
+            invertReplyMessage(false);
+            clearSelectionMode();
         }
     }
 
@@ -29251,6 +29271,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
             case nkbtn_repeatascopy:{
                 repeatMessage(false,true);
+                break;
+            }
+            case nkbtm_invertReply: {
+                invertReplyMessage(false);
                 break;
             }
             case nkbtn_forward_noquote: {
@@ -29582,5 +29606,46 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             return;
         }
         forwardMessages(messages, isRepeatAsCopy, false, true, 0);
+    }
+
+    public void invertReplyMessage(boolean isLongClick){
+        if (checkSlowMode(chatActivityEnterView.getSendButton())) {
+            return;
+        }
+        if (selectedObject != null) {
+            MessageObject replyTo = isLongClick ? getThreadMessage() : selectedObject;
+            if (selectedObject.type == 0 || selectedObject.isAnimatedEmoji() || getMessageCaption(selectedObject, selectedObjectGroup) != null) {
+                CharSequence caption = getMessageCaption(selectedObject, selectedObjectGroup);
+                if (caption == null) {
+                    caption = getMessageContent(selectedObject, 0, false);
+                }
+                if (!TextUtils.isEmpty(caption)) {
+                    StringBuilder toSend = new StringBuilder();
+                    for (int i = 0; i < caption.length(); i++) {
+                        char c = caption.charAt(i);
+                        if (c == '我') {
+                            toSend.append('你');
+                        } else if (c == '你') {
+                            toSend.append('我');
+                        } else if (c == '咱') {
+                            toSend.append('您');
+                        } else if (c == '您') {
+                            toSend.append('咱');
+                        } else {
+                            toSend.append(c);
+                        }
+                    }
+                    caption = toSend.toString();
+                    SendMessagesHelper.getInstance(currentAccount)
+                            .sendMessage(caption.toString(), dialog_id, replyTo,
+                                    getThreadMessage(), null,
+                                    false, selectedObject.messageOwner.entities, null, null,
+                                    true, 0, null);
+                }
+            } else if ((selectedObject.isSticker() || selectedObject.isAnimatedSticker()) && selectedObject.getDocument() != null) {
+                SendMessagesHelper.getInstance(currentAccount)
+                        .sendSticker(selectedObject.getDocument(), null, dialog_id, replyTo, getThreadMessage(), null, null, true, 0);
+            }
+        }
     }
 }

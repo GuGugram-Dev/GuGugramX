@@ -2,6 +2,7 @@
 <resources>
     <string name="ForceAllowCopy">ForeAllowCopy</string>
     <string name="RepeatAsCopy">Repeat as Copy</string>
+    <string name="InvertReply">Invert</string>
     <string name="AlwaysSaveChatOffset">AlwaysSaveChatOffset</string>
     <string name="DoubleTapAction">Double Tap Action</string>
     <string name="SendReactions">Send Reactions</string>
