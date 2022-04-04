@@ -100,12 +100,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import cn.hutool.core.collection.CollectionUtil;
 import kotlin.Unit;
-import tw.nekomimi.nekogram.utils.EnvUtil;
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.transtale.TranslateDb;
 import tw.nekomimi.nekogram.transtale.Translator;
 import tw.nekomimi.nekogram.transtale.TranslatorKt;
 import tw.nekomimi.nekogram.utils.AlertUtil;
+import tw.nekomimi.nekogram.utils.EnvUtil;
 
 public class DocumentSelectActivity extends BaseFragment {
 
@@ -140,9 +140,9 @@ public class DocumentSelectActivity extends BaseFragment {
     private EditTextEmoji commentTextView;
     private ImageView writeButton;
     private SizeNotifierFrameLayout sizeNotifierFrameLayout;
-    private TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-    private RectF rect = new RectF();
-    private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final RectF rect = new RectF();
+    private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private AnimatorSet animatorSet;
 
     private boolean sendPressed;
@@ -154,17 +154,17 @@ public class DocumentSelectActivity extends BaseFragment {
     private boolean hasFiles;
 
     private File currentDir;
-    private ArrayList<ListItem> items = new ArrayList<>();
+    private final ArrayList<ListItem> items = new ArrayList<>();
     private boolean receiverRegistered = false;
-    private ArrayList<HistoryEntry> history = new ArrayList<>();
+    private final ArrayList<HistoryEntry> history = new ArrayList<>();
     private static final long sizeLimit = 1024 * 1024 * 1536;
     private DocumentSelectActivityDelegate delegate;
-    private HashMap<String, ListItem> selectedFiles = new HashMap<>();
+    private final HashMap<String, ListItem> selectedFiles = new HashMap<>();
     private boolean scrolling;
-    private ArrayList<ListItem> recentItems = new ArrayList<>();
+    private final ArrayList<ListItem> recentItems = new ArrayList<>();
     private int maxSelectedFiles = -1;
     private boolean canSelectOnlyImageFiles;
-    private boolean allowMusic;
+    private final boolean allowMusic;
 
     public void setAllowPhoto(boolean allowPhoto) {
         this.allowPhoto = allowPhoto;
@@ -195,7 +195,7 @@ public class DocumentSelectActivity extends BaseFragment {
         String title;
     }
 
-    private BroadcastReceiver receiver = new BroadcastReceiver() {
+    private final BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context arg0, Intent intent) {
             Runnable r = () -> {
@@ -691,7 +691,7 @@ public class DocumentSelectActivity extends BaseFragment {
                 sendPopupLayout.setAnimationEnabled(false);
                 sendPopupLayout.setOnTouchListener(new View.OnTouchListener() {
 
-                    private android.graphics.Rect popupRect = new android.graphics.Rect();
+                    private final android.graphics.Rect popupRect = new android.graphics.Rect();
 
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
@@ -1309,7 +1309,7 @@ public class DocumentSelectActivity extends BaseFragment {
         if (getParentActivity() == null) {
             return;
         }
-        new AlertDialog.Builder(getParentActivity()).setTitle(LocaleController.getString("NekoX", R.string.NekoX)).setMessage(error).setPositiveButton(LocaleController.getString("OK", R.string.OK), null).show();
+        new AlertDialog.Builder(getParentActivity()).setTitle(LocaleController.getString("GuGuX", R.string.NekoX)).setMessage(error).setPositiveButton(LocaleController.getString("OK", R.string.OK), null).show();
     }
 
     @SuppressLint("NewApi")
@@ -1466,7 +1466,7 @@ public class DocumentSelectActivity extends BaseFragment {
 
     private class ListAdapter extends RecyclerListView.SelectionAdapter {
 
-        private Context mContext;
+        private final Context mContext;
 
         public ListAdapter(Context context) {
             mContext = context;
@@ -1556,10 +1556,10 @@ public class DocumentSelectActivity extends BaseFragment {
 
     public class SearchAdapter extends RecyclerListView.SelectionAdapter {
 
-        private Context mContext;
+        private final Context mContext;
         private ArrayList<ListItem> searchResult = new ArrayList<>();
         private Runnable searchRunnable;
-        private int reqId = 0;
+        private final int reqId = 0;
         private int lastReqId;
 
         public SearchAdapter(Context context) {

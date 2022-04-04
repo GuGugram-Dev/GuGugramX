@@ -27,12 +27,6 @@ import android.hardware.biometrics.BiometricManager;
 import android.hardware.biometrics.BiometricPrompt;
 import android.os.Build;
 import android.os.SystemClock;
-
-import androidx.annotation.IdRes;
-import androidx.core.content.ContextCompat;
-import androidx.core.os.CancellationSignal;
-
-import android.os.Vibrator;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -56,13 +50,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.IdRes;
+import androidx.core.content.ContextCompat;
 import androidx.core.os.CancellationSignal;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.FingerprintController;
@@ -99,9 +90,9 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
 
     private static class AnimatingTextView extends FrameLayout {
 
-        private ArrayList<TextView> characterTextViews;
-        private ArrayList<TextView> dotTextViews;
-        private StringBuilder stringBuilder;
+        private final ArrayList<TextView> characterTextViews;
+        private final ArrayList<TextView> dotTextViews;
+        private final StringBuilder stringBuilder;
         private final static String DOT = "\u2022";
         private AnimatorSet currentAnimation;
         private Runnable dotRunnable;
@@ -424,20 +415,20 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
 
     private FrameLayout container;
     private Drawable backgroundDrawable;
-    private FrameLayout numbersFrameLayout;
-    private ArrayList<TextView> numberTextViews;
-    private ArrayList<TextView> lettersTextViews;
-    private ArrayList<FrameLayout> numberFrameLayouts;
-    private FrameLayout passwordFrameLayout;
-    private ImageView eraseView;
-    private ImageView fingerprintView;
-    private EditTextBoldCursor passwordEditText;
-    private AnimatingTextView passwordEditText2;
-    private FrameLayout backgroundFrameLayout;
-    private TextView passcodeTextView;
-    private TextView retryTextView;
-    private ImageView checkImage;
-    private ImageView fingerprintImage;
+    private final FrameLayout numbersFrameLayout;
+    private final ArrayList<TextView> numberTextViews;
+    private final ArrayList<TextView> lettersTextViews;
+    private final ArrayList<FrameLayout> numberFrameLayouts;
+    private final FrameLayout passwordFrameLayout;
+    private final ImageView eraseView;
+    private final ImageView fingerprintView;
+    private final EditTextBoldCursor passwordEditText;
+    private final AnimatingTextView passwordEditText2;
+    private final FrameLayout backgroundFrameLayout;
+    private final TextView passcodeTextView;
+    private final TextView retryTextView;
+    private final ImageView checkImage;
+    private final ImageView fingerprintImage;
     private int keyboardHeight = 0;
 
     private CancellationSignal cancellationSignal;
@@ -448,9 +439,9 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
 
     private int imageY;
 
-    private RLottieImageView imageView;
+    private final RLottieImageView imageView;
 
-    private Rect rect = new Rect();
+    private final Rect rect = new Rect();
 
     private PasscodeViewDelegate delegate;
 
@@ -462,7 +453,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
         private float startRadius;
     }
 
-    private ArrayList<InnerAnimator> innerAnimators = new ArrayList<>();
+    private final ArrayList<InnerAnimator> innerAnimators = new ArrayList<>();
 
     private static final @IdRes
     int[] ids = {
@@ -488,7 +479,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
 
         backgroundFrameLayout = new FrameLayout(context) {
 
-            private Paint paint = new Paint();
+            private final Paint paint = new Paint();
 
             @Override
             protected void onDraw(Canvas canvas) {
@@ -884,7 +875,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
         AnimatorSet.start();
     }
 
-    private Runnable checkRunnable = new Runnable() {
+    private final Runnable checkRunnable = new Runnable() {
         @Override
         public void run() {
             checkRetryTextView();
@@ -1016,7 +1007,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
                     if (useBiometric) {
                         Executor executor = ContextCompat.getMainExecutor(parentActivity);
                         BiometricPrompt.Builder builder = new BiometricPrompt.Builder(parentActivity)
-                                .setTitle(LocaleController.getString("NekoX", R.string.NekoX))
+                                .setTitle(LocaleController.getString("GuGuX", R.string.NekoX))
                                 .setNegativeButton(LocaleController.getString("Canel", R.string.Cancel), executor, (dialog, which) -> { });
                         if (Build.VERSION.SDK_INT >= 29) {
                             builder.setConfirmationRequired(false);
@@ -1076,7 +1067,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
                     fingerprintStatusTextView.setLayoutParams(layoutParams);
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setTitle(LocaleController.getString("NekoX", R.string.NekoX));
+                    builder.setTitle(LocaleController.getString("GuGuX", R.string.NekoX));
                     builder.setView(relativeLayout);
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     builder.setOnDismissListener(dialog -> {
@@ -1536,7 +1527,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
-    private int[] pos = new int[2];
+    private final int[] pos = new int[2];
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
