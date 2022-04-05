@@ -98,9 +98,8 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
                     LocaleController.getString("MapPreviewProviderNobody", R.string.MapPreviewProviderNobody)
             }, null));
     private final AbstractConfigCell DoubleTapActionRow = cellGroup.appendCell(new ConfigCellCustom(CellGroup.ITEM_TYPE_TEXT_SETTINGS_CELL,true));
-    private final AbstractConfigCell messageMenuRow = cellGroup.appendCell(new ConfigCellSelectBox(LocaleController.getString("MessageMenu"), null, null, () -> {
-        showMessageMenuAlert();
-    }));
+    private final AbstractConfigCell messageMenuRow = cellGroup.appendCell(new ConfigCellSelectBox(LocaleController.getString("MessageMenu"), null, null, this::showMessageMenuAlert));
+    private final AbstractConfigCell textStyleRow = cellGroup.appendCell(new ConfigCellSelectBox(LocaleController.getString("TextStyle"), null, null, this::showTextStyleAlert));
     /*private final AbstractConfigCell reactionsRow = cellGroup.appendCell(new ConfigCellSelectBox(null, NekoConfig.reactions,
             new String[]{
                     LocaleController.getString("doubleTapSendReactions", R.string.doubleTapSendReactions),
@@ -464,6 +463,120 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
                     }
                 }
             });
+        }
+        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+        builder.setView(linearLayout);
+        showDialog(builder.create());
+    }
+
+    public void showTextStyleAlert() {
+        if (getParentActivity() == null) {
+            return;
+        }
+
+        Context context = getParentActivity();
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(LocaleController.getString("TextStyle", R.string.TextStyle));
+
+        LinearLayout linearLayout = new LinearLayout(context);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+
+        LinearLayout linearLayoutInviteContainer = new LinearLayout(context);
+        linearLayoutInviteContainer.setOrientation(LinearLayout.VERTICAL);
+        linearLayout.addView(linearLayoutInviteContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+        for (int a = 0; a < 10; a++) {
+            TextCheckCell textCell = new TextCheckCell(getParentActivity());
+            textCell.setTag(a);
+            switch (a) {
+                case 0: {
+                    textCell.setTextAndCheck(LocaleController.getString("Bold", R.string.Bold), GuGuConfig.INSTANCE.getShowTextBold().Bool(), false);
+                    break;
+                }
+                case 1: {
+                    textCell.setTextAndCheck(LocaleController.getString("Italic", R.string.Italic), GuGuConfig.INSTANCE.getShowTextItalic().Bool(), false);
+                    break;
+                }
+                case 2: {
+                    textCell.setTextAndCheck(LocaleController.getString("Mono", R.string.Mono), GuGuConfig.INSTANCE.getShowTextMono().Bool(), false);
+                    break;
+                }
+                case 3: {
+                    textCell.setTextAndCheck(LocaleController.getString("Strike", R.string.Strike), GuGuConfig.INSTANCE.getShowTextStrikethrough().Bool(), false);
+                    break;
+                }
+                case 4: {
+                    textCell.setTextAndCheck(LocaleController.getString("Underline", R.string.Underline), GuGuConfig.INSTANCE.getShowTextUnderline().Bool(), false);
+                    break;
+                }
+                case 5: {
+                    textCell.setTextAndCheck(LocaleController.getString("Spoiler", R.string.Spoiler), GuGuConfig.INSTANCE.getShowTextSpoiler().Bool(), false);
+                    break;
+                }
+                case 6: {
+                    textCell.setTextAndCheck(LocaleController.getString("CreateLink", R.string.CreateLink), GuGuConfig.INSTANCE.getShowTextCreateLink().Bool(), false);
+                    break;
+                }
+                case 7: {
+                    textCell.setTextAndCheck(LocaleController.getString("CreateMention", R.string.CreateMention), GuGuConfig.INSTANCE.getShowTextCreateMention().Bool(), false);
+                    break;
+                }
+                case 8: {
+                    textCell.setTextAndCheck(LocaleController.getString("Regular", R.string.Regular), GuGuConfig.INSTANCE.getShowTextRegular().Bool(), false);
+                    break;
+                }
+                case 9: {
+                    textCell.setTextAndCheck(LocaleController.getString("TextUndoRedo", R.string.TextUndoRedo), GuGuConfig.INSTANCE.getShowTextUndoRedo().Bool(), false);
+                }
+            }
+            textCell.setTag(a);
+            textCell.setBackground(Theme.getSelectorDrawable(false));
+            linearLayout.addView(textCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+            textCell.setOnClickListener(v2 -> {
+                Integer tag = (Integer) v2.getTag();
+                switch (tag) {
+                    case 0: {
+                        textCell.setChecked(GuGuConfig.INSTANCE.getShowTextBold().toggleConfigBool());
+                        break;
+                    }
+                    case 1: {
+                        textCell.setChecked(GuGuConfig.INSTANCE.getShowTextItalic().toggleConfigBool());
+                        break;
+                    }
+                    case 2: {
+                        textCell.setChecked(GuGuConfig.INSTANCE.getShowTextMono().toggleConfigBool());
+                        break;
+                    }
+                    case 3: {
+                        textCell.setChecked(GuGuConfig.INSTANCE.getShowTextStrikethrough().toggleConfigBool());
+                        break;
+                    }
+                    case 4: {
+                        textCell.setChecked(GuGuConfig.INSTANCE.getShowTextUnderline().toggleConfigBool());
+                        break;
+                    }
+                    case 5: {
+                        textCell.setChecked(GuGuConfig.INSTANCE.getShowTextSpoiler().toggleConfigBool());
+                        break;
+                    }
+                    case 6: {
+                        textCell.setChecked(GuGuConfig.INSTANCE.getShowTextCreateLink().toggleConfigBool());
+                        break;
+                    }
+                    case 7: {
+                        textCell.setChecked(GuGuConfig.INSTANCE.getShowTextCreateMention().toggleConfigBool());
+                        break;
+                    }
+                    case 8: {
+                        textCell.setChecked(GuGuConfig.INSTANCE.getShowTextRegular().toggleConfigBool());
+                        break;
+                    }
+                    case 9: {
+                        textCell.setChecked(GuGuConfig.INSTANCE.getShowTextUndoRedo().toggleConfigBool());
+                        break;
+                    }
+                }
+            });
+
         }
         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
         builder.setView(linearLayout);
