@@ -7,6 +7,8 @@
     <string name="DoubleTapAction">Double Tap Action</string>
     <string name="SendReactions">Send Reactions</string>
     <string name="ShowReactions">Show Reactions</string>
+    <string name="TextStyle">Text style</string>
+    <string name="TextUndoRedo">Undo/Redo</string>
     <string name="TextUndo">Undo</string>
     <string name="TextRedo">Redo</string>
     <string name="ShowForwarderName">Show forwarder name</string>

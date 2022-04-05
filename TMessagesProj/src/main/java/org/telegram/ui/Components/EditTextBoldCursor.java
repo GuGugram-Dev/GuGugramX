@@ -16,18 +16,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.Rect;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.os.Build;
 import android.os.SystemClock;
-
-import androidx.annotation.Keep;
-import androidx.annotation.Nullable;
-import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
-
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -41,8 +36,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+import com.blxueya.gugugramx.GuGuConfig;
 
 import org.lsposed.hiddenapibypass.HiddenApiBypass;
 import org.telegram.messenger.AndroidUtilities;
@@ -75,7 +75,7 @@ public class EditTextBoldCursor extends EditTextEffects {
     private GradientDrawable gradientDrawable;
     private SubstringLayoutAnimator hintAnimator;
 
-    private Runnable invalidateRunnable = new Runnable() {
+    private final Runnable invalidateRunnable = new Runnable() {
         @Override
         public void run() {
             invalidate();
@@ -94,7 +94,7 @@ public class EditTextBoldCursor extends EditTextEffects {
     private int ignoreBottomCount;
     private int scrollY;
     private float lineSpacingExtra;
-    private Rect rect = new Rect();
+    private final Rect rect = new Rect();
     private StaticLayout hintLayout;
     private CharSequence hint;
     private StaticLayout errorLayout;
@@ -142,7 +142,7 @@ public class EditTextBoldCursor extends EditTextEffects {
     boolean drawInMaim;
     ShapeDrawable cursorDrawable;
 
-    private List<TextWatcher> registeredTextWatchers = new ArrayList<>();
+    private final List<TextWatcher> registeredTextWatchers = new ArrayList<>();
     private boolean isTextWatchersSuppressed = false;
     private static Method canUndoMethod;
     private static Method canRedoMethod;
@@ -483,7 +483,7 @@ public class EditTextBoldCursor extends EditTextEffects {
         invalidate();
     }
 
-    private Rect padding = new Rect();
+    private final Rect padding = new Rect();
     public void setLineColors(int color, int active, int error) {
         lineVisible = true;
         getContext().getResources().getDrawable(R.drawable.search_dark).getPadding(padding);
@@ -1031,7 +1031,9 @@ public class EditTextBoldCursor extends EditTextEffects {
             };
             callback.onCreateActionMode(floatingActionMode, floatingActionMode.getMenu());
             extendActionMode(floatingActionMode, floatingActionMode.getMenu());
-            addUndoRedo(floatingActionMode.getMenu());
+            if (GuGuConfig.INSTANCE.getShowTextUndoRedo().Bool()) {
+                addUndoRedo(floatingActionMode.getMenu());
+            }
             floatingActionMode.invalidate();
             getViewTreeObserver().addOnPreDrawListener(floatingToolbarPreDrawListener);
             invalidate();
