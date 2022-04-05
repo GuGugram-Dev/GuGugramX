@@ -4,7 +4,7 @@ apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
 
 def verName = "8.6.2"
-def verCode = 615
+def verCode = 616
 
 if (System.getenv("DEBUG_BUILD") == "true") {
     verName += "-" + RuntimeUtil.execForStr("git log --pretty=format:'%h' -n 1").trim()
@@ -194,7 +194,7 @@ android {
             debuggable true
             jniDebuggable true
             multiDexEnabled true
-            zipAlignEnabled true;
+            zipAlignEnabled true
             signingConfig keystorePwd == null ? signingConfigs.debug : signingConfigs.release
             ndk.debugSymbolLevel = "FULL"
         }
