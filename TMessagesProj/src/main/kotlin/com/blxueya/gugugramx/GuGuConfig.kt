@@ -23,6 +23,26 @@ object GuGuConfig {
         false
     private val configs =
         ArrayList<ConfigItem>()
+    // Text Style
+    var showTextBold = addConfig("TextBold", ConfigItem.configTypeBool, true)
+
+    var showTextItalic = addConfig("TextItalic", ConfigItem.configTypeBool, true)
+
+    var showTextMono = addConfig("TextMonospace", ConfigItem.configTypeBool, true)
+
+    var showTextStrikethrough = addConfig("TextStrikethrough", ConfigItem.configTypeBool, true)
+
+    var showTextUnderline = addConfig("TextUnderline", ConfigItem.configTypeBool, true)
+
+    var showTextSpoiler = addConfig("TextSpoiler", ConfigItem.configTypeBool, true)
+
+    var showTextCreateLink = addConfig("TextLink", ConfigItem.configTypeBool, true)
+
+    var showTextCreateMention = addConfig("TextCreateMention", ConfigItem.configTypeBool, true)
+
+    var showTextRegular = addConfig("TextRegular", ConfigItem.configTypeBool, true)
+
+    val showTextUndoRedo = addConfig("TextUndoRedo", ConfigItem.configTypeBool, false)
 
     // Configs
     var ForceAllowCopy = addConfig("ForceAllowCopy", ConfigItem.configTypeBool, false)

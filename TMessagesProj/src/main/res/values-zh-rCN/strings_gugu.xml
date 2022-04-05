@@ -7,6 +7,8 @@
     <string name="DoubleTapAction">双击操作</string>
     <string name="SendReactions">表情回应</string>
     <string name="ShowReactions">显示表情回应菜单</string>
+    <string name="TextStyle">文本样式</string>
+    <string name="TextUndoRedo">撤销/重做</string>
     <string name="TextUndo">撤销</string>
     <string name="TextRedo">重做</string>
     <string name="ShowForwarderName">显示转发者姓名</string>
