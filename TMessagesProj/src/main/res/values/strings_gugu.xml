@@ -14,4 +14,5 @@
     <string name="ShowForwarderName">Show forwarder name</string>
     <string name="NoiseSuppressAndVoiceEnhance">Noise Suppress And Voice Enhance</string>
     <string name="ScrollableChatPreview">Scrollable Chat Preview</string>
+    <string name="invertedNotification">Inverted Notification</string>
 </resources>

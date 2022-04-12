@@ -58,6 +58,8 @@ import androidx.core.content.pm.ShortcutInfoCompat;
 import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
 
+import com.blxueya.gugugramx.GuGuConfig;
+
 import org.telegram.messenger.support.LongSparseIntArray;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLRPC;
@@ -81,21 +83,21 @@ public class NotificationsController extends BaseController {
     public static final String EXTRA_VOICE_REPLY = "extra_voice_reply";
     public static String OTHER_NOTIFICATIONS_CHANNEL = null;
 
-    private static DispatchQueue notificationsQueue = new DispatchQueue("notificationsQueue");
-    private ArrayList<MessageObject> pushMessages = new ArrayList<>();
-    private ArrayList<MessageObject> delayedPushMessages = new ArrayList<>();
-    private LongSparseArray<SparseArray<MessageObject>> pushMessagesDict = new LongSparseArray<>();
-    private LongSparseArray<MessageObject> fcmRandomMessagesDict = new LongSparseArray<>();
-    private LongSparseArray<Point> smartNotificationsDialogs = new LongSparseArray<>();
+    private static final DispatchQueue notificationsQueue = new DispatchQueue("notificationsQueue");
+    private final ArrayList<MessageObject> pushMessages = new ArrayList<>();
+    private final ArrayList<MessageObject> delayedPushMessages = new ArrayList<>();
+    private final LongSparseArray<SparseArray<MessageObject>> pushMessagesDict = new LongSparseArray<>();
+    private final LongSparseArray<MessageObject> fcmRandomMessagesDict = new LongSparseArray<>();
+    private final LongSparseArray<Point> smartNotificationsDialogs = new LongSparseArray<>();
     private static NotificationManagerCompat notificationManager = null;
     private static NotificationManager systemNotificationManager = null;
-    private LongSparseArray<Integer> pushDialogs = new LongSparseArray<>();
-    private LongSparseArray<Integer> wearNotificationsIds = new LongSparseArray<>();
-    private LongSparseArray<Integer> lastWearNotifiedMessageId = new LongSparseArray<>();
-    private LongSparseArray<Integer> pushDialogsOverrideMention = new LongSparseArray<>();
+    private final LongSparseArray<Integer> pushDialogs = new LongSparseArray<>();
+    private final LongSparseArray<Integer> wearNotificationsIds = new LongSparseArray<>();
+    private final LongSparseArray<Integer> lastWearNotifiedMessageId = new LongSparseArray<>();
+    private final LongSparseArray<Integer> pushDialogsOverrideMention = new LongSparseArray<>();
     public ArrayList<MessageObject> popupMessages = new ArrayList<>();
     public ArrayList<MessageObject> popupReplyMessages = new ArrayList<>();
-    private HashSet<Long> openedInBubbleDialogs = new HashSet<>();
+    private final HashSet<Long> openedInBubbleDialogs = new HashSet<>();
     private long openedDialogId = 0;
     private int lastButtonId = 5000;
     private int total_unread_count = 0;
@@ -117,7 +119,7 @@ public class NotificationsController extends BaseController {
     public boolean showBadgeMuted;
     public boolean showBadgeMessages;
 
-    private Runnable notificationDelayRunnable;
+    private final Runnable notificationDelayRunnable;
     private PowerManager.WakeLock notificationDelayWakelock;
 
     private long lastSoundPlay;
@@ -132,8 +134,8 @@ public class NotificationsController extends BaseController {
     protected static AudioManager audioManager;
     private AlarmManager alarmManager;
 
-    private int notificationId;
-    private String notificationGroup;
+    private final int notificationId;
+    private final String notificationGroup;
 
     public static final int SETTING_SOUND_ON = 0;
     public static final int SETTING_SOUND_OFF = 1;
@@ -3217,7 +3219,7 @@ public class NotificationsController extends BaseController {
                     }
                     newSettings.append(channelLedColor);
                     if (channelSound != null) {
-                        newSettings.append(channelSound.toString());
+                        newSettings.append(channelSound);
                     }
                     newSettings.append(channelImportance);
                     if (!isDefault && secretChat) {
@@ -3335,7 +3337,7 @@ public class NotificationsController extends BaseController {
             }
             newSettings.append(ledColor);
             if (sound != null) {
-                newSettings.append(sound.toString());
+                newSettings.append(sound);
             }
             newSettings.append(importance);
             if (!isDefault && secretChat) {
@@ -3756,8 +3758,14 @@ public class NotificationsController extends BaseController {
             intent.putExtra("currentAccount", currentAccount);
             PendingIntent contentIntent = PendingIntent.getActivity(ApplicationLoader.applicationContext, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
+            int iconid;
+            if (GuGuConfig.INSTANCE.getInvertedNotification().Bool()){
+                iconid = R.drawable.notification_inverted;
+            }else{
+                iconid = R.drawable.notification;
+            }
             mBuilder.setContentTitle(name)
-                    .setSmallIcon(R.drawable.notification)
+                    .setSmallIcon(iconid)
                     .setAutoCancel(true)
                     .setNumber(total_unread_count)
                     .setContentIntent(contentIntent)
@@ -4017,12 +4025,12 @@ public class NotificationsController extends BaseController {
         wearNotificationsIds.clear();
 
         class NotificationHolder {
-            int id;
-            long dialogId;
-            String name;
-            TLRPC.User user;
-            TLRPC.Chat chat;
-            NotificationCompat.Builder notification;
+            final int id;
+            final long dialogId;
+            final String name;
+            final TLRPC.User user;
+            final TLRPC.Chat chat;
+            final NotificationCompat.Builder notification;
 
             NotificationHolder(int i, long li, String n, TLRPC.User u, TLRPC.Chat c, NotificationCompat.Builder builder) {
                 id = i;
@@ -4482,9 +4490,15 @@ public class NotificationsController extends BaseController {
 
             long date = ((long) messageObjects.get(0).messageOwner.date) * 1000;
 
+            int iconid;
+            if (GuGuConfig.INSTANCE.getInvertedNotification().Bool()){
+                iconid = R.drawable.notification_inverted;
+            }else{
+                iconid = R.drawable.notification;
+            }
             NotificationCompat.Builder builder = new NotificationCompat.Builder(ApplicationLoader.applicationContext)
                     .setContentTitle(name)
-                    .setSmallIcon(R.drawable.notification)
+                    .setSmallIcon(iconid)
                     .setContentText(text.toString())
                     .setAutoCancel(true)
                     .setNumber(messageObjects.size())
