@@ -95,7 +95,7 @@ public class ApplicationLoader extends Application {
             Reflection.unseal(base);
         }
         Thread.currentThread().setUncaughtExceptionHandler((thread, error) -> {
-            Log.e("nekox", "from " + thread.toString(), error);
+            Log.e("gugux", "from " + thread, error);
         });
     }
 
@@ -126,13 +126,13 @@ public class ApplicationLoader extends Application {
 
         }
 
-        private static int UNKNOWN = -9999;
+        private static final int UNKNOWN = -9999;
 
         private static final int ERROR_SET_APPLICATION_FAILED = -20;
 
         private static final int ERROR_EXEMPT_FAILED = -21;
 
-        private static int unsealed = UNKNOWN;
+        private static final int unsealed = UNKNOWN;
 
         public static int unseal(Context context) {
             if (SDK_INT < 28) {
