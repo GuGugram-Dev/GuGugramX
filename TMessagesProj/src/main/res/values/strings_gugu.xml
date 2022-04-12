@@ -13,4 +13,5 @@
     <string name="TextRedo">Redo</string>
     <string name="ShowForwarderName">Show forwarder name</string>
     <string name="NoiseSuppressAndVoiceEnhance">Noise Suppress And Voice Enhance</string>
+    <string name="invertedNotification">Inverted Notification</string>
 </resources>

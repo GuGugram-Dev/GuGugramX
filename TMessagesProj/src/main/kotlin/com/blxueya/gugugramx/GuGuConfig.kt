@@ -45,6 +45,8 @@ object GuGuConfig {
     val showTextUndoRedo = addConfig("TextUndoRedo", ConfigItem.configTypeBool, false)
 
     // Configs
+    var invertedNotification = addConfig("invertedNotification",ConfigItem.configTypeBool,false)
+
     var ForceAllowCopy = addConfig("ForceAllowCopy", ConfigItem.configTypeBool, false)
 
     var AlwaysSaveChatOffset = addConfig("AlwaysSaveChatOffset",ConfigItem.configTypeBool,false)
