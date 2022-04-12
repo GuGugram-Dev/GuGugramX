@@ -20,6 +20,8 @@ import android.os.IBinder;
 
 import androidx.core.app.NotificationCompat;
 
+import com.blxueya.gugugramx.GuGuConfig;
+
 public class NotificationsService extends Service {
 
     @Override
@@ -34,11 +36,17 @@ public class NotificationsService extends Service {
 //            Intent explainIntent = new Intent("android.intent.action.VIEW");
 //            explainIntent.setData(Uri.parse("https://github.com/Telegram-FOSS-Team/Telegram-FOSS/blob/master/Notifications.md"));
 //            PendingIntent explainPendingIntent = PendingIntent.getActivity(this, 0, explainIntent, 0);
+            int iconid;
+            if (GuGuConfig.INSTANCE.getInvertedNotification().Bool()){
+                iconid = R.drawable.notification_inverted;
+            }else{
+                iconid = R.drawable.notification;
+            }
             Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
 //                    .setContentIntent(explainPendingIntent)
                     .setShowWhen(false)
                     .setOngoing(true)
-                    .setSmallIcon(R.drawable.notification)
+                    .setSmallIcon(iconid)
                     .setContentText(LocaleController.getString("NekoXPushService", R.string.NekoXPushService))
                     .build();
             startForeground(9999, notification);

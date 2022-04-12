@@ -90,6 +90,7 @@ public class NekoExperimentalSettingsActivity extends BaseFragment {
     private final AbstractConfigCell divider0 = cellGroup.appendCell(new ConfigCellDivider());
 
     private final AbstractConfigCell header2 = cellGroup.appendCell(new ConfigCellHeader(LocaleController.getString("NekoSettings")));
+    private final AbstractConfigCell invertedNotificationRow = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getInvertedNotification()));
     private final AbstractConfigCell disableChatActionRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.disableChatAction));
     private final AbstractConfigCell disableChoosingStickerRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.disableChoosingSticker));
     private final AbstractConfigCell ignoreBlockedRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.ignoreBlocked));
@@ -290,7 +291,7 @@ public class NekoExperimentalSettingsActivity extends BaseFragment {
             } catch (Exception e) {
                 FileLog.e(e);
                 NekoConfig.useCustomEmoji.setConfigBool(false);
-                Toast.makeText(ApplicationLoader.applicationContext, "Failed: " + e.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ApplicationLoader.applicationContext, "Failed: " + e, Toast.LENGTH_LONG).show();
             }
             tooltip.showWithAction(0, UndoView.ACTION_NEED_RESATRT, null, null);
             listAdapter.notifyItemChanged(cellGroup.rows.indexOf(useCustomEmojiRow));
@@ -400,7 +401,7 @@ public class NekoExperimentalSettingsActivity extends BaseFragment {
     //impl ListAdapter
     private class ListAdapter extends RecyclerListView.SelectionAdapter {
 
-        private Context mContext;
+        private final Context mContext;
 
         public ListAdapter(Context context) {
             mContext = context;
@@ -447,7 +448,7 @@ public class NekoExperimentalSettingsActivity extends BaseFragment {
                         TextSettingsCell textCell = (TextSettingsCell) holder.itemView;
                         textCell.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
                         if (position == cellGroup.rows.indexOf(customAudioBitrateRow)) {
-                            String value = String.valueOf(NekoConfig.customAudioBitrate.Int()) + "kbps";
+                            String value = NekoConfig.customAudioBitrate.Int() + "kbps";
                             if (NekoConfig.customAudioBitrate.Int() == 32)
                                 value += " (" + LocaleController.getString("Default", R.string.Default) + ")";
                             textCell.setTextAndValue(LocaleController.getString("customGroupVoipAudioBitrate", R.string.customGroupVoipAudioBitrate), value, false);
