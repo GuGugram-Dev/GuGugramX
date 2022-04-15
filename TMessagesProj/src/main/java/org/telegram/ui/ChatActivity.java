@@ -270,7 +270,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.InputStream;
-import java.io.RandomAccessFile;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -1397,7 +1396,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         return;
                     }
                     if (messageObject.contentType == 0) {
-                        limitReached = selected && selectedMessagesIds[0].size() + selectedMessagesIds[1].size() >= 100;
+                        if (selected && selectedMessagesIds[0].size() + selectedMessagesIds[1].size() >= 1024) {
+                            limitReached = true;
+                        } else {
+                            limitReached = false;
+                        }
                         RecyclerView.ViewHolder holder = chatListView.findViewHolderForAdapterPosition(position);
                         if (holder != null && holder.itemView instanceof ChatMessageCell) {
                             processRowSelect(holder.itemView, false, x, y);
@@ -13856,7 +13859,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                 }
             } else {
-                if (selectedMessagesIds[0].size() + selectedMessagesIds[1].size() >= 100) {
+                if (selectedMessagesIds[0].size() + selectedMessagesIds[1].size() >= 1024) {
                     AndroidUtilities.shakeView(selectedMessagesCountTextView, 2, 0);
                     Vibrator vibrator = (Vibrator) ApplicationLoader.applicationContext.getSystemService(Context.VIBRATOR_SERVICE);
                     if (vibrator != null) {
@@ -29190,7 +29193,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         continue;
                     }
 
-                    if (selectedMessagesIds[0].size() + selectedMessagesIds[1].size() >= 100) {
+                    if (selectedMessagesIds[0].size() + selectedMessagesIds[1].size() >= 1024) {
                         if (message.getId() != begin) {
                             for (int x = 0; x < messages.size(); x++) {
                                 MessageObject msg = messages.get(x);

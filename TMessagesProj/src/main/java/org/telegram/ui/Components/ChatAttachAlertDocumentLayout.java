@@ -77,10 +77,6 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSmoothScroller;
-import androidx.recyclerview.widget.RecyclerView;
-
 import tw.nekomimi.nekogram.utils.EnvUtil;
 
 public class ChatAttachAlertDocumentLayout extends ChatAttachAlert.AttachAlertLayout {
@@ -624,7 +620,7 @@ public class ChatAttachAlertDocumentLayout extends ChatAttachAlert.AttachAlertLa
                 selectedMessages.remove(hashId);
                 add = false;
             } else {
-                if (selectedMessages.size() >= 100) {
+                if (selectedMessages.size() >= 1024) {
                     return false;
                 }
                 selectedMessages.put(hashId, message);
