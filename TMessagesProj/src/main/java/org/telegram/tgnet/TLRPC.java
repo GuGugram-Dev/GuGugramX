@@ -13,7 +13,6 @@ import android.os.Build;
 import android.text.TextUtils;
 
 import org.osmdroid.util.TileSystemWebMercator;
-
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.ImageLoader;
@@ -22,6 +21,7 @@ import org.telegram.messenger.Utilities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import cn.hutool.core.util.ArrayUtil;
 import tw.nekomimi.nekogram.NekoXConfig;
@@ -47613,7 +47613,7 @@ public class TLRPC {
 
         public int flags;
         public boolean revoke;
-        public ArrayList<Integer> id = new ArrayList<>();
+        public List<Integer> id = new ArrayList<>();
 
         public static TL_messages_deleteMessages TLdeserialize(AbstractSerializedData stream, int constructor, boolean exception) {
             if (TL_messages_deleteMessages.constructor != constructor) {
@@ -51077,7 +51077,7 @@ public class TLRPC {
         public static int constructor = 0x59ae2b16;
 
         public InputPeer peer;
-        public ArrayList<Integer> id = new ArrayList<>();
+        public List<Integer> id = new ArrayList<>();
 
         public static TL_messages_deleteScheduledMessages TLdeserialize(AbstractSerializedData stream, int constructor, boolean exception) {
             if (TL_messages_deleteScheduledMessages.constructor != constructor) {
@@ -52312,7 +52312,7 @@ public class TLRPC {
         public static int constructor = 0x84c1fd4e;
 
         public InputChannel channel;
-        public ArrayList<Integer> id = new ArrayList<>();
+        public List<Integer> id = new ArrayList<>();
 
         public static TL_channels_deleteMessages TLdeserialize(AbstractSerializedData stream, int constructor, boolean exception) {
             if (TL_channels_deleteMessages.constructor != constructor) {
