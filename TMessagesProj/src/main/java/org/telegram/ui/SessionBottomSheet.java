@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -19,6 +18,8 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
 
+import com.blxueya.gugugramx.GuGuConfig;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.LocaleController;
@@ -29,7 +30,6 @@ import org.telegram.ui.ActionBar.AlertDialog;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ActionBar.BottomSheet;
 import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Cells.TextCheckCell2;
 import org.telegram.ui.Components.BulletinFactory;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.RLottieImageView;
@@ -342,6 +342,14 @@ public class SessionBottomSheet extends BottomSheet {
         } else if (platform.contains("macos")) {
             iconId = R.raw.mac_30;
             colorKey = Theme.key_avatar_backgroundCyan;
+        } else if (session.app_name.contains("GuGugram")) {
+            animation = false;
+            if (GuGuConfig.INSTANCE.getInvertedNotification().Bool()) {
+                iconId = R.drawable.notification_inverted;
+            }else {
+                iconId = R.drawable.notification;
+            }
+            colorKey = Theme.key_avatar_backgroundBlue;
         } else if (platform.contains("android")) {
             iconId = R.raw.android_30;
             colorKey = Theme.key_avatar_backgroundGreen;
