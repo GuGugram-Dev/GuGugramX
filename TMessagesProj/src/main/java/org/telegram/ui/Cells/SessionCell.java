@@ -25,10 +25,11 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
+import com.blxueya.gugugramx.GuGuConfig;
+
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BuildConfig;
 import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.ImageLocation;
+import org.telegram.messenger.BuildConfig;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.R;
@@ -45,8 +46,6 @@ import org.telegram.ui.Components.CubicBezierInterpolator;
 import org.telegram.ui.Components.DotDividerSpan;
 import org.telegram.ui.Components.FlickerLoadingView;
 import org.telegram.ui.Components.LayoutHelper;
-
-import java.util.Locale;
 
 public class SessionCell extends FrameLayout {
 
@@ -327,6 +326,13 @@ public class SessionCell extends FrameLayout {
         } else if (platform.contains("macos")) {
             iconId = R.drawable.device_desktop_osx;
             colorKey = Theme.key_avatar_backgroundCyan;
+        } else if (session.app_name.contains("GuGugram")) {
+            if (GuGuConfig.INSTANCE.getInvertedNotification().Bool()){
+                iconId = R.drawable.notification_inverted;
+            }else{
+                iconId = R.drawable.notification;
+            }
+            colorKey = Theme.key_avatar_backgroundBlue;
         } else if (platform.contains("android")) {
             iconId = deviceModel.contains("tab") ? R.drawable.device_tablet_android : R.drawable.device_phone_android;
             colorKey = Theme.key_avatar_backgroundGreen;
