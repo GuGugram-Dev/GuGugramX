@@ -1,4 +1,4 @@
-package tw.nekomimi.nekogram.helpers;
+package tw.nekomimi.nekogram.utils;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
