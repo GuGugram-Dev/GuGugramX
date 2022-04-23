@@ -67,6 +67,7 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
 
     // Sticker Size
     private final AbstractConfigCell header0 = cellGroup.appendCell(new ConfigCellHeader(LocaleController.getString("StickerSize")));
+    private final AbstractConfigCell ignoreBlockedRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.ignoreBlocked));
     private final AbstractConfigCell stickerSizeRow = cellGroup.appendCell(new ConfigCellCustom(ConfigCellCustom.CUSTOM_ITEM_StickerSize, true));
     private final AbstractConfigCell divider0 = cellGroup.appendCell(new ConfigCellDivider());
 
@@ -134,6 +135,8 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
     private final AbstractConfigCell ignoreBlockedRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.ignoreBlocked, LocaleController.getString("IgnoreBlockedAbout")));
     private final AbstractConfigCell disableChatActionRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.disableChatAction));
     private final AbstractConfigCell disableChoosingStickerRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.disableChoosingSticker));
+    private final AbstractConfigCell ShowForwarderName = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getShowForwarderName()));
+    private final AbstractConfigCell noiseSuppressAndVoiceEnhanceRow = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getNoiseSuppressAndVoiceEnhance()));
     private final AbstractConfigCell dividerEnd = cellGroup.appendCell(new ConfigCellDivider());
 
 

@@ -49,15 +49,21 @@ import org.telegram.ui.Components.UndoView;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
-import kotlin.Unit;
 
-import tw.nekomimi.nekogram.ui.PopupBuilder;
-import tw.nekomimi.nekogram.utils.FileUtil;
-import tw.nekomimi.nekogram.utils.ZipUtil;
+import kotlin.Unit;
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.config.CellGroup;
 import tw.nekomimi.nekogram.config.cell.AbstractConfigCell;
-import tw.nekomimi.nekogram.config.cell.*;
+import tw.nekomimi.nekogram.config.cell.ConfigCellCustom;
+import tw.nekomimi.nekogram.config.cell.ConfigCellDivider;
+import tw.nekomimi.nekogram.config.cell.ConfigCellHeader;
+import tw.nekomimi.nekogram.config.cell.ConfigCellSelectBox;
+import tw.nekomimi.nekogram.config.cell.ConfigCellTextCheck;
+import tw.nekomimi.nekogram.config.cell.ConfigCellTextDetail;
+import tw.nekomimi.nekogram.config.cell.ConfigCellTextInput;
+import tw.nekomimi.nekogram.ui.PopupBuilder;
+import tw.nekomimi.nekogram.utils.FileUtil;
+import tw.nekomimi.nekogram.utils.ZipUtil;
 
 @SuppressLint("RtlHardcoded")
 public class NekoExperimentalSettingsActivity extends BaseFragment {
@@ -89,12 +95,6 @@ public class NekoExperimentalSettingsActivity extends BaseFragment {
     private final AbstractConfigCell divider0 = cellGroup.appendCell(new ConfigCellDivider());
 
     private final AbstractConfigCell header2 = cellGroup.appendCell(new ConfigCellHeader(LocaleController.getString("NekoSettings")));
-    private final AbstractConfigCell invertedNotificationRow = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getInvertedNotification()));
-    private final AbstractConfigCell disableChatActionRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.disableChatAction));
-    private final AbstractConfigCell disableChoosingStickerRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.disableChoosingSticker));
-    private final AbstractConfigCell ignoreBlockedRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.ignoreBlocked));
-    private final AbstractConfigCell ShowForwarderName = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getShowForwarderName()));
-    private final AbstractConfigCell AlwaysSaveChatOffset = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getAlwaysSaveChatOffset()));
     private final AbstractConfigCell forceCopyRow = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getForceAllowCopy()));
     private final AbstractConfigCell hideSponsoredMessageRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.hideSponsoredMessage));
     private final AbstractConfigCell divider1 = cellGroup.appendCell(new ConfigCellDivider());
