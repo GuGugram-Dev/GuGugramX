@@ -172,12 +172,12 @@ import tw.nekomimi.nekogram.ExternalGcm;
 import tw.nekomimi.nekogram.InternalUpdater;
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.NekoXConfig;
-import tw.nekomimi.nekogram.helpers.MonetHelper;
 import tw.nekomimi.nekogram.proxy.SubInfo;
 import tw.nekomimi.nekogram.proxy.SubManager;
 import tw.nekomimi.nekogram.settings.NekoSettingsActivity;
 import tw.nekomimi.nekogram.ui.BottomBuilder;
 import tw.nekomimi.nekogram.utils.AlertUtil;
+import tw.nekomimi.nekogram.utils.MonetHelper;
 import tw.nekomimi.nekogram.utils.UIUtil;
 
 public class LaunchActivity extends BasePermissionsActivity implements ActionBarLayout.ActionBarLayoutDelegate, NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate {

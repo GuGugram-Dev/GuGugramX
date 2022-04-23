@@ -132,7 +132,7 @@ import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 import tw.nekomimi.nekogram.NekoConfig;
-import tw.nekomimi.nekogram.helpers.MonetHelper;
+import tw.nekomimi.nekogram.utils.MonetHelper;
 
 public class Theme {
 
