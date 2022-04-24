@@ -14,4 +14,8 @@
     <string name="ShowForwarderName">Show forwarder name</string>
     <string name="NoiseSuppressAndVoiceEnhance">Noise Suppress And Voice Enhance</string>
     <string name="invertedNotification">Inverted Notification</string>
+    <string name="codeSyntaxHighlight">Code syntax highlight</string>
+    <string name="CreateMono">Create Monospace</string>
+    <string name="CreateMonoLanguage">Code language</string>
+    <string name="codeSyntaxHighlightDetails">Thanks to prismjs and nekogram</string>
 </resources>
