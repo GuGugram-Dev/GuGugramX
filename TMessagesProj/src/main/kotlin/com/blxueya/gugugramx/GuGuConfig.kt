@@ -10,19 +10,16 @@ import java.io.ObjectInputStream
 
 
 object GuGuConfig {
-    private const val TAG =
-        "GuGugrammX"
-    val preferences: SharedPreferences =
-        ApplicationLoader.applicationContext.getSharedPreferences(
-            "nkmrcfg",
-            Context.MODE_PRIVATE
-        )
-    val sync =
-        Any()
-    private var configLoaded =
-        false
-    private val configs =
-        ArrayList<ConfigItem>()
+    private const val TAG = "GuGugrammX"
+
+    val preferences: SharedPreferences = ApplicationLoader.applicationContext.getSharedPreferences("nkmrcfg", Context.MODE_PRIVATE)
+
+    val sync = Any()
+
+    private var configLoaded = false
+
+    private val configs = ArrayList<ConfigItem>()
+
     // Text Style
     var showTextBold = addConfig("TextBold", ConfigItem.configTypeBool, true)
 
@@ -62,6 +59,8 @@ object GuGuConfig {
     var noiseSuppressAndVoiceEnhance = addConfig("NoiseSuppressAndVoiceEnhance",ConfigItem.configTypeBool,false)
 
     val scrollableChatPreview = addConfig("ScrollableChatPreview", ConfigItem.configTypeBool, false)
+
+    val codeSyntaxHighlight = addConfig("codeSyntaxHighlight",ConfigItem.configTypeBool,true)
 
     fun addConfig(
         k: String,
