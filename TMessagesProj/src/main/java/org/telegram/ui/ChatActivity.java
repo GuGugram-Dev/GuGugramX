@@ -25563,7 +25563,7 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
         boolean noforwards = getMessagesController().isChatNoForwards(currentChat) || (messageObject != null && messageObject.messageOwner != null && messageObject.messageOwner.noforwards);
         boolean noforwardsOverride = noforwards && !NekoXConfig.disableFlagSecure;
         if (url instanceof URLSpanMono) {
-            if (!noforwardsOverride) {
+            if (GuGuConfig.INSTANCE.getForceAllowCopy().Bool() || !noforwardsOverride) {
                 ((URLSpanMono) url).copyToClipboard();
                 getUndoView().showWithAction(0, UndoView.ACTION_TEXT_COPIED, null);
             }
