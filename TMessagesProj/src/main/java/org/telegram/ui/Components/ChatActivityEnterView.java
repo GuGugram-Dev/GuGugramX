@@ -105,6 +105,8 @@ import androidx.dynamicanimation.animation.SpringForce;
 import androidx.recyclerview.widget.ChatListItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.blxueya.gugugramx.ui.syntaxhighlight.SyntaxHighlight;
+
 import org.jetbrains.annotations.NotNull;
 import org.openintents.openpgp.OpenPgpError;
 import org.openintents.openpgp.util.OpenPgpApi;
@@ -7168,9 +7170,12 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
                                 stringBuilder.setSpan(new URLSpanUserMention("" + ((TLRPC.TL_messageEntityMentionName) entity).user_id, 3), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                             } else if (entity instanceof TLRPC.TL_messageEntityCode || entity instanceof TLRPC.TL_messageEntityPre) {
                                 TextStyleSpan.TextStyleRun run = new TextStyleSpan.TextStyleRun();
+                                run.start = entity.offset;
+                                run.end = entity.offset + entity.length;
                                 run.flags |= TextStyleSpan.FLAG_STYLE_MONO;
                                 run.urlEntity = entity;
                                 MediaDataController.addStyleToText(new TextStyleSpan(run), entity.offset, entity.offset + entity.length, stringBuilder, true);
+                                SyntaxHighlight.highlight(run, stringBuilder);
                             } else if (entity instanceof TLRPC.TL_messageEntityBold) {
                                 TextStyleSpan.TextStyleRun run = new TextStyleSpan.TextStyleRun();
                                 run.flags |= TextStyleSpan.FLAG_STYLE_BOLD;
