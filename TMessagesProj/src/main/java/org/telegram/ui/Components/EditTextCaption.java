@@ -37,6 +37,7 @@ import android.widget.FrameLayout;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 
 import com.blxueya.gugugramx.GuGuConfig;
+import com.blxueya.gugugramx.helpers.EntitiesHelper;
 import com.blxueya.gugugramx.ui.syntaxhighlight.SyntaxHighlight;
 
 import org.jetbrains.annotations.NotNull;
@@ -77,7 +78,7 @@ public class EditTextCaption extends EditTextBoldCursor {
     private float offsetY;
     private int lineCount;
     private boolean isInitLineCount;
-    private final Theme.ResourcesProvider resourcesProvider;
+    public final Theme.ResourcesProvider resourcesProvider;
 
     public interface EditTextCaptionDelegate {
         void onSpansChanged();
@@ -135,24 +136,43 @@ public class EditTextCaption extends EditTextBoldCursor {
     }
 
     public void makeSelectedBold() {
+        if (EntitiesHelper.isEnabled()) {
+            applyTextStyleToSelectionHelper(EntitiesHelper.Style.BOLD);
+            return;
+        }
+
         TextStyleSpan.TextStyleRun run = new TextStyleSpan.TextStyleRun();
         run.flags |= TextStyleSpan.FLAG_STYLE_BOLD;
         applyTextStyleToSelection(new TextStyleSpan(run));
     }
 
     public void makeSelectedSpoiler() {
+        if (EntitiesHelper.isEnabled()) {
+            applyTextStyleToSelectionHelper(EntitiesHelper.Style.SPOILER);
+            return;
+        }
+
         TextStyleSpan.TextStyleRun run = new TextStyleSpan.TextStyleRun();
         run.flags |= TextStyleSpan.FLAG_STYLE_SPOILER;
         applyTextStyleToSelection(new TextStyleSpan(run));
     }
 
     public void makeSelectedItalic() {
+        if (EntitiesHelper.isEnabled()) {
+            applyTextStyleToSelectionHelper(EntitiesHelper.Style.ITALIC);
+            return;
+        }
         TextStyleSpan.TextStyleRun run = new TextStyleSpan.TextStyleRun();
         run.flags |= TextStyleSpan.FLAG_STYLE_ITALIC;
         applyTextStyleToSelection(new TextStyleSpan(run));
     }
 
     public void makeSelectedMono() {
+        if (EntitiesHelper.isEnabled()) {
+            applyTextStyleToSelectionHelper(EntitiesHelper.Style.MONO);
+            return;
+        }
+
         if (!GuGuConfig.INSTANCE.getCodeSyntaxHighlight().Bool()) {
             TextStyleSpan.TextStyleRun run = new TextStyleSpan.TextStyleRun();
             run.flags |= TextStyleSpan.FLAG_STYLE_MONO;
@@ -243,12 +263,22 @@ public class EditTextCaption extends EditTextBoldCursor {
     }
 
     public void makeSelectedStrike() {
+        if (EntitiesHelper.isEnabled()) {
+            applyTextStyleToSelectionHelper(EntitiesHelper.Style.STRIKE);
+            return;
+        }
+
         TextStyleSpan.TextStyleRun run = new TextStyleSpan.TextStyleRun();
         run.flags |= TextStyleSpan.FLAG_STYLE_STRIKE;
         applyTextStyleToSelection(new TextStyleSpan(run));
     }
 
     public void makeSelectedUnderline() {
+        if (EntitiesHelper.isEnabled()) {
+            applyTextStyleToSelectionHelper(EntitiesHelper.Style.UNDERLINE);
+            return;
+        }
+
         TextStyleSpan.TextStyleRun run = new TextStyleSpan.TextStyleRun();
         run.flags |= TextStyleSpan.FLAG_STYLE_UNDERLINE;
         applyTextStyleToSelection(new TextStyleSpan(run));
@@ -315,6 +345,11 @@ public class EditTextCaption extends EditTextBoldCursor {
     }
 
     public void makeSelectedMention() {
+        if (EntitiesHelper.isEnabled()) {
+            applyTextStyleToSelectionHelper(EntitiesHelper.Style.MENTION);
+            return;
+        }
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), resourcesProvider);
         builder.setTitle(LocaleController.getString("CreateMention", R.string.CreateMention));
 
@@ -395,6 +430,11 @@ public class EditTextCaption extends EditTextBoldCursor {
 
 
     public void makeSelectedUrl() {
+        if (EntitiesHelper.isEnabled()) {
+            applyTextStyleToSelectionHelper(EntitiesHelper.Style.URL);
+            return;
+        }
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), resourcesProvider);
         builder.setTitle(LocaleController.getString("CreateLink", R.string.CreateLink));
 
@@ -476,6 +516,11 @@ public class EditTextCaption extends EditTextBoldCursor {
     }
 
     public void makeSelectedRegular() {
+        if (EntitiesHelper.isEnabled()) {
+            applyTextStyleToSelectionHelper(EntitiesHelper.Style.REGULAR);
+            return;
+        }
+
         applyTextStyleToSelection(null);
     }
 
@@ -500,6 +545,21 @@ public class EditTextCaption extends EditTextBoldCursor {
             delegate.onSpansChanged();
         }
     }
+
+    private void applyTextStyleToSelectionHelper(EntitiesHelper.Style style) {
+        int start;
+        int end;
+        if (selectionStart >= 0 && selectionEnd >= 0) {
+            start = selectionStart;
+            end = selectionEnd;
+            selectionStart = selectionEnd = -1;
+        } else {
+            start = getSelectionStart();
+            end = getSelectionEnd();
+        }
+        EntitiesHelper.addStyleToText(style, this, delegate, start, end);
+    }
+
 
     @Override
     public void onWindowFocusChanged(boolean hasWindowFocus) {

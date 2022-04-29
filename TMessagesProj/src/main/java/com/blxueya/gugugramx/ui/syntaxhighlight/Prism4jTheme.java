@@ -29,9 +29,6 @@ import com.blxueya.gugugramx.prism4j.Prism4j;
 public interface Prism4jTheme {
 
     @ColorInt
-    int background();
-
-    @ColorInt
     int textColor();
 
     void apply(
@@ -42,3 +39,4 @@ public interface Prism4jTheme {
             int end
     );
 }
+
