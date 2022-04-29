@@ -61,6 +61,8 @@ object GuGuConfig {
 
     val codeSyntaxHighlight = addConfig("codeSyntaxHighlight",ConfigItem.configTypeBool,true)
 
+    val keepCopyFormatting = addConfig("keepCopyFormatting",ConfigItem.configTypeBool,true)
+
     fun addConfig(
         k: String,
         t: Int,
