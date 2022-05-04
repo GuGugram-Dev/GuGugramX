@@ -36,7 +36,7 @@ import tw.nekomimi.nekogram.database.NitritesKt;
 public class NekoXConfig {
 
     //  public static String FAQ_URL = "https://telegra.ph/NekoX-FAQ-03-31";
-    public static String FAQ_URL = "https://github.com/blxueya/GuGugramX/#faq";
+    public static String FAQ_URL = "https://github.com/GuGugram-Dev/GuGugramX/#faq";
     public static long[] officialChats = {
             1650559785, // GuGuX Updates
             1639467884, // GuGuX Chat

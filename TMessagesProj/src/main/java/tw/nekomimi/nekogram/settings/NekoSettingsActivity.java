@@ -174,7 +174,7 @@ public class NekoSettingsActivity extends BaseFragment {
             } else if (position == translationRow) {
                 Browser.openUrl(getParentActivity(), "https://hosted.weblate.org/engage/nekox/");
             } else if (position == sourceCodeRow) {
-                Browser.openUrl(getParentActivity(), "https://github.com/blxueya/GuGugramX");
+                Browser.openUrl(getParentActivity(), "https://github.com/GuGugram-Dev/GuGugramX");
             }
         });
 
