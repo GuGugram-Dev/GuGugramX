@@ -6,7 +6,7 @@
         android:title="@string/AccountSettings"
         android:summary="">
         <intent android:action="org.telegram.messenger.OPEN_ACCOUNT"
-            android:targetPackage="com.blxueya.GuGugramX"
+            android:targetPackage="com.blxueya.gugugramx"
             android:targetClass="org.telegram.ui.LaunchActivity"/>
     </PreferenceScreen>
 </PreferenceScreen>
