@@ -15,4 +15,5 @@
     <string name="NoiseSuppressAndVoiceEnhance">噪音抑制和语音增强</string>
     <string name="ScrollableChatPreview">可滑动聊天预览</string>
     <string name="invertedNotification">反色通知图标</string>
+    <string name="ToTheBeginning">回到开头</string>
 </resources>
