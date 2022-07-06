@@ -398,10 +398,10 @@ public class FilterTabsView extends FrameLayout {
                 if (!TextUtils.equals(currentTab.emoticon, currentEmoticon)) {
                     currentEmoticon = currentTab.emoticon;
                     android.graphics.Rect bounds = new android.graphics.Rect(0, 0, emoticonWidth, emoticonWidth);
-                    activeIcon = getResources().getDrawable(FolderIconHelper.getTabIcon(currentTab.emoticon, true)).mutate();
+                    activeIcon = getResources().getDrawable(FolderIconHelper.getTabIcon(currentTab.emoticon)).mutate();
                     activeIcon.setTint(Theme.getColor(activeTextColorKey));
                     activeIcon.setBounds(bounds);
-                    icon = getResources().getDrawable(FolderIconHelper.getTabIcon(currentTab.emoticon, false)).mutate();
+                    icon = getResources().getDrawable(FolderIconHelper.getTabIcon(currentTab.emoticon)).mutate();
                     icon.setTint(Theme.getColor(unactiveTextColorKey));
                     icon.setBounds(bounds);
                 }
@@ -735,10 +735,10 @@ public class FilterTabsView extends FrameLayout {
                     int emoticonWidth = FolderIconHelper.getIconWidth();
                     boolean active = selectedTabId == currentTab.id;
                     android.graphics.Rect bounds = new android.graphics.Rect(0, 0, emoticonWidth, emoticonWidth);
-                    iconAnimateOutDrawable = getResources().getDrawable(FolderIconHelper.getTabIcon(lastEmoticon, active)).mutate();
+                    iconAnimateOutDrawable = getResources().getDrawable(FolderIconHelper.getTabIcon(lastEmoticon)).mutate();
                     iconAnimateOutDrawable.setTint(Theme.getColor(active ? activeTextColorKey : unactiveTextColorKey));
                     iconAnimateOutDrawable.setBounds(bounds);
-                    iconAnimateInDrawable = getResources().getDrawable(FolderIconHelper.getTabIcon(currentTab.emoticon, active)).mutate();
+                    iconAnimateInDrawable = getResources().getDrawable(FolderIconHelper.getTabIcon(currentTab.emoticon)).mutate();
                     iconAnimateInDrawable.setTint(Theme.getColor(active ? activeTextColorKey : unactiveTextColorKey));
                     iconAnimateInDrawable.setBounds(bounds);
                     animateIconChange = true;
@@ -1878,7 +1878,7 @@ public class FilterTabsView extends FrameLayout {
             MessagesController.DialogFilter dialogFilter = filters.get(a);
             if (filters.get(a).isDefault()) {
                 if (showAllChatsTab)
-                    addTab(a, 0, LocaleController.getString("FilterAllChats", R.string.FilterAllChats), null, true, false);
+                    addTab(a, 0, LocaleController.getString("FilterAllChats", R.string.FilterAllChats), null, true, filters.get(a).locked);
             } else {
                 switch (NekoConfig.tabsTitleType.Int()) {
                     case NekoXConfig.TITLE_TYPE_TEXT:
