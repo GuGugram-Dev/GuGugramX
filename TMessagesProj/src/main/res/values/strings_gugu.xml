@@ -19,4 +19,5 @@
     <string name="CreateMonoLanguage">Code language</string>
     <string name="codeSyntaxHighlightDetails">Thanks to prismjs and nekogram</string>
     <string name="ToTheBeginning">To the beginning</string>
+    <string name="ShowPremiumStarInChat">Show Premium Star In Chat</string>
 </resources>

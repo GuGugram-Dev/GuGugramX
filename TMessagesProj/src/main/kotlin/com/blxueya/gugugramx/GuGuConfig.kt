@@ -63,6 +63,8 @@ object GuGuConfig {
 
     val keepCopyFormatting = addConfig("keepCopyFormatting",ConfigItem.configTypeBool,true)
 
+    val showPremiumStarInChat = addConfig("ShowPremiumStarInChat", ConfigItem.configTypeBool, true)
+
     fun addConfig(
         k: String,
         t: Int,
