@@ -49,6 +49,7 @@ import java.util.stream.Collectors;
 
 import kotlin.Unit;
 import tw.nekomimi.nekogram.NekoConfig;
+import tw.nekomimi.nekogram.NekoXConfig;
 import tw.nekomimi.nekogram.config.CellGroup;
 import tw.nekomimi.nekogram.config.cell.AbstractConfigCell;
 import tw.nekomimi.nekogram.config.cell.ConfigCellCustom;
@@ -132,7 +133,6 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
     private final AbstractConfigCell repeatConfirmRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.repeatConfirm));
     private final AbstractConfigCell dividerConfirms = cellGroup.appendCell(new ConfigCellDivider());
 
-    private final AbstractConfigCell ignoreBlockedRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.ignoreBlocked, LocaleController.getString("IgnoreBlockedAbout")));
     private final AbstractConfigCell disableChatActionRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.disableChatAction));
     private final AbstractConfigCell disableChoosingStickerRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.disableChoosingSticker));
     private final AbstractConfigCell ShowForwarderName = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getShowForwarderName()));
@@ -188,13 +188,7 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
 
         // Before listAdapter
         if (!NekoXConfig.isDeveloper()) {
-            cellGroup.rows.remove(disableChatActionRow);
-            cellGroup.rows.remove(disableChoosingStickerRow);
-            cellGroup.rows.remove(ignoreBlockedRow);
-            cellGroup.rows.remove(dividerEnd);
-            NekoConfig.disableChatAction.setConfigBool(false);
-            NekoConfig.disableChoosingSticker.setConfigBool(false);
-            NekoConfig.ignoreBlocked.setConfigBool(false);
+
         }
 
         listAdapter = new ListAdapter(context);
