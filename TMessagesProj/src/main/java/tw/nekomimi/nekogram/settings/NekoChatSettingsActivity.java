@@ -137,6 +137,7 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
     private final AbstractConfigCell disableChoosingStickerRow = cellGroup.appendCell(new ConfigCellTextCheck(NekoConfig.disableChoosingSticker));
     private final AbstractConfigCell ShowForwarderName = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getShowForwarderName()));
     private final AbstractConfigCell noiseSuppressAndVoiceEnhanceRow = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getNoiseSuppressAndVoiceEnhance()));
+    private final AbstractConfigCell showPremiumStarInChatRow = cellGroup.appendCell(new ConfigCellTextCheck(GuGuConfig.INSTANCE.getShowPremiumStarInChat()));
     private final AbstractConfigCell dividerEnd = cellGroup.appendCell(new ConfigCellDivider());
 
 
