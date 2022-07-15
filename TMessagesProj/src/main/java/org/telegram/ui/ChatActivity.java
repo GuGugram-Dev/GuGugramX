@@ -3333,7 +3333,7 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
             actionModeOtherItem.addSubItem(nkbtn_savemessage, R.drawable.menu_saved, LocaleController.getString("AddToSavedMessages", R.string.AddToSavedMessages));
         if (NekoConfig.showRepeat.Bool() && !noforward)
             actionModeOtherItem.addSubItem(nkbtn_repeat, R.drawable.msg_repeat, LocaleController.getString("Repeat", R.string.Repeat));
-        if (GuGuConfig.INSTANCE.getShowRepeatAsCopy().Bool() && !noforward)
+        if (GuGuConfig.INSTANCE.getShowRepeatAsCopy().Bool())
             actionModeOtherItem.addSubItem(nkbtn_repeatascopy, R.drawable.msg_repeat, LocaleController.getString("RepeatAsCopy", R.string.RepeatAsCopy));
         if (NekoConfig.showMessageHide.Bool()) {
             actionModeOtherItem.addSubItem(nkbtn_hide, R.drawable.baseline_remove_circle_24, LocaleController.getString("Hide", R.string.Hide));
@@ -22278,7 +22278,7 @@ ChatActivity extends BaseFragment implements NotificationCenter.NotificationCent
                             }
                             boolean allowRepeat = currentUser != null
                                     || (currentChat != null && ChatObject.canSendMessages(currentChat));
-                            if (allowRepeat && NekoConfig.showRepeat.Bool() ) {
+                            if (allowRepeat && NekoConfig.showRepeat.Bool() && !noforward ) {
                                 if (!noforward){
                                     items.add(LocaleController.getString("Repeat", R.string.Repeat));
                                     options.add(nkbtn_repeat);
