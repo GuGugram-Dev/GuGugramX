@@ -3162,7 +3162,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     return Unit.INSTANCE;
                 });
                 builder.addItem(LocaleController.getString("SwitchVersion", R.string.SwitchVersion), R.drawable.baseline_replay_24, (it) -> {
-                    Browser.openUrl(ProfileActivity.this.getParentActivity(), "https://github.com/NekoX-Dev/NekoX/releases");
+                    Browser.openUrl(ProfileActivity.this.getParentActivity(), "https://github.com/GuGugramX-Dev/GuGugramX/releases");
                     return Unit.INSTANCE;
                 });
 
